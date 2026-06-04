@@ -42,9 +42,11 @@
       transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s, background 0.3s;
     }
     #navbar.scrolled {
-      background: rgba(255,255,255,0.96);
+      background: rgba(255,255,255,0.96) !important;
       backdrop-filter: blur(20px);
       box-shadow: 0 1px 0 #E5E7EB, 0 4px 20px rgba(0,0,0,0.06);
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
     }
     #navbar.hidden-nav { transform: translateY(-100%); }
 
@@ -57,28 +59,32 @@
       opacity: 1; visibility: visible; transform: translateY(0);
     }
 
-    /* ── HERO ── */
+    /* ── HERO VIDEO BG ── */
     .hero-bg {
-      background: linear-gradient(135deg, #FFF5F3 0%, #FFFFFF 40%, #F0F4FF 100%);
       position: relative;
       overflow: hidden;
+      background: #0A0A0F;
     }
-    .hero-pattern {
+    .hero-video {
       position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(255,58,16,0.06) 1px, transparent 1px);
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+      z-index: 0;
+    }
+    /* Layered overlay: dark at edges + subtle brand tint */
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        radial-gradient(ellipse at 60% 50%, rgba(255,58,16,0.08) 0%, transparent 60%),
+        linear-gradient(to bottom, rgba(5,5,8,0.55) 0%, rgba(5,5,8,0.3) 40%, rgba(5,5,8,0.7) 100%);
+    }
+    /* Dot grid on top of video */
+    .hero-pattern {
+      position: absolute; inset: 0; z-index: 2;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
       background-size: 36px 36px;
       pointer-events: none;
-    }
-    .hero-gradient-orb {
-      position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none;
-    }
-    .orb-orange { width: 600px; height: 600px; background: rgba(255,58,16,0.08); top: -15%; right: -10%; animation: orb-drift 14s ease-in-out infinite; }
-    .orb-blue   { width: 400px; height: 400px; background: rgba(99,102,241,0.06); bottom: -10%; left: -5%; animation: orb-drift 18s ease-in-out infinite reverse; }
-
-    @keyframes orb-drift {
-      0%,100% { transform: translate(0,0) scale(1); }
-      33%      { transform: translate(40px,-30px) scale(1.05); }
-      66%      { transform: translate(-20px,40px) scale(0.97); }
     }
 
     /* ── ANIMATIONS — handled by Motion library ── */
@@ -121,6 +127,19 @@
       text-decoration: none;
     }
     .btn-secondary:hover { border-color: #aaa; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+    /* Ghost button for use on dark/video backgrounds */
+    .btn-ghost-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); color: #fff;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px;
+      padding: 13px 26px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.3); cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s, transform .2s;
+      text-decoration: none;
+    }
+    .btn-ghost-white:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
 
     /* ── SECTION TAG ── */
     .section-tag {
@@ -252,7 +271,7 @@
 <body>
 
 <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/90 px-4 py-3" style="backdrop-filter:blur(16px)">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 py-4" style="transition:background .35s,box-shadow .35s,padding .35s">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
 
     <a href="#" class="flex items-center gap-2 cursor-pointer">
@@ -262,7 +281,7 @@
           <path d="M8.5 9L13 4.5L17.5 9L13 13.5L8.5 9Z" fill="white" opacity=".5"/>
         </svg>
       </div>
-      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#0A0A0F">Toeshee</span>
+      <span id="nav-logo-text" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:white">Toeshee</span>
     </a>
 
     <div class="hidden lg:flex items-center gap-0.5">
@@ -357,58 +376,69 @@
 
 <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
 <section class="hero-bg min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6" id="hero">
+
+  <!-- Video background -->
+  <video class="hero-video" autoplay muted playsinline loop preload="auto"
+    poster="assets/images/video-poster.jpg">
+    <source src="assets/videos/hero.mp4" type="video/mp4">
+  </video>
+
+  <!-- Overlays -->
+  <div class="hero-overlay"></div>
   <div class="hero-pattern"></div>
-  <div class="hero-gradient-orb orb-orange"></div>
-  <div class="hero-gradient-orb orb-blue"></div>
 
-  <div class="max-w-7xl mx-auto w-full relative z-10">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
+  <!-- Content -->
+  <div class="max-w-5xl mx-auto w-full relative z-10 text-center">
 
-      <!-- Left -->
-      <div>
-        <div class="mb-6 reveal">
-          <span class="badge"><span class="badge-dot"></span>Crypto-Native Operations</span>
-        </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.07] tracking-tight text-gray-900 mb-6 reveal d1">
-          We support complex <span style="color:var(--accent)">customer operations</span> across blockchain, DeFi, and iGaming.
-        </h1>
-        <p class="text-lg text-gray-500 leading-relaxed mb-9 max-w-xl reveal d2">
-          Our teams work within your workflows to resolve incidents faster, manage fraud and KYC exceptions, and maintain compliance at scale.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 mb-12 reveal d3">
-          <a href="#contact" class="btn-primary">Request a Technical Evaluation</a>
-          <a href="#about"   class="btn-secondary">
-            See How We Operate
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-        <div class="flex justify-start reveal d4">
-          <div class="scroll-ind"><div class="scroll-dot"></div></div>
-        </div>
-      </div>
-
-      <!-- Right: image collage -->
-      <div class="hidden lg:block relative h-[520px]">
-        <!-- Main image -->
-        <div class="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl float-card" style="box-shadow:0 40px 80px rgba(0,0,0,.14)">
-          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&q=80&auto=format&fit=crop" alt="Crypto operations" class="w-full h-full object-cover">
-          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.35) 0%,transparent 60%)"></div>
-        </div>
-        <!-- Floating stat card 1 -->
-        <div class="absolute -left-8 top-1/3 bg-white rounded-2xl shadow-xl p-4 float-card float-card-2" style="box-shadow:0 20px 50px rgba(0,0,0,.12)">
-          <div class="text-xs text-gray-400 mb-1" style="font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:.06em">RESOLUTION TIME</div>
-          <div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">−54%</div>
-          <div class="text-xs text-gray-500 mt-0.5">BitPay deployment</div>
-        </div>
-        <!-- Floating stat card 2 -->
-        <div class="absolute -right-4 bottom-1/4 bg-white rounded-2xl shadow-xl p-4 float-card" style="box-shadow:0 20px 50px rgba(0,0,0,.12)">
-          <div class="text-xs text-gray-400 mb-1" style="font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:.06em">SERVICE LEVEL</div>
-          <div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">96%</div>
-          <div class="text-xs text-gray-500 mt-0.5">Post-deployment avg</div>
-        </div>
-      </div>
-
+    <div class="mb-6 reveal">
+      <span class="badge"><span class="badge-dot"></span>Crypto-Native Operations</span>
     </div>
+
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.07] tracking-tight text-white mb-6 reveal d1">
+      We support complex <span style="color:var(--accent)">customer operations</span><br class="hidden sm:block"> across blockchain, DeFi, and iGaming.
+    </h1>
+
+    <p class="text-lg sm:text-xl text-white/70 leading-relaxed mb-9 max-w-2xl mx-auto reveal d2">
+      Our teams work within your workflows to resolve incidents faster, manage fraud and KYC exceptions, and maintain compliance at scale.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 reveal d3">
+      <a href="#contact" class="btn-primary">Request a Technical Evaluation</a>
+      <a href="#about" class="btn-ghost-white">
+        See How We Operate
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <!-- Floating stat pills -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12 reveal d4">
+      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3">
+        <div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">−54%</div>
+        <div class="text-left">
+          <div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Resolution Time</div>
+          <div class="text-xs text-white/50">BitPay deployment</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3">
+        <div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">96%</div>
+        <div class="text-left">
+          <div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Service Level</div>
+          <div class="text-xs text-white/50">Post-deployment avg</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3">
+        <div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">60%</div>
+        <div class="text-left">
+          <div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Crypto Adoption</div>
+          <div class="text-xs text-white/50">iGaming client, 24mo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center reveal d5">
+      <div class="scroll-ind" style="border-color:rgba(255,255,255,.3)"><div class="scroll-dot"></div></div>
+    </div>
+
   </div>
 </section>
 
@@ -453,7 +483,7 @@
       <!-- Left: image -->
       <div class="relative reveal-left">
         <div class="rounded-3xl overflow-hidden aspect-[4/3]" style="box-shadow:0 30px 70px rgba(0,0,0,.1)">
-          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&auto=format&fit=crop" alt="Operations team" class="w-full h-full object-cover">
+          <img src="assets/images/about-operations-team.jpg" alt="Operations team" class="w-full h-full object-cover">
         </div>
         <!-- Badge overlay -->
         <div class="absolute -bottom-5 -right-5 bg-white rounded-2xl p-5 shadow-xl" style="box-shadow:0 20px 50px rgba(0,0,0,.1)">
@@ -503,7 +533,7 @@
 
 <!-- ═══════════════════════════ VIDEO SECTION ═══════════════════════════ -->
 <section class="video-section" style="height:520px">
-  <video autoplay muted playsinline loop poster="https://images.unsplash.com/photo-1639762681057-408e52192e55?w=1400&q=60&auto=format&fit=crop">
+  <video autoplay muted playsinline loop poster="assets/images/video-poster.jpg">
     <source src="https://toeshee.imaginamos.com/wp-content/uploads/2026/02/toe-3.mp4" type="video/mp4">
   </video>
   <div class="video-overlay"></div>
@@ -633,7 +663,7 @@
 
       <div class="industry-card p-7 reveal d1">
         <div class="mb-5">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75&auto=format&fit=crop" alt="Fintech" class="w-full h-36 object-cover rounded-xl mb-5">
+          <img src="assets/images/industry-fintech.jpg" alt="Fintech" class="w-full h-36 object-cover rounded-xl mb-5">
           <div class="ind-num mb-3">01 — Fintech</div>
           <h3 class="text-base font-semibold text-gray-900 mb-3" style="font-family:'Space Grotesk',sans-serif">Fintech Support Operations</h3>
           <p class="text-sm text-gray-500 leading-relaxed">Fintech operations must navigate PCI-DSS, GDPR, KYC/AML, and jurisdictional regimes. Support must be ready for continuous risk and external-auditor evaluation.</p>
@@ -643,7 +673,7 @@
 
       <div class="industry-card p-7 reveal d2">
         <div class="mb-5">
-          <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600&q=75&auto=format&fit=crop" alt="iGaming" class="w-full h-36 object-cover rounded-xl mb-5">
+          <img src="assets/images/industry-igaming.jpg" alt="iGaming" class="w-full h-36 object-cover rounded-xl mb-5">
           <div class="ind-num mb-3">02 — iGaming</div>
           <h3 class="text-base font-semibold text-gray-900 mb-3" style="font-family:'Space Grotesk',sans-serif">iGaming Support Operations</h3>
           <p class="text-sm text-gray-500 leading-relaxed">In iGaming, peak volume leaves no room for error. Support is a critical layer of the product experience, directly shaping player retention and trust.</p>
@@ -653,7 +683,7 @@
 
       <div class="industry-card p-7 reveal d3">
         <div class="mb-5">
-          <img src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?w=600&q=75&auto=format&fit=crop" alt="Crypto Exchanges" class="w-full h-36 object-cover rounded-xl mb-5">
+          <img src="assets/images/industry-exchange.jpg" alt="Crypto Exchanges" class="w-full h-36 object-cover rounded-xl mb-5">
           <div class="ind-num mb-3">03 — Exchanges</div>
           <h3 class="text-base font-semibold text-gray-900 mb-3" style="font-family:'Space Grotesk',sans-serif">Crypto Exchange Operations</h3>
           <p class="text-sm text-gray-500 leading-relaxed">For exchanges, customer support is tied directly to client funds, custody, and trust. The operation requires proven and auditable processes.</p>
@@ -663,7 +693,7 @@
 
       <div class="industry-card p-7 reveal d1">
         <div class="mb-5">
-          <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=75&auto=format&fit=crop" alt="DeFi" class="w-full h-36 object-cover rounded-xl mb-5">
+          <img src="assets/images/industry-defi.jpg" alt="DeFi" class="w-full h-36 object-cover rounded-xl mb-5">
           <div class="ind-num mb-3">04 — DeFi</div>
           <h3 class="text-base font-semibold text-gray-900 mb-3" style="font-family:'Space Grotesk',sans-serif">DeFi Support Operations</h3>
           <p class="text-sm text-gray-500 leading-relaxed">DeFi operations require early detection, fast containment, and clear escalation paths before minor user issues become critical operational incidents.</p>
@@ -673,7 +703,7 @@
 
       <div class="industry-card p-7 sm:col-span-2 reveal d2" style="display:flex;flex-direction:column">
         <div class="grid sm:grid-cols-2 gap-6 flex-1">
-          <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&q=75&auto=format&fit=crop" alt="Crypto Payments" class="w-full h-full object-cover rounded-xl" style="max-height:200px">
+          <img src="assets/images/industry-payments.jpg" alt="Crypto Payments" class="w-full h-full object-cover rounded-xl" style="max-height:200px">
           <div class="flex flex-col justify-between">
             <div>
               <div class="ind-num mb-3">05 — Payments</div>
@@ -707,7 +737,7 @@
       <!-- BitPay -->
       <div class="case-card reveal d1">
         <div class="overflow-hidden" style="height:220px">
-          <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=800&q=80&auto=format&fit=crop" alt="BitPay" class="w-full h-full object-cover" style="transition:transform .5s">
+          <img src="assets/images/case-bitpay.jpg" alt="BitPay" class="w-full h-full object-cover" style="transition:transform .5s">
           <div style="background:linear-gradient(to bottom,transparent,rgba(0,0,0,.4));position:relative;margin-top:-220px;height:220px;display:flex;align-items:flex-end;padding:20px">
             <span class="bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30" style="font-family:'Space Grotesk',sans-serif">BitPay Operational Impact</span>
           </div>
@@ -753,7 +783,7 @@
       <!-- iGaming -->
       <div class="case-card reveal d2">
         <div class="overflow-hidden" style="height:220px">
-          <img src="https://images.unsplash.com/photo-1595287671369-c8c01e9e1e4e?w=800&q=80&auto=format&fit=crop" alt="iGaming" class="w-full h-full object-cover">
+          <img src="assets/images/case-igaming.jpg" alt="iGaming" class="w-full h-full object-cover">
           <div style="background:linear-gradient(to bottom,transparent,rgba(0,0,0,.4));position:relative;margin-top:-220px;height:220px;display:flex;align-items:flex-end;padding:20px">
             <span class="bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30" style="font-family:'Space Grotesk',sans-serif">Confidential iGaming Client</span>
           </div>
@@ -813,7 +843,7 @@
 
       <div class="blog-card reveal d1">
         <div class="blog-img overflow-hidden" style="height:200px">
-          <img src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?w=600&q=75&auto=format&fit=crop" alt="Exchange article" class="w-full h-full object-cover">
+          <img src="assets/images/blog-exchanges.jpg" alt="Exchange article" class="w-full h-full object-cover">
         </div>
         <div class="p-6">
           <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Crypto Exchanges</div>
@@ -827,7 +857,7 @@
 
       <div class="blog-card reveal d2">
         <div class="blog-img overflow-hidden" style="height:200px">
-          <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&q=75&auto=format&fit=crop" alt="iGaming article" class="w-full h-full object-cover">
+          <img src="assets/images/blog-igaming.jpg" alt="iGaming article" class="w-full h-full object-cover">
         </div>
         <div class="p-6">
           <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">iGaming</div>
@@ -841,7 +871,7 @@
 
       <div class="blog-card reveal d3">
         <div class="blog-img overflow-hidden" style="height:200px">
-          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=75&auto=format&fit=crop" alt="Wallet support" class="w-full h-full object-cover">
+          <img src="assets/images/blog-wallet.jpg" alt="Wallet support" class="w-full h-full object-cover">
         </div>
         <div class="p-6">
           <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Web3</div>
@@ -858,14 +888,14 @@
     <!-- 2 more articles -->
     <div class="grid md:grid-cols-2 gap-5 mt-5">
       <div class="blog-card flex overflow-hidden reveal d1">
-        <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=300&q=75&auto=format&fit=crop" alt="Security" class="w-32 object-cover flex-shrink-0" style="transition:transform .5s">
+        <img src="assets/images/blog-security.jpg" alt="Security" class="w-32 object-cover flex-shrink-0" style="transition:transform .5s">
         <div class="p-5 flex flex-col justify-center">
           <div class="text-xs font-bold uppercase tracking-wider mb-2" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Security</div>
           <h3 class="text-sm font-semibold text-gray-900 leading-snug" style="font-family:'Space Grotesk',sans-serif">Four Questions Boards Now Ask Security Leaders</h3>
         </div>
       </div>
       <div class="blog-card flex overflow-hidden reveal d2">
-        <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=300&q=75&auto=format&fit=crop" alt="Crypto" class="w-32 object-cover flex-shrink-0" style="transition:transform .5s">
+        <img src="assets/images/blog-crypto.jpg" alt="Crypto" class="w-32 object-cover flex-shrink-0" style="transition:transform .5s">
         <div class="p-5 flex flex-col justify-center">
           <div class="text-xs font-bold uppercase tracking-wider mb-2" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Crypto</div>
           <h3 class="text-sm font-semibold text-gray-900 leading-snug" style="font-family:'Space Grotesk',sans-serif">Speaking the Language of Crypto: Why Traditional Support Teams Miss the Point</h3>
@@ -921,7 +951,7 @@
 
         <!-- Contact image -->
         <div class="rounded-2xl overflow-hidden reveal d4" style="height:200px">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80&auto=format&fit=crop" alt="Team" class="w-full h-full object-cover">
+          <img src="assets/images/contact-team.jpg" alt="Team" class="w-full h-full object-cover">
         </div>
       </div>
 
@@ -1040,15 +1070,26 @@
 
 <!-- Non-animated utilities (nav, mobile menu, form) -->
 <script>
-  // ── Nav scroll behaviour ──
+  // ── Nav scroll behaviour (transparent over video → white on scroll) ──
   const navbar = document.getElementById('navbar');
+  const navLogoText = document.getElementById('nav-logo-text');
   let lastY = 0;
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    navbar.classList.toggle('scrolled', y > 60);
-    navbar.classList.toggle('hidden-nav', y > lastY && y > 250);
+
+  function updateNav(y) {
+    const scrolled = y > 80;
+    navbar.classList.toggle('scrolled', scrolled);
+    navbar.classList.toggle('hidden-nav', y > lastY && y > 300);
+    // Logo color: white over video, dark when scrolled
+    if (navLogoText) navLogoText.style.color = scrolled ? '#0A0A0F' : 'white';
+    // Nav text links
+    navbar.querySelectorAll('.hidden.lg\\:flex button, .hidden.lg\\:flex a:not(.btn-primary)').forEach(el => {
+      el.style.color = scrolled ? '' : 'rgba(255,255,255,0.85)';
+    });
     lastY = y < 0 ? 0 : y;
-  }, { passive: true });
+  }
+
+  window.addEventListener('scroll', () => updateNav(window.scrollY), { passive: true });
+  updateNav(0);
 
   // ── Mobile menu ──
   const burger = document.getElementById('burger');
