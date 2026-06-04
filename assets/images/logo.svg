@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" fill="none">
+  <!-- Orange drop / flame shape -->
+  <ellipse cx="170" cy="20" rx="9" ry="9" fill="#FF3A10"/>
+  <!-- Silver blob -->
+  <path d="M185 8 Q205 2 215 14 Q225 26 210 32 Q195 36 185 26 Q178 18 185 8Z" fill="url(#silver)"/>
+  <!-- Drop body -->
+  <path d="M170 30 Q158 55 160 80 Q162 110 178 120 Q186 124 178 130 Q168 135 175 145 Q180 150 188 145 Q195 140 193 128 Q195 118 202 100 Q210 78 205 55 Q200 35 185 28 Q178 24 170 30Z" fill="url(#orange)"/>
+  <!-- Small circle left -->
+  <circle cx="152" cy="22" r="7" fill="#FF3A10"/>
+  <!-- TOESHEE text -->
+  <text x="20" y="155" font-family="'Space Grotesk',Arial,sans-serif" font-size="38" font-weight="700" fill="#FF3A10" letter-spacing="2">TOES</text>
+  <text x="163" y="155" font-family="'Space Grotesk',Arial,sans-serif" font-size="38" font-weight="700" fill="#FF3A10" letter-spacing="2">H</text>
+  <text x="197" y="155" font-family="'Space Grotesk',Arial,sans-serif" font-size="38" font-weight="700" fill="#FF3A10" letter-spacing="2">EE</text>
+  <defs>
+    <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF5020"/>
+      <stop offset="100%" stop-color="#E02000"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8E8E8"/>
+      <stop offset="50%" stop-color="#C0C0C0"/>
+      <stop offset="100%" stop-color="#A0A0A0"/>
+    </linearGradient>
+  </defs>
+</svg>
