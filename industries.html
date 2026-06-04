@@ -34,11 +34,6 @@
     .ind-img{transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);}
     #mobile-menu{display:none;}#mobile-menu.open{display:block;}
   /* Motion animation initial states */
-  .anim-fade { opacity: 0; transform: translateY(32px); }
-  .anim-fade-left { opacity: 0; transform: translateX(-40px); }
-  .anim-fade-right { opacity: 0; transform: translateX(40px); }
-  .anim-scale { opacity: 0; transform: scale(0.94); }
-  #hero-content { opacity: 0; transform: translateY(28px); }
   </style>
 </head>
 <body>
@@ -210,6 +205,12 @@
 </script>
 <script type="module">
   import { animate, inView, stagger, scroll } from './node_modules/motion/dist/es/index.mjs';
+
+  // Set initial states via JS (graceful degradation if script fails)
+  document.querySelectorAll('.anim-fade').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(32px)'; });
+  document.querySelectorAll('.anim-fade-left').forEach(el => { el.style.opacity='0'; el.style.transform='translateX(-40px)'; });
+  const heroEl = document.getElementById('hero-content');
+  if (heroEl) { heroEl.style.opacity='0'; heroEl.style.transform='translateY(28px)'; }
 
   // ── Navbar scroll ──
   const navbar = document.getElementById('navbar');
