@@ -33,13 +33,20 @@
     .ind-card:hover .ind-img{transform:scale(1.04);}
     .ind-img{transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);}
     #mobile-menu{display:none;}#mobile-menu.open{display:block;}
+  /* Motion animation initial states */
+  .anim-fade { opacity: 0; transform: translateY(32px); }
+  .anim-fade-left { opacity: 0; transform: translateX(-40px); }
+  .anim-fade-right { opacity: 0; transform: translateX(40px); }
+  .anim-scale { opacity: 0; transform: scale(0.94); }
+  #hero-content { opacity: 0; transform: translateY(28px); }
   </style>
 </head>
 <body>
+<div id="scroll-bar" style="position:fixed;top:0;left:0;right:0;height:3px;background:var(--accent);transform-origin:left;transform:scaleX(0);z-index:100;transition:transform 0.1s linear"></div>
 
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 py-4 bg-white" style="transition:background .35s,box-shadow .35s,padding .35s;box-shadow:0 1px 0 #E5E7EB">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <a href="index.html" class="flex items-center flex-shrink-0"><img src="assets/images/Logo%20update.png" id="nav-logo-img" alt="Toeshee" style="height:64px;width:64px;object-fit:contain;filter:brightness(0) invert(1);transition:filter 0.3s"></a>
+    <a href="index.html" class="flex items-center flex-shrink-0"><img src="assets/images/Logo%20update.png" id="nav-logo-img" alt="Toeshee" style="height:90px;width:90px;object-fit:contain;transition:height 0.3s ease"></a>
     <div class="hidden lg:flex items-center gap-0.5">
       <div class="dropdown relative">
         <button class="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Solutions<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
@@ -102,10 +109,10 @@
 
 <!-- INDUSTRIES -->
 <section class="py-24 px-4 sm:px-6 bg-white" id="industries-section">
-  <div class="max-w-7xl mx-auto space-y-12">
+  <div class="max-w-7xl mx-auto space-y-12" data-stagger>
 
     <!-- 1: Fintech -->
-    <div class="ind-card ind-row">
+    <div class="ind-card ind-row anim-fade">
       <div class="grid lg:grid-cols-2">
         <div class="overflow-hidden" style="min-height:300px"><img src="assets/images/industry-fintech.jpg" alt="Fintech" class="ind-img w-full h-full object-cover" style="min-height:300px"></div>
         <div class="p-10 flex flex-col justify-center">
@@ -118,7 +125,7 @@
     </div>
 
     <!-- 2: iGaming (reversed) -->
-    <div class="ind-card ind-row">
+    <div class="ind-card ind-row anim-fade">
       <div class="grid lg:grid-cols-2">
         <div class="p-10 flex flex-col justify-center lg:order-1 order-2">
           <div class="text-xs font-bold uppercase tracking-widest mb-3" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">02 — iGaming</div>
@@ -131,7 +138,7 @@
     </div>
 
     <!-- 3: Exchanges -->
-    <div class="ind-card ind-row">
+    <div class="ind-card ind-row anim-fade">
       <div class="grid lg:grid-cols-2">
         <div class="overflow-hidden" style="min-height:300px"><img src="assets/images/industry-exchange.jpg" alt="Crypto Exchanges" class="ind-img w-full h-full object-cover" style="min-height:300px"></div>
         <div class="p-10 flex flex-col justify-center">
@@ -144,7 +151,7 @@
     </div>
 
     <!-- 4: DeFi (reversed) -->
-    <div class="ind-card ind-row">
+    <div class="ind-card ind-row anim-fade">
       <div class="grid lg:grid-cols-2">
         <div class="p-10 flex flex-col justify-center lg:order-1 order-2">
           <div class="text-xs font-bold uppercase tracking-widest mb-3" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">04 — DeFi</div>
@@ -157,7 +164,7 @@
     </div>
 
     <!-- 5: Payments -->
-    <div class="ind-card ind-row">
+    <div class="ind-card ind-row anim-fade">
       <div class="grid lg:grid-cols-2">
         <div class="overflow-hidden" style="min-height:300px"><img src="assets/images/industry-payments.jpg" alt="Crypto Payments" class="ind-img w-full h-full object-cover" style="min-height:300px"></div>
         <div class="p-10 flex flex-col justify-center">
@@ -196,7 +203,7 @@
 
 <script>
   const navbar=document.getElementById('navbar');let lastY=0;
-  function updateNav(y){const s=y>80;navbar.classList.toggle('scrolled',s);navbar.classList.toggle('hidden-nav',y>lastY&&y>300);lastY=y<0?0:y;const logo=document.getElementById('nav-logo-img');if(logo)logo.style.filter=s?'none':'brightness(0) invert(1)';}
+  function updateNav(y){const s=y>80;navbar.classList.toggle('scrolled',s);navbar.classList.toggle('hidden-nav',y>lastY&&y>300);lastY=y<0?0:y;const logo=document.getElementById('nav-logo-img');}
   window.addEventListener('scroll',()=>updateNav(window.scrollY),{passive:true});
   const burger=document.getElementById('burger');const mobileMenu=document.getElementById('mobile-menu');let open=false;
   burger.addEventListener('click',()=>{open=!open;mobileMenu.classList.toggle('open',open);document.getElementById('b1').style.transform=open?'rotate(45deg) translate(5px,5px)':'';document.getElementById('b2').style.opacity=open?'0':'1';document.getElementById('b3').style.transform=open?'rotate(-45deg) translate(5px,-5px)':'';});

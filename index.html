@@ -45,10 +45,10 @@
       background: rgba(255,255,255,0.96) !important;
       backdrop-filter: blur(20px);
       box-shadow: 0 1px 0 #E5E7EB, 0 4px 20px rgba(0,0,0,0.06);
-      padding-top: 6px !important;
-      padding-bottom: 6px !important;
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
     }
-    #nav-logo-img { transition: height 0.3s ease, filter 0.3s ease; }
+    #nav-logo-img { transition: height 0.3s ease; }
     #navbar.scrolled #nav-logo-img { height: 52px !important; }
     #navbar.hidden-nav { transform: translateY(-100%); }
 
@@ -273,11 +273,11 @@
 <body>
 
 <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 py-2" style="transition:background .35s,box-shadow .35s,padding .35s">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-3" style="transition:background .35s,box-shadow .35s,padding .35s">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
 
     <a href="#" class="flex items-center flex-shrink-0" id="nav-logo">
-      <img src="assets/images/Logo%20update.png" id="nav-logo-img" alt="Toeshee" style="height:64px;width:64px;object-fit:contain;filter:brightness(0) invert(1);transition:filter 0.3s">
+      <img src="assets/images/Logo%20update.png" id="nav-logo-img" alt="Toeshee" style="height:90px;width:90px;object-fit:contain;transition:height 0.3s ease">
     </a>
 
     <div class="hidden lg:flex items-center gap-0.5">
@@ -1111,7 +1111,7 @@
     navbar.classList.toggle('scrolled', scrolled);
     navbar.classList.toggle('hidden-nav', y > lastY && y > 300);
     // Logo filter: inverted (white) over video, normal when scrolled
-    if (navLogoImg) navLogoImg.style.filter = scrolled ? 'none' : 'brightness(0) invert(1)';
+    ;
     // Nav text links
     navbar.querySelectorAll('.hidden.lg\\:flex button, .hidden.lg\\:flex a:not(.btn-primary)').forEach(el => {
       el.style.color = scrolled ? '' : 'rgba(255,255,255,0.85)';
