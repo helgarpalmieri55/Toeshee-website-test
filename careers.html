@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers — Toeshee</title>
+  <meta name="description" content="Build your career in the digital frontier. Join Toeshee at the intersection of Web3, DeFi, iGaming, and Fintech.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{--accent:#FF3A10;--accent-light:rgba(255,58,16,0.08);--text-primary:#0A0A0F;--bg-white:#FFFFFF;--bg-off:#F8F8FA;--border:#E5E7EB;--shadow-md:0 4px 16px rgba(0,0,0,0.07);--shadow-lg:0 20px 50px rgba(0,0,0,0.1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg-white);color:var(--text-primary);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;}
+    #navbar{transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s;}
+    #navbar.scrolled{background:rgba(255,255,255,0.96)!important;backdrop-filter:blur(20px);box-shadow:0 1px 0 #E5E7EB,0 4px 20px rgba(0,0,0,0.06);padding-top:10px!important;padding-bottom:10px!important;}
+    #navbar.hidden-nav{transform:translateY(-100%);}
+    .dropdown-menu{opacity:0;visibility:hidden;transform:translateY(6px);transition:all 0.2s cubic-bezier(0.16,1,0.3,1);}
+    .dropdown:hover .dropdown-menu,.dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.2);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:100px;}
+    .badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+    .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:13px 26px;border-radius:10px;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 4px 14px rgba(255,58,16,0.3);text-decoration:none;}
+    .btn-primary:hover{background:#E5330E;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,58,16,0.38);}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--text-primary);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:13px 26px;border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:border-color .2s,transform .2s;text-decoration:none;}
+    .btn-secondary:hover{border-color:#aaa;transform:translateY(-2px);}
+    .btn-ghost-white{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:13px 26px;border-radius:10px;border:1px solid rgba(255,255,255,0.3);cursor:pointer;backdrop-filter:blur(8px);transition:background .2s,border-color .2s,transform .2s;text-decoration:none;}
+    .btn-ghost-white:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.6);transform:translateY(-2px);}
+    .section-tag{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+    .card{background:white;border:1px solid var(--border);border-radius:16px;transition:all 0.28s cubic-bezier(0.16,1,0.3,1);}
+    .card:hover{border-color:rgba(255,58,16,0.25);box-shadow:0 12px 40px rgba(255,58,16,0.08);transform:translateY(-4px);}
+    .hero-bg{position:relative;overflow:hidden;background:#0A0A0F;}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;z-index:0;}
+    .hero-overlay{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at 60% 50%,rgba(255,58,16,0.08) 0%,transparent 60%),linear-gradient(to bottom,rgba(5,5,8,0.65) 0%,rgba(5,5,8,0.4) 40%,rgba(5,5,8,0.75) 100%);}
+    .hero-pattern{position:absolute;inset:0;z-index:2;background-image:radial-gradient(circle,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:36px 36px;pointer-events:none;}
+    #mobile-menu{display:none;}#mobile-menu.open{display:block;}
+  </style>
+</head>
+<body>
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 py-4" style="transition:background .35s,box-shadow .35s,padding .35s">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex items-center flex-shrink-0"><img src="assets/images/Logo%20update.png" id="nav-logo-img" alt="Toeshee" style="height:44px;width:auto;filter:brightness(0) invert(1);transition:filter 0.3s"></a>
+    <div class="hidden lg:flex items-center gap-0.5">
+      <div class="dropdown relative"><button class="flex items-center gap-1 px-3 py-2 text-sm rounded-lg hover:bg-white/10 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500;color:rgba(255,255,255,0.85)">Solutions<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="dropdown-menu absolute top-full left-0 mt-2 w-72 rounded-2xl border border-gray-100 bg-white p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)"><a href="solutions.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Crypto Customer Support</div></a><a href="solutions.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Technical Support &amp; Incident Handling</div></a><a href="solutions.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Trust &amp; Safety Operations</div></a><a href="solutions.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Risk Operations &amp; Fraud Response</div></a><a href="solutions.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Security &amp; Compliance Support</div></a></div></div>
+      <div class="dropdown relative"><button class="flex items-center gap-1 px-3 py-2 text-sm rounded-lg hover:bg-white/10 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500;color:rgba(255,255,255,0.85)">Industries<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="dropdown-menu absolute top-full left-0 mt-2 w-52 rounded-2xl border border-gray-100 bg-white p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)"><a href="industries.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Fintech</a><a href="industries.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">iGaming</a><a href="industries.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Exchanges</a><a href="industries.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">DeFi</a><a href="industries.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Payment Processors</a></div></div>
+      <a href="case-studies.html" class="px-3 py-2 text-sm rounded-lg hover:bg-white/10 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500;color:rgba(255,255,255,0.85)">Case Studies</a>
+      <a href="insights.html" class="px-3 py-2 text-sm rounded-lg hover:bg-white/10 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500;color:rgba(255,255,255,0.85)">Insights</a>
+      <a href="company.html" class="px-3 py-2 text-sm rounded-lg hover:bg-white/10 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500;color:rgba(255,255,255,0.85)">Company</a>
+      <a href="careers.html" class="px-3 py-2 text-sm rounded-lg" style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#FF8060;background:rgba(255,58,16,0.15)">Careers</a>
+    </div>
+    <div class="hidden lg:flex items-center gap-3">
+      <a href="tel:+18667157327" class="text-sm hover:opacity-70 transition-opacity" style="color:rgba(255,255,255,0.6);font-family:'Space Grotesk',sans-serif">+1 (866) 715-7327</a>
+      <a href="contact.html" class="btn-primary text-sm" style="padding:10px 20px;border-radius:8px">Request Evaluation</a>
+    </div>
+    <button id="burger" class="lg:hidden p-2" aria-label="Open menu"><div class="flex flex-col gap-1.5"><span id="b1" class="block w-6 h-0.5 bg-white transition-all origin-center"></span><span id="b2" class="block w-6 h-0.5 bg-white transition-all"></span><span id="b3" class="block w-6 h-0.5 bg-white transition-all origin-center"></span></div></button>
+  </div>
+  <div id="mobile-menu" class="lg:hidden mt-3 pt-3 pb-4 px-2 border-t border-white/10"><div class="flex flex-col gap-1"><a href="solutions.html" class="px-3 py-2.5 rounded-xl text-sm text-white/80 hover:bg-white/10">Solutions</a><a href="industries.html" class="px-3 py-2.5 rounded-xl text-sm text-white/80 hover:bg-white/10">Industries</a><a href="case-studies.html" class="px-3 py-2.5 rounded-xl text-sm text-white/80 hover:bg-white/10">Case Studies</a><a href="insights.html" class="px-3 py-2.5 rounded-xl text-sm text-white/80 hover:bg-white/10">Insights</a><a href="company.html" class="px-3 py-2.5 rounded-xl text-sm text-white/80 hover:bg-white/10">Company</a><a href="careers.html" class="px-3 py-2.5 rounded-xl text-sm text-[#FF8060]" style="background:rgba(255,58,16,0.15)">Careers</a><a href="contact.html" class="btn-primary mt-3 text-center text-sm" style="border-radius:10px;padding:12px">Request Evaluation</a></div></div>
+</nav>
+
+<!-- HERO with video -->
+<section class="hero-bg min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6">
+  <video class="hero-video" autoplay muted playsinline loop preload="auto" poster="assets/images/video-poster.jpg">
+    <source src="assets/videos/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-pattern"></div>
+  <div class="max-w-5xl mx-auto w-full relative z-10 text-center" id="hero-content">
+    <div class="mb-6"><span class="badge" style="background:rgba(255,58,16,0.18);border-color:rgba(255,58,16,0.35);color:#FF8060"><span class="badge-dot"></span>We're Hiring</span></div>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white mb-6">Build your career in the <span style="color:var(--accent)">digital frontier</span></h1>
+    <p class="text-lg sm:text-xl text-white/65 leading-relaxed mb-10 max-w-2xl mx-auto">Join a team at the intersection of Web3, DeFi, iGaming, and Fintech. We're looking for sharp, motivated people who want to grow with us and make an impact on the world's most innovative digital platforms.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+      <a href="#roles" class="btn-primary">See Open Positions</a>
+      <a href="#culture" class="btn-ghost-white">Our Culture</a>
+    </div>
+    <!-- Stats -->
+    <div class="flex flex-wrap justify-center gap-4" id="hero-stats">
+      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3"><div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">100+</div><div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Team Members</div></div>
+      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3"><div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">3</div><div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Countries</div></div>
+      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3"><div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">6+</div><div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Open Roles</div></div>
+      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3"><div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">95%</div><div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Retention Rate</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section class="py-24 px-4 sm:px-6 bg-white" id="culture">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-2xl mb-16" id="culture-header">
+      <div class="section-tag mb-4">Culture</div>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-5">People who care about doing great work</h2>
+      <p class="text-gray-500 leading-relaxed">At Toeshee, we hire people who take ownership. Our culture is built around accountability, directness, and continuous learning. We don't do hierarchy for its own sake. Being LATAM-native is our strength.</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-6" id="culture-cards">
+      <div class="card p-7 culture-card">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style="background:var(--accent-light)"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2 6h6l-5 3.6 1.9 6L10 14 5.1 17.6 7 12 2 8h6z" fill="#FF3A10"/></svg></div>
+        <h3 class="font-bold text-gray-900 mb-3">Ownership</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">We hire people who take responsibility for outcomes, not just tasks. Every role is accountable to real results.</p>
+      </div>
+      <div class="card p-7 culture-card">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style="background:var(--accent-light)"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 7h14M3 11h10M3 15h6" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3 class="font-bold text-gray-900 mb-3">Directness</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">Clear communication, honest feedback, and no bureaucracy. We say what we mean and mean what we say.</p>
+      </div>
+      <div class="card p-7 culture-card">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style="background:var(--accent-light)"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v3M6.3 5.7l2.1 2.1M4 10H1M5.7 13.7l2.1-2.1M10 17v-3M13.7 13.7l-2.1-2.1M16 10h3M14.3 5.7l-2.1 2.1" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3 class="font-bold text-gray-900 mb-3">Continuous Learning</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">The Web3 space moves fast. We invest in our people through training, tools, and operational exposure that drives real career growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN ROLES -->
+<section class="py-24 px-4 sm:px-6" style="background:var(--bg-off)" id="roles">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-xl mx-auto mb-16" id="roles-header">
+      <div class="section-tag mb-4">Open Positions</div>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Join the team</h2>
+    </div>
+    <div class="max-w-3xl mx-auto space-y-5" id="roles-list">
+      <div class="card p-8 role-card">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Crypto Customer Support Agent</h3>
+            <p class="text-gray-500 text-sm mb-4">Be the front line for users of a leading blockchain platform. Handle KYC inquiries, transaction support, and account management with crypto fluency.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600" style="font-family:'Space Grotesk',sans-serif">Global</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600" style="font-family:'Space Grotesk',sans-serif">Full-time</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background:var(--accent-light);color:var(--accent);font-family:'Space Grotesk',sans-serif">100% Remote</span>
+            </div>
+          </div>
+          <a href="contact.html" class="btn-primary flex-shrink-0">Apply Now</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-12" id="open-cv">
+      <p class="text-gray-500 mb-4">Don't see your role? We're always open to exceptional candidates.</p>
+      <a href="contact.html" class="btn-secondary">Send us your CV anyway</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 pt-16 pb-8 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/[0.08]">
+      <div class="lg:col-span-2"><div class="flex items-center gap-2 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--accent)"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.5 9L7 4.5L11.5 9L7 13.5L2.5 9Z" fill="white"/><path d="M8.5 9L13 4.5L17.5 9L13 13.5L8.5 9Z" fill="white" opacity=".5"/></svg></div><span class="text-white font-bold text-lg" style="font-family:'Space Grotesk',sans-serif">Toeshee</span></div><p class="text-gray-400 text-sm leading-relaxed max-w-xs mb-5">The first outsourcing provider built for the decentralized economy.</p><div class="flex gap-3"><a href="https://www.instagram.com/toeshee.co/" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FF3A10]/10 transition-all"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#9CA3AF" stroke="none"/></svg></a><a href="https://www.linkedin.com/company/toesheecorp" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FF3A10]/10 transition-all"><svg width="16" height="16" viewBox="0 0 24 24" fill="#9CA3AF"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a></div></div>
+      <div><div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-4" style="font-family:'Space Grotesk',sans-serif">Solutions</div><ul class="space-y-3"><li><a href="solutions.html" class="text-sm text-gray-400 hover:text-white transition-colors">Crypto Customer Support</a></li><li><a href="solutions.html" class="text-sm text-gray-400 hover:text-white transition-colors">Technical Support</a></li><li><a href="solutions.html" class="text-sm text-gray-400 hover:text-white transition-colors">Trust &amp; Safety</a></li><li><a href="solutions.html" class="text-sm text-gray-400 hover:text-white transition-colors">Risk &amp; Fraud</a></li><li><a href="solutions.html" class="text-sm text-gray-400 hover:text-white transition-colors">Compliance</a></li></ul></div>
+      <div><div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-4" style="font-family:'Space Grotesk',sans-serif">Industries</div><ul class="space-y-3"><li><a href="industries.html" class="text-sm text-gray-400 hover:text-white transition-colors">Fintech</a></li><li><a href="industries.html" class="text-sm text-gray-400 hover:text-white transition-colors">iGaming</a></li><li><a href="industries.html" class="text-sm text-gray-400 hover:text-white transition-colors">Crypto Exchanges</a></li><li><a href="industries.html" class="text-sm text-gray-400 hover:text-white transition-colors">DeFi</a></li><li><a href="industries.html" class="text-sm text-gray-400 hover:text-white transition-colors">Crypto Payments</a></li></ul></div>
+      <div><div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-4" style="font-family:'Space Grotesk',sans-serif">Company</div><ul class="space-y-3"><li><a href="company.html" class="text-sm text-gray-400 hover:text-white transition-colors">About</a></li><li><a href="case-studies.html" class="text-sm text-gray-400 hover:text-white transition-colors">Case Studies</a></li><li><a href="insights.html" class="text-sm text-gray-400 hover:text-white transition-colors">Insights</a></li><li><a href="careers.html" class="text-sm text-gray-400 hover:text-white transition-colors">Careers</a></li><li><a href="contact.html" class="text-sm text-gray-400 hover:text-white transition-colors">Contact</a></li></ul></div>
+    </div>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-8"><p class="text-sm text-gray-600">© 2026 BlockchainIA Solutions Edge. All rights reserved.</p><div class="flex gap-6"><a href="#" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Terms and conditions</a><a href="#" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Privacy policy</a></div></div>
+  </div>
+</footer>
+
+<script>
+  const navbar=document.getElementById('navbar');const navLogoImg=document.getElementById('nav-logo-img');let lastY=0;
+  function updateNav(y){
+    const scrolled=y>80;
+    navbar.classList.toggle('scrolled',scrolled);
+    navbar.classList.toggle('hidden-nav',y>lastY&&y>300);
+    if(navLogoImg) navLogoImg.style.filter=scrolled?'none':'brightness(0) invert(1)';
+    navbar.querySelectorAll('.hidden.lg\\:flex button,.hidden.lg\\:flex a:not(.btn-primary)').forEach(el=>{
+      el.style.color=scrolled?'':undefined;
+    });
+    lastY=y<0?0:y;
+  }
+  window.addEventListener('scroll',()=>updateNav(window.scrollY),{passive:true});
+  updateNav(0);
+  const burger=document.getElementById('burger');const mobileMenu=document.getElementById('mobile-menu');let open=false;
+  burger.addEventListener('click',()=>{open=!open;mobileMenu.classList.toggle('open',open);document.getElementById('b1').style.transform=open?'rotate(45deg) translate(5px,5px)':'';document.getElementById('b2').style.opacity=open?'0':'1';document.getElementById('b3').style.transform=open?'rotate(-45deg) translate(5px,-5px)':'';});
+</script>
+<script type="module">
+  import { animate, inView, stagger } from './node_modules/motion/dist/es/index.mjs';
+  animate('#hero-content > div:first-child', { opacity:[0,1], y:[20,0] }, { duration:0.6, easing:[0.16,1,0.3,1] });
+  animate('#hero-content h1', { opacity:[0,1], y:[32,0] }, { duration:0.7, delay:0.1, easing:[0.16,1,0.3,1] });
+  animate('#hero-content p', { opacity:[0,1], y:[24,0] }, { duration:0.7, delay:0.2, easing:[0.16,1,0.3,1] });
+  animate('#hero-content .flex.flex-col', { opacity:[0,1], y:[20,0] }, { duration:0.6, delay:0.3, easing:[0.16,1,0.3,1] });
+  animate('#hero-stats', { opacity:[0,1], y:[20,0] }, { duration:0.6, delay:0.4, easing:[0.16,1,0.3,1] });
+  inView('#culture-header', ({ target }) => { animate(target, { opacity:[0,1], y:[24,0] }, { duration:0.6, easing:[0.16,1,0.3,1] }); });
+  inView('#culture-cards', ({ target }) => {
+    animate(target.querySelectorAll('.culture-card'), { opacity:[0,1], y:[32,0] }, { duration:0.6, delay:stagger(0.1), easing:[0.16,1,0.3,1] });
+  }, { margin:'0px 0px -40px 0px' });
+  inView('#roles-header', ({ target }) => { animate(target, { opacity:[0,1], y:[24,0] }, { duration:0.6, easing:[0.16,1,0.3,1] }); });
+  inView('#roles-list', ({ target }) => {
+    animate(target.querySelectorAll('.role-card'), { opacity:[0,1], y:[32,0] }, { duration:0.6, delay:stagger(0.1), easing:[0.16,1,0.3,1] });
+  }, { margin:'0px 0px -40px 0px' });
+  inView('#open-cv', ({ target }) => { animate(target, { opacity:[0,1], y:[20,0] }, { duration:0.5, easing:[0.16,1,0.3,1] }); });
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('mouseenter', () => animate(btn, { scale:[1,1.03,1] }, { duration:0.4, easing:'ease-in-out' }));
+  });
+</script>
+</body>
+</html>
