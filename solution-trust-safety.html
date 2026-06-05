@@ -311,18 +311,25 @@
   </div>
 </footer>
 
-<script type="importmap">
-{
-  "imports": {
-    "framer-motion/dom": "./node_modules/framer-motion/dist/es/dom.mjs",
-    "framer-motion/dom-mini": "./node_modules/framer-motion/dist/es/dom-mini.mjs",
-    "motion-dom": "./node_modules/motion-dom/dist/es/index.mjs",
-    "motion-utils": "./node_modules/motion-utils/dist/es/index.mjs"
-  }
-}
-</script>
-<script type="module">
-  import { animate, inView, scroll } from './node_modules/motion/dist/es/index.mjs';
+<script src="assets/motion.js"></script>
+<script>
+  (function() {
+    var animate = window.Motion.animate;
+    var inView = window.Motion.inView;
+    var scroll = window.Motion.scroll;
+    var stagger = window.Motion.stagger;
+
+    function showAll() {
+      document.querySelectorAll('.anim-fade,.anim-fade-left,.anim-fade-right').forEach(function(el) {
+        el.style.opacity = '1'; el.style.transform = 'none';
+      });
+      var h = document.getElementById('hero-content');
+      if (h) { h.style.opacity = '1'; h.style.transform = 'none'; }
+    }
+
+    if (!animate || !inView) { showAll(); return; }
+
+    try {
 
   // Fallback: if animation fails, ensure content is visible
   function showAll() {
@@ -408,6 +415,11 @@
     console.warn('Motion animation error:', e);
     showAll();
   }
+    } catch(e) {
+      console.warn('Motion error:', e);
+      showAll();
+    }
+  })();
 </script>
 </body>
 </html>
