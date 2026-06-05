@@ -91,8 +91,11 @@
 </nav>
 
 <!-- HERO -->
-<section style="background:linear-gradient(135deg,#0A0A0F 0%,#1a1020 100%);padding:144px 24px 96px">
-  <div class="max-w-5xl mx-auto" id="hero-content">
+<section style="background:linear-gradient(135deg,#0A0A0F 0%,#1a1020 100%);padding:144px 24px 96px;position:relative;overflow:hidden">
+  <!-- subtle bg image -->
+  <div style="position:absolute;inset:0;background-image:url('assets/images/hero-crypto-trading.jpg');background-size:cover;background-position:center;opacity:0.08"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,15,0.95) 0%,rgba(26,16,32,0.9) 100%)"></div>
+  <div class="max-w-5xl mx-auto" id="hero-content" style="position:relative;z-index:1">
     <div style="margin-bottom:16px">
       <a href="solutions.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;font-family:'Space Grotesk',sans-serif">Solutions</a>
       <span style="color:rgba(255,255,255,0.2);margin:0 8px">/</span>
@@ -309,7 +312,7 @@
 </footer>
 
 <script type="module">
-  import { animate, inView, scroll } from './node_modules/motion/dist/es/index.mjs';
+  import { animate, inView, scroll } from 'https://esm.sh/motion@11';
   
   // JS-only initial states
   document.querySelectorAll('.anim-fade').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(32px)'; });

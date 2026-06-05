@@ -1112,8 +1112,8 @@
     navbar.classList.toggle('hidden-nav', y > lastY && y > 300);
     // Logo filter: inverted (white) over video, normal when scrolled
     ;
-    // Nav text links
-    navbar.querySelectorAll('.hidden.lg\\:flex button, .hidden.lg\\:flex a:not(.btn-primary)').forEach(el => {
+    // Nav text links (exclude dropdown menu items — they live on white bg)
+    navbar.querySelectorAll('.hidden.lg\\:flex > div > button, .hidden.lg\\:flex > a:not(.btn-primary)').forEach(el => {
       el.style.color = scrolled ? '' : 'rgba(255,255,255,0.85)';
     });
     lastY = y < 0 ? 0 : y;
@@ -1155,7 +1155,7 @@
 
 <!-- Motion library animations (ESM module) -->
 <script type="module">
-  import { animate, scroll, inView, stagger } from './node_modules/motion/dist/es/index.mjs';
+  import { animate, scroll, inView, stagger } from 'https://esm.sh/motion@11';
 
   // ── 1. HERO — fade + slide up on load ──
   animate(

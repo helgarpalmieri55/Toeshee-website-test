@@ -93,8 +93,9 @@
 </nav>
 
 <!-- HERO -->
-<section style="background:linear-gradient(135deg,#0A0A0F 0%,#141420 50%,#1a1015 100%);padding:144px 24px 0">
-  <div class="max-w-5xl mx-auto" id="hero-content">
+<section style="background:linear-gradient(135deg,#0A0A0F 0%,#141420 50%,#1a1015 100%);padding:144px 0 0;overflow:hidden">
+  <div class="max-w-7xl mx-auto px-6" style="display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center">
+  <div id="hero-content" style="padding-right:40px;padding-bottom:64px">
     <div style="margin-bottom:16px">
       <a href="industries.html" style="color:rgba(255,255,255,0.4);font-size:13px;text-decoration:none;font-family:'Space Grotesk',sans-serif">Industries</a>
       <span style="color:rgba(255,255,255,0.2);margin:0 8px">/</span>
@@ -109,6 +110,12 @@
       <a href="contact.html" class="btn-primary">Let's Talk</a>
       <a href="case-studies.html" class="btn-secondary" style="background:transparent;border-color:rgba(255,255,255,0.18);color:white">View Case Studies</a>
     </div>
+  </div>
+  <!-- Hero image -->
+  <div style="height:100%;min-height:500px;position:relative;overflow:hidden;border-radius:24px 0 0 0;align-self:stretch">
+    <img src="assets/images/industry-exchange.jpg" alt="Crypto Exchanges" style="width:100%;height:100%;object-fit:cover;min-height:520px;display:block">
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,15,0.5) 0%,transparent 50%)"></div>
+  </div>
   </div>
   <!-- Stats bar -->
   <div style="border-top:1px solid rgba(255,255,255,0.07)">
@@ -282,7 +289,7 @@
   </div>
 </footer>
 <script type="module">
-  import { animate, inView, scroll } from './node_modules/motion/dist/es/index.mjs';
+  import { animate, inView, scroll } from 'https://esm.sh/motion@11';
   
   document.querySelectorAll('.anim-fade').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(32px)'; });
   document.querySelectorAll('.anim-fade-left').forEach(el => { el.style.opacity='0'; el.style.transform='translateX(-40px)'; });

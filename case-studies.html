@@ -156,7 +156,7 @@
   burger.addEventListener('click',()=>{open=!open;mobileMenu.classList.toggle('open',open);document.getElementById('b1').style.transform=open?'rotate(45deg) translate(5px,5px)':'';document.getElementById('b2').style.opacity=open?'0':'1';document.getElementById('b3').style.transform=open?'rotate(-45deg) translate(5px,-5px)':'';});
 </script>
 <script type="module">
-  import { animate, inView, stagger, scroll } from './node_modules/motion/dist/es/index.mjs';
+  import { animate, inView, stagger, scroll } from 'https://esm.sh/motion@11';
 
   // Set initial states via JS (graceful degradation if script fails)
   document.querySelectorAll('.anim-fade').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(32px)'; });
