@@ -341,11 +341,6 @@
   }
   try {
     // JS-only initial states
-    document.querySelectorAll('.anim-fade').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(32px)'; });
-    document.querySelectorAll('.anim-fade-left').forEach(el => { el.style.opacity='0'; el.style.transform='translateX(-40px)'; });
-    const heroEl = document.getElementById('hero-content');
-    if (heroEl) { heroEl.style.opacity='0'; heroEl.style.transform='translateY(28px)'; }
-    
     // Hero entrance
     animate('#hero-content', { opacity: [0, 1], y: [28, 0] }, { duration: 0.85, easing: [0.16, 1, 0.3, 1] });
     
@@ -385,7 +380,6 @@
       m.classList.toggle('open');
       if (m.classList.contains('open')) {
         b1.style.transform='rotate(45deg) translate(4px,4px)';
-        b2.style.opacity='0';
         b3.style.transform='rotate(-45deg) translate(4px,-4px)';
       } else {
         b1.style.transform='';b2.style.opacity='';b3.style.transform='';

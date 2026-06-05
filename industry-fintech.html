@@ -317,12 +317,6 @@
     if (h) { h.style.opacity = '1'; h.style.transform = 'none'; }
   }
   try {
-    document.querySelectorAll('.anim-fade').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(32px)'; });
-    document.querySelectorAll('.anim-fade-left').forEach(el => { el.style.opacity='0'; el.style.transform='translateX(-40px)'; });
-    document.querySelectorAll('.anim-fade-right').forEach(el => { el.style.opacity='0'; el.style.transform='translateX(40px)'; });
-    const heroEl = document.getElementById('hero-content');
-    if (heroEl) { heroEl.style.opacity='0'; heroEl.style.transform='translateY(28px)'; }
-    
     animate('#hero-content', { opacity: [0, 1], y: [28, 0] }, { duration: 0.85, easing: [0.16, 1, 0.3, 1] });
     
     document.querySelectorAll('.anim-fade').forEach((el, i) => {
@@ -361,7 +355,6 @@
       const m = document.getElementById('mobile-menu');
       const b1=document.getElementById('b1'),b2=document.getElementById('b2'),b3=document.getElementById('b3');
       m.classList.toggle('open');
-      if(m.classList.contains('open')){b1.style.transform='rotate(45deg) translate(4px,4px)';b2.style.opacity='0';b3.style.transform='rotate(-45deg) translate(4px,-4px)';}
       else{b1.style.transform='';b2.style.opacity='';b3.style.transform='';}
     });
   } catch(e) {
