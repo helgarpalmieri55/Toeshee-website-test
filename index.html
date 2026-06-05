@@ -1165,6 +1165,8 @@
 }
 </script>
 <script type="module">
+  import { animate, scroll, inView, stagger } from './node_modules/motion/dist/es/index.mjs';
+
   // Fallback: if animation fails, ensure content is visible
   function showAll() {
     document.querySelectorAll('.anim-fade,.anim-fade-left,.anim-fade-right').forEach(el => {
@@ -1174,8 +1176,6 @@
     if (h) { h.style.opacity = '1'; h.style.transform = 'none'; }
   }
   try {
-  import { animate, scroll, inView, stagger } from './node_modules/motion/dist/es/index.mjs';
-  
     // ── 1. HERO — fade + slide up on load ──
     animate(
       '#hero .badge',

@@ -286,6 +286,8 @@
 }
 </script>
 <script type="module">
+  import { animate, inView, stagger, scroll } from './node_modules/motion/dist/es/index.mjs';
+
   // Fallback: if animation fails, ensure content is visible
   function showAll() {
     document.querySelectorAll('.anim-fade,.anim-fade-left,.anim-fade-right').forEach(el => {
@@ -295,8 +297,6 @@
     if (h) { h.style.opacity = '1'; h.style.transform = 'none'; }
   }
   try {
-  import { animate, inView, stagger, scroll } from './node_modules/motion/dist/es/index.mjs';
-  
     // Set initial states via JS (graceful degradation if script fails)
     document.querySelectorAll('.anim-fade').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(32px)'; });
     document.querySelectorAll('.anim-fade-left').forEach(el => { el.style.opacity='0'; el.style.transform='translateX(-40px)'; });
