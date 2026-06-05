@@ -1157,10 +1157,9 @@
 <script src="assets/motion.js"></script>
 <script>
   (function() {
-    var animate = window.Motion.animate;
-    var inView = window.Motion.inView;
-    var scroll = window.Motion.scroll;
-    var stagger = window.Motion.stagger;
+    var animate = window.Motion && window.Motion.animate;
+    var inView = window.Motion && window.Motion.inView;
+    var scroll = window.Motion && window.Motion.scroll;
 
     function showAll() {
       document.querySelectorAll('.anim-fade,.anim-fade-left,.anim-fade-right').forEach(function(el) {
@@ -1173,192 +1172,63 @@
     if (!animate || !inView) { showAll(); return; }
 
     try {
+      var heroEl = document.getElementById('hero-content');
+      if (heroEl) animate(heroEl, { opacity: [0, 1], y: [28, 0] }, { duration: 0.85, easing: [0.16, 1, 0.3, 1] });
 
-  // Fallback: if animation fails, ensure content is visible
-  function showAll() {
-    document.querySelectorAll('.anim-fade,.anim-fade-left,.anim-fade-right').forEach(el => {
-      el.style.opacity = '1'; el.style.transform = 'none';
-    });
-    const h = document.getElementById('hero-content');
-    if (h) { h.style.opacity = '1'; h.style.transform = 'none'; }
-  }
-  try {
-    // ── 1. HERO — fade + slide up on load ──
-    animate(
-      '#hero .badge',
-      { opacity: [0, 1], y: [20, 0] },
-      { duration: 0.6, easing: [0.16, 1, 0.3, 1] }
-    );
-    animate(
-      '#hero h1',
-      { opacity: [0, 1], y: [32, 0] },
-      { duration: 0.7, delay: 0.12, easing: [0.16, 1, 0.3, 1] }
-    );
-    animate(
-      '#hero p',
-      { opacity: [0, 1], y: [24, 0] },
-      { duration: 0.7, delay: 0.22, easing: [0.16, 1, 0.3, 1] }
-    );
-    animate(
-      '#hero .flex.flex-col',
-      { opacity: [0, 1], y: [20, 0] },
-      { duration: 0.6, delay: 0.34, easing: [0.16, 1, 0.3, 1] }
-    );
-    // Hero image collage
-    animate(
-      '#hero .hidden.lg\\:block',
-      { opacity: [0, 1], x: [40, 0] },
-      { duration: 0.9, delay: 0.2, easing: [0.16, 1, 0.3, 1] }
-    );
-  
-    // ── 2. SECTION HEADINGS — scroll-triggered ──
-    inView('h2', ({ target }) => {
-      animate(target, { opacity: [0, 1], y: [28, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
-    }, { margin: '0px 0px -80px 0px' });
-  
-    inView('.section-tag', ({ target }) => {
-      animate(target, { opacity: [0, 1], y: [12, 0] }, { duration: 0.5, easing: [0.16, 1, 0.3, 1] });
-    }, { margin: '0px 0px -60px 0px' });
-  
-    // ── 3. CARDS — staggered entrance ──
-    inView('#solutions', ({ target }) => {
-      const cards = target.querySelectorAll('.card');
-      animate(cards, { opacity: [0, 1], y: [36, 0] }, {
-        duration: 0.6,
-        delay: stagger(0.09),
-        easing: [0.16, 1, 0.3, 1]
+      document.querySelectorAll('.anim-fade').forEach(function(el, i) {
+        inView(el, function() {
+          animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, delay: (i % 3) * 0.1, easing: [0.16, 1, 0.3, 1] });
+        }, { margin: '-8% 0px' });
       });
-    }, { margin: '0px 0px -60px 0px' });
-  
-    inView('#industries', ({ target }) => {
-      const cards = target.querySelectorAll('.industry-card');
-      animate(cards, { opacity: [0, 1], y: [32, 0] }, {
-        duration: 0.6,
-        delay: stagger(0.08),
-        easing: [0.16, 1, 0.3, 1]
+      document.querySelectorAll('.anim-fade-left').forEach(function(el) {
+        inView(el, function() {
+          animate(el, { opacity: [0, 1], x: [-40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
+        }, { margin: '-8% 0px' });
       });
-    }, { margin: '0px 0px -60px 0px' });
-  
-    inView('#insights', ({ target }) => {
-      const cards = target.querySelectorAll('.blog-card');
-      animate(cards, { opacity: [0, 1], y: [32, 0] }, {
-        duration: 0.6,
-        delay: stagger(0.1),
-        easing: [0.16, 1, 0.3, 1]
+      document.querySelectorAll('.anim-fade-right').forEach(function(el) {
+        inView(el, function() {
+          animate(el, { opacity: [0, 1], x: [40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
+        }, { margin: '-8% 0px' });
       });
-    }, { margin: '0px 0px -60px 0px' });
-  
-    // ── 4. ABOUT section — slide in from sides ──
-    inView('#about .reveal-left', ({ target }) => {
-      animate(target, { opacity: [0, 1], x: [-40, 0] }, { duration: 0.8, easing: [0.16, 1, 0.3, 1] });
-    }, { margin: '0px 0px -80px 0px' });
-  
-    inView('#about p, #about h2, #about .grid', ({ target }) => {
-      animate(target, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, easing: [0.16, 1, 0.3, 1] });
-    }, { margin: '0px 0px -60px 0px' });
-  
-    // ── 5. CASE STUDY cards ──
-    inView('#case-studies', ({ target }) => {
-      const cards = target.querySelectorAll('.case-card');
-      animate(cards, { opacity: [0, 1], y: [40, 0] }, {
-        duration: 0.7,
-        delay: stagger(0.15),
-        easing: [0.16, 1, 0.3, 1]
-      });
-  
-      // Animated counters using Motion's animate with onUpdate
-      const counters = target.querySelectorAll('.counter');
-      counters.forEach(el => {
-        const to = parseInt(el.dataset.target);
-        const suffix = el.dataset.suffix || '';
-        animate(0, to, {
-          duration: 1.8,
-          easing: [0.16, 1, 0.3, 1],
-          onUpdate: v => { el.textContent = Math.round(v) + suffix; }
+
+      if (scroll) {
+        scroll(function(info) {
+          var bar = document.getElementById('scroll-bar');
+          if (bar) bar.style.transform = 'scaleX(' + info.y.progress + ')';
         });
-      });
-    }, { margin: '0px 0px -60px 0px' });
-  
-    // ── 6. TRUST BAR — fade in ──
-    inView('.trust-chip', ({ target }) => {
-      animate(target, { opacity: [0, 1] }, { duration: 0.4, easing: 'ease-out' });
-    }, { margin: '0px 0px -20px 0px' });
-  
-    // ── 7. VIDEO SECTION text ──
-    inView('.video-section h2', ({ target }) => {
-      animate(target, { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, easing: [0.16, 1, 0.3, 1] });
-    }, { margin: '0px 0px -60px 0px' });
-  
-    // ── 8. CONTACT section ──
-    inView('#contact', ({ target }) => {
-      animate(
-        target.querySelector('h2'),
-        { opacity: [0, 1], y: [28, 0] },
-        { duration: 0.65, easing: [0.16, 1, 0.3, 1] }
-      );
-      animate(
-        target.querySelector('.bg-white.rounded-3xl'),
-        { opacity: [0, 1], y: [32, 0] },
-        { duration: 0.7, delay: 0.15, easing: [0.16, 1, 0.3, 1] }
-      );
-      const items = target.querySelectorAll('.space-y-5 > div');
-      animate(items, { opacity: [0, 1], x: [-20, 0] }, {
-        duration: 0.5,
-        delay: stagger(0.1, { start: 0.2 }),
-        easing: [0.16, 1, 0.3, 1]
-      });
-    }, { margin: '0px 0px -60px 0px' });
-  
-    // ── 9. FOOTER fade in ──
-    inView('footer', ({ target }) => {
-      animate(target, { opacity: [0, 1] }, { duration: 0.6, easing: 'ease-out' });
-    }, { margin: '0px 0px -20px 0px' });
-  
-    // ── 10. SCROLL PARALLAX on hero image ──
-    const heroImg = document.querySelector('#hero .hidden.lg\\:block');
-    if (heroImg) {
-      scroll(
-        animate(heroImg, { y: [0, 60] }),
-        { target: document.querySelector('#hero'), offset: ['start start', 'end start'] }
-      );
-    }
-  
-    // ── 11. STAT CARDS in about — scroll-linked scale ──
-    inView('#about .grid > div', ({ target }) => {
-      animate(target, { opacity: [0, 1], scale: [0.9, 1] }, {
-        duration: 0.55,
-        easing: [0.16, 1, 0.3, 1]
-      });
-    }, { margin: '0px 0px -40px 0px' });
-  
-    // ── 12. Hover animations on solution cards using Motion ──
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        animate(card, { scale: 1.02 }, { duration: 0.25, easing: [0.16, 1, 0.3, 1] });
-      });
-      card.addEventListener('mouseleave', () => {
-        animate(card, { scale: 1 }, { duration: 0.25, easing: [0.16, 1, 0.3, 1] });
-      });
-    });
-  
-    // ── 13. Blog card image zoom on hover using Motion ──
-    document.querySelectorAll('.blog-card').forEach(card => {
-      const img = card.querySelector('img');
-      if (!img) return;
-      card.addEventListener('mouseenter', () => animate(img, { scale: 1.07 }, { duration: 0.4, easing: [0.16, 1, 0.3, 1] }));
-      card.addEventListener('mouseleave', () => animate(img, { scale: 1 }, { duration: 0.4, easing: [0.16, 1, 0.3, 1] }));
-    });
-  
-    // ── 14. CTA button pulse on hover using Motion ──
-    document.querySelectorAll('.btn-primary').forEach(btn => {
-      btn.addEventListener('mouseenter', () =>
-        animate(btn, { scale: [1, 1.03, 1] }, { duration: 0.4, easing: 'ease-in-out' })
-      );
-    });
-  } catch(e) {
-    console.warn('Motion animation error:', e);
-    showAll();
-  }
+      }
+
+      var lastScrollY = 0;
+      var nav = document.getElementById('navbar');
+      window.addEventListener('scroll', function() {
+        var y = window.scrollY;
+        if (nav) {
+          if (y > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+          if (y > lastScrollY + 10 && y > 300) nav.classList.add('hidden-nav');
+          else if (y < lastScrollY - 10) nav.classList.remove('hidden-nav');
+        }
+        lastScrollY = y;
+        var logo = document.getElementById('nav-logo-img');
+        if (logo) { logo.style.height = y > 60 ? '52px' : '90px'; logo.style.width = y > 60 ? '52px' : '90px'; }
+      }, { passive: true });
+
+      var burger = document.getElementById('burger');
+      if (burger) {
+        burger.addEventListener('click', function() {
+          var m = document.getElementById('mobile-menu');
+          var b1 = document.getElementById('b1'), b2 = document.getElementById('b2'), b3 = document.getElementById('b3');
+          if (m) m.classList.toggle('open');
+          if (m && m.classList.contains('open')) {
+            if (b1) b1.style.transform = 'rotate(45deg) translate(5px,5px)';
+            if (b2) b2.style.opacity = '0';
+            if (b3) b3.style.transform = 'rotate(-45deg) translate(5px,-5px)';
+          } else {
+            if (b1) b1.style.transform = '';
+            if (b2) b2.style.opacity = '';
+            if (b3) b3.style.transform = '';
+          }
+        });
+      }
     } catch(e) {
       console.warn('Motion error:', e);
       showAll();
