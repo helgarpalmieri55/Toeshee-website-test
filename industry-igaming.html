@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iGaming — Toeshee</title>
+  <meta name="description" content="Toeshee delivers high-volume iGaming support operations where peak traffic, player trust, and responsible gaming compliance are non-negotiable.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+  :root{--accent:#FF3A10;--accent-light:rgba(255,58,16,0.08);--text-primary:#0A0A0F;--text-secondary:#4B5563;--bg-white:#FFFFFF;--bg-off:#F8F8FA;--border:#E5E7EB;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-white);color:var(--text-primary);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;}
+  #navbar{transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s;}
+  #navbar.scrolled{background:rgba(255,255,255,0.96)!important;backdrop-filter:blur(20px);box-shadow:0 1px 0 #E5E7EB,0 4px 20px rgba(0,0,0,0.06);padding-top:10px!important;padding-bottom:10px!important;}
+  #navbar.hidden-nav{transform:translateY(-100%);}
+  .dropdown-menu{opacity:0;visibility:hidden;transform:translateY(6px);transition:all 0.2s cubic-bezier(0.16,1,0.3,1);}
+  .dropdown:hover .dropdown-menu,.dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,58,16,0.12);border:1px solid rgba(255,58,16,0.25);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:100px;}
+  .badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;}
+  @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+  .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:13px 26px;border-radius:10px;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 4px 14px rgba(255,58,16,0.3);text-decoration:none;}
+  .btn-primary:hover{background:#E5330E;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,58,16,0.38);}
+  .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--text-primary);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:13px 26px;border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:border-color .2s,transform .2s;text-decoration:none;}
+  .btn-secondary:hover{border-color:#aaa;transform:translateY(-2px);}
+  .section-tag{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+  #mobile-menu{display:none;}
+  #mobile-menu.open{display:block;}
+  .cap-card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;transition:all 0.28s cubic-bezier(0.16,1,0.3,1);}
+  .cap-card:hover{border-color:rgba(255,58,16,0.25);box-shadow:0 14px 40px rgba(255,58,16,0.08),0 4px 12px rgba(0,0,0,0.04);transform:translateY(-4px);}
+  .phase-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px;transition:border-color .3s;}
+  .phase-card:hover{border-color:rgba(255,58,16,0.35);}
+  .stat-box{text-align:center;padding:28px 20px;}
+  .bullet-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;}
+  .bullet-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px;}
+</style>
+</head>
+<body>
+<div id="scroll-bar" style="position:fixed;top:0;left:0;right:0;height:3px;background:var(--accent);transform-origin:left;transform:scaleX(0);z-index:100;transition:transform 0.1s linear"></div>
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 py-4 bg-white" style="transition:background .35s,box-shadow .35s,padding .35s;box-shadow:0 1px 0 #E5E7EB">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex items-center flex-shrink-0">
+      <img src="assets/images/Logo%20update.png" id="nav-logo-img" alt="Toeshee" style="height:90px;width:90px;object-fit:contain;transition:height 0.3s ease">
+    </a>
+    <div class="hidden lg:flex items-center gap-0.5">
+      <div class="dropdown relative">
+        <button class="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Solutions<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="dropdown-menu absolute top-full left-0 mt-2 w-72 rounded-2xl border border-gray-100 bg-white p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)">
+          <a href="solution-crypto-support.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Crypto Customer Support</div><div class="text-xs text-gray-400 mt-0.5">Critical layer of crypto security</div></a>
+          <a href="solution-technical-support.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Technical Support &amp; Incident Handling</div><div class="text-xs text-gray-400 mt-0.5">L1–L3 escalation models</div></a>
+          <a href="solution-trust-safety.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Trust &amp; Safety Operations</div><div class="text-xs text-gray-400 mt-0.5">Platform integrity at scale</div></a>
+          <a href="solution-risk-fraud.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Risk Operations &amp; Fraud Response</div><div class="text-xs text-gray-400 mt-0.5">Chain analysis signals</div></a>
+          <a href="solution-security-compliance.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Security &amp; Compliance Support</div><div class="text-xs text-gray-400 mt-0.5">KYC/AML, GDPR, MiCA, PCI-DSS</div></a>
+        </div>
+      </div>
+      <div class="dropdown relative">
+        <button class="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Industries<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="dropdown-menu absolute top-full left-0 mt-2 w-56 rounded-2xl border border-gray-100 bg-white p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)">
+          <a href="industry-fintech.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Fintech</a>
+          <a href="industry-igaming.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">iGaming</a>
+          <a href="industry-exchanges.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Exchanges</a>
+          <a href="industry-defi.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">DeFi</a>
+          <a href="industry-crypto-payments.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Payment Processors</a>
+        </div>
+      </div>
+      <a href="case-studies.html" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Case Studies</a>
+      <a href="insights.html" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Insights</a>
+      <a href="company.html" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Company</a>
+      <a href="careers.html" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Careers</a>
+    </div>
+    <div class="hidden lg:flex items-center gap-3">
+      <a href="tel:+18667157327" class="text-sm text-gray-500 hover:text-gray-800 transition-colors" style="font-family:'Space Grotesk',sans-serif">+1 (866) 715-7327</a>
+      <a href="contact.html" class="btn-primary text-sm" style="padding:10px 20px;border-radius:8px">Request Evaluation</a>
+    </div>
+    <button id="burger" class="lg:hidden p-2" aria-label="Open menu"><div class="flex flex-col gap-1.5"><span id="b1" class="block w-6 h-0.5 bg-gray-800 transition-all origin-center"></span><span id="b2" class="block w-6 h-0.5 bg-gray-800 transition-all"></span><span id="b3" class="block w-6 h-0.5 bg-gray-800 transition-all origin-center"></span></div></button>
+  </div>
+  <div id="mobile-menu" class="lg:hidden border-t border-gray-100 mt-3 pt-3 pb-4 px-2">
+    <div class="flex flex-col gap-1">
+      <a href="solutions.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50">Solutions</a>
+      <a href="industries.html" class="px-3 py-2.5 rounded-xl text-sm text-[#FF3A10] bg-orange-50">Industries</a>
+      <a href="case-studies.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50">Case Studies</a>
+      <a href="insights.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50">Insights</a>
+      <a href="company.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50">Company</a>
+      <a href="careers.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50">Careers</a>
+      <a href="contact.html" class="btn-primary mt-3 text-center text-sm" style="border-radius:10px;padding:12px">Request Evaluation</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="background:linear-gradient(135deg,#0A0A0F 0%,#141420 50%,#1a1015 100%);padding:144px 24px 0">
+  <div class="max-w-5xl mx-auto" id="hero-content">
+    <div style="margin-bottom:16px">
+      <a href="industries.html" style="color:rgba(255,255,255,0.4);font-size:13px;text-decoration:none;font-family:'Space Grotesk',sans-serif">Industries</a>
+      <span style="color:rgba(255,255,255,0.2);margin:0 8px">/</span>
+      <span style="color:rgba(255,255,255,0.65);font-size:13px;font-family:'Space Grotesk',sans-serif">iGaming</span>
+    </div>
+    <div style="margin-bottom:20px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,58,16,0.7)">IGAMING</span>
+    </div>
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,5.5vw,64px);font-weight:800;color:white;line-height:1.08;margin-bottom:28px">Supporting iGaming platforms<span style="color:var(--accent)">where peak volume</span><span style="color:rgba(255,255,255,0.7)">, player trust, and</span><span style="color:var(--accent)">retention define success</span></h1>
+    <p style="font-size:18px;line-height:1.7;color:rgba(255,255,255,0.6);max-width:640px;margin-bottom:40px">In iGaming, peak volume leaves no room for error. Support is a critical layer of the product experience, directly shaping player retention and trust. Toeshee delivers disciplined, scalable operations built for gaming environments.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;padding-bottom:64px">
+      <a href="contact.html" class="btn-primary">Let's Talk</a>
+      <a href="case-studies.html" class="btn-secondary" style="background:transparent;border-color:rgba(255,255,255,0.18);color:white">View Case Studies</a>
+    </div>
+  </div>
+  <!-- Stats bar -->
+  <div style="border-top:1px solid rgba(255,255,255,0.07)">
+    <div class="max-w-5xl mx-auto" style="display:grid;grid-template-columns:repeat(3,1fr);divide-x divide-white/10">
+      
+      <div class="stat-box anim-fade">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;margin-bottom:6px">99.9%</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);letter-spacing:.06em;text-transform:uppercase;font-family:'Space Grotesk',sans-serif">Uptime SLA</div>
+      </div>
+      <div class="stat-box anim-fade">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;margin-bottom:6px">< 90 sec</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);letter-spacing:.06em;text-transform:uppercase;font-family:'Space Grotesk',sans-serif">First Response</div>
+      </div>
+      <div class="stat-box anim-fade">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;margin-bottom:6px">24/7</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);letter-spacing:.06em;text-transform:uppercase;font-family:'Space Grotesk',sans-serif">Coverage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section style="padding:96px 24px;background:white">
+  <div class="max-w-6xl mx-auto">
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start" class="lg:grid-cols-2">
+      <div class="anim-fade-left">
+        <span class="section-tag" style="display:block;margin-bottom:16px">OUR APPROACH</span>
+        <h2 style="font-size:clamp(26px,3.5vw,38px);font-weight:800;color:var(--text-primary);margin-bottom:24px;line-height:1.2">Deep expertise in iGaming Operations</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
+          <span style="display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.18);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;white-space:nowrap">Payment & Withdrawal Support</span><span style="display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.18);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;white-space:nowrap">Bonus & Promotion Disputes</span><span style="display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.18);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;white-space:nowrap">Responsible Gaming Operations</span><span style="display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.18);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;white-space:nowrap">Account Management</span>
+        </div>
+      </div>
+      <div class="anim-fade-right">
+        <p style="font-size:16px;line-height:1.8;color:#6B7280;margin-bottom:20px">iGaming platforms operate under constant pressure — from volatile player volumes and live event traffic to responsible gaming obligations and licensing requirements. Every support interaction affects player lifetime value, brand trust, and regulatory standing.</p>
+        <p style="font-size:16px;line-height:1.8;color:#6B7280">Toeshee supports iGaming operations with trained teams that understand payment processing, bonus dispute resolution, responsible gaming workflows, and the speed expectations of active players. We help your support function remain scalable, compliant, and player-centric.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section style="padding:80px 24px 96px;background:#F8F8FA;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB">
+  <div class="max-w-6xl mx-auto">
+    <div class="anim-fade" style="margin-bottom:52px">
+      <span class="section-tag" style="display:block;margin-bottom:12px">SERVICE CAPABILITIES</span>
+      <h2 style="font-size:clamp(26px,3.5vw,36px);font-weight:800;color:var(--text-primary)">What we deliver for iGaming</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px">
+      
+      <div class="cap-card anim-fade">
+        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">💸</div>
+        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">Payment & Withdrawal Support</h3>
+        <p style="font-size:14px;line-height:1.7;color:#6B7280">Operational handling for deposit issues, withdrawal delays, failed transactions, and payment method queries. We manage high-volume payment cases with speed and accuracy.</p>
+      </div>
+      <div class="cap-card anim-fade">
+        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">🎁</div>
+        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">Bonus & Promotion Disputes</h3>
+        <p style="font-size:14px;line-height:1.7;color:#6B7280">Structured resolution for bonus eligibility disputes, promotional terms queries, free spin issues, and wagering requirement clarifications.</p>
+      </div>
+      <div class="cap-card anim-fade">
+        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">🛡</div>
+        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">Responsible Gaming Operations</h3>
+        <p style="font-size:14px;line-height:1.7;color:#6B7280">Support for self-exclusion requests, deposit limit adjustments, cooling-off periods, and responsible gaming escalations. Handled with regulatory precision and empathy.</p>
+      </div>
+      <div class="cap-card anim-fade">
+        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">👤</div>
+        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">Account Management</h3>
+        <p style="font-size:14px;line-height:1.7;color:#6B7280">Handling of login issues, account verification, KYC document review, account restrictions, and identity concern escalations.</p>
+      </div>
+      <div class="cap-card anim-fade">
+        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">⭐</div>
+        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">VIP & High-Value Player Support</h3>
+        <p style="font-size:14px;line-height:1.7;color:#6B7280">Dedicated support workflows for high-value player segments requiring elevated response standards, personalized handling, and direct escalation paths.</p>
+      </div>
+      <div class="cap-card anim-fade">
+        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">📈</div>
+        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">Live Event Surge Coverage</h3>
+        <p style="font-size:14px;line-height:1.7;color:#6B7280">Rapid-scale support capacity for major sporting events, tournaments, and promotional periods. Pre-planned surge protocols keep queues controlled during peak traffic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section style="padding:96px 24px;background:#0A0A0F">
+  <div class="max-w-6xl mx-auto">
+    <div class="anim-fade" style="margin-bottom:56px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,58,16,0.7);display:block;margin-bottom:14px">HOW WE WORK</span>
+      <h2 style="font-size:clamp(26px,4vw,40px);font-weight:800;color:white;max-width:600px;line-height:1.2">From day one to long-term<br><span style="color:var(--accent)">operational excellence</span></h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.5);margin-top:16px;max-width:520px;line-height:1.7">Our three-phase model — onboarding, operations, and reporting — helps teams launch quickly, stay controlled, and continuously improve.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px">
+      
+      <div class="phase-card anim-fade">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,58,16,0.7);margin-bottom:8px">Onboarding</div>
+        <h3 style="font-size:18px;font-weight:700;color:white;margin-bottom:12px">Platform Immersion & Team Setup</h3>
+        <p style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px">We start with a deep-dive into your iGaming platform: payment flows, bonus structures, responsible gaming tools, licensing requirements, and player communication standards.</p>
+        <div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Full audit of support queues and ticket taxonomy</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Agent training on gaming-specific workflows</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Integration with CRM, ticketing, and live chat tools</span></div>
+      </div>
+      <div class="phase-card anim-fade">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,58,16,0.7);margin-bottom:8px">Operations</div>
+        <h3 style="font-size:18px;font-weight:700;color:white;margin-bottom:12px">24/7 Embedded Support Operations</h3>
+        <p style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px">Our team operates as an extension of your platform, managing daily queues, player disputes, responsible gaming escalations, and payment cases with real-time visibility.</p>
+        <div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Real-time queue management and priority routing</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Daily reviews synced with operations and compliance teams</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Incident response for payment, account, and RG issues</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Weekly CSAT tracking and QA cycle reviews</span></div>
+      </div>
+      <div class="phase-card anim-fade">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,58,16,0.7);margin-bottom:8px">Reporting</div>
+        <h3 style="font-size:18px;font-weight:700;color:white;margin-bottom:12px">Performance Visibility & Continuous Improvement</h3>
+        <p style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px">You get operational reporting that helps leadership understand player friction points, support trends, and how the operation is improving month over month.</p>
+        <div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Live performance dashboards with SLA and CSAT visibility</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Monthly QA reports with agent-level scoring</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Support trend analysis by player segment and workflow</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Proactive recommendations for retention-impacting improvements</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:96px 24px;background:white">
+  <div class="max-w-3xl mx-auto text-center anim-fade">
+    <div style="margin-bottom:20px"><span class="badge"><span class="badge-dot"></span>Get Started</span></div>
+    <h2 style="font-size:clamp(28px,5vw,44px);font-weight:800;color:var(--text-primary);margin-bottom:20px">Ready to Scale Your iGaming Support?</h2>
+    <p style="font-size:17px;color:#6B7280;margin-bottom:36px;line-height:1.7">Let's connect and define the right operational model for your platform. Implementation begins within days.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+      <a href="contact.html" class="btn-primary">Request Evaluation</a>
+      <a href="industries.html" class="btn-secondary">View All Industries</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#0A0A0F;color:white;padding:64px 24px 32px">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <div>
+        <img src="assets/images/Logo%20update.png" alt="Toeshee" style="height:60px;width:60px;object-fit:contain;margin-bottom:16px">
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.7">Expert operations for regulated digital environments.</p>
+      </div>
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px">Industries</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="industry-fintech.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Fintech</a>
+          <a href="industry-igaming.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">iGaming</a>
+          <a href="industry-exchanges.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Crypto Exchanges</a>
+          <a href="industry-defi.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">DeFi</a>
+          <a href="industry-crypto-payments.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Crypto Payment Processors</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px">Solutions</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="solution-crypto-support.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Crypto Customer Support</a>
+          <a href="solution-technical-support.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Technical Support</a>
+          <a href="solution-trust-safety.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Trust &amp; Safety</a>
+          <a href="solution-risk-fraud.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Risk &amp; Fraud</a>
+          <a href="solution-security-compliance.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Compliance</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px">Contact</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="tel:+18667157327" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none">+1 (866) 715-7327</a>
+          <a href="mailto:hello@toeshee.io" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none">hello@toeshee.io</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
+      <p style="color:rgba(255,255,255,0.35);font-size:13px">&copy; 2026 Toeshee. All rights reserved.</p>
+      <div style="display:flex;gap:20px">
+        <a href="#" style="color:rgba(255,255,255,0.35);font-size:13px;text-decoration:none">Privacy Policy</a>
+        <a href="#" style="color:rgba(255,255,255,0.35);font-size:13px;text-decoration:none">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script type="module">
+  import { animate, inView, scroll } from './node_modules/motion/dist/es/index.mjs';
+  
+  document.querySelectorAll('.anim-fade').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(32px)'; });
+  document.querySelectorAll('.anim-fade-left').forEach(el => { el.style.opacity='0'; el.style.transform='translateX(-40px)'; });
+  document.querySelectorAll('.anim-fade-right').forEach(el => { el.style.opacity='0'; el.style.transform='translateX(40px)'; });
+  const heroEl = document.getElementById('hero-content');
+  if (heroEl) { heroEl.style.opacity='0'; heroEl.style.transform='translateY(28px)'; }
+  
+  animate('#hero-content', { opacity: [0, 1], y: [28, 0] }, { duration: 0.85, easing: [0.16, 1, 0.3, 1] });
+  
+  document.querySelectorAll('.anim-fade').forEach((el, i) => {
+    inView(el, () => {
+      animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, delay: (i % 3) * 0.1, easing: [0.16, 1, 0.3, 1] });
+    }, { margin: '-8% 0px' });
+  });
+  document.querySelectorAll('.anim-fade-left').forEach(el => {
+    inView(el, () => {
+      animate(el, { opacity: [0, 1], x: [-40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
+    }, { margin: '-8% 0px' });
+  });
+  document.querySelectorAll('.anim-fade-right').forEach(el => {
+    inView(el, () => {
+      animate(el, { opacity: [0, 1], x: [40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
+    }, { margin: '-8% 0px' });
+  });
+  
+  scroll(({ y }) => {
+    const bar = document.getElementById('scroll-bar');
+    if (bar) bar.style.transform = `scaleX(${y.progress})`;
+  });
+  
+  let lastY = 0;
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+    if (y > lastY + 10 && y > 300) nav.classList.add('hidden-nav'); else if (y < lastY - 10) nav.classList.remove('hidden-nav');
+    lastY = y;
+    const logo = document.getElementById('nav-logo-img');
+    if (logo) { logo.style.height = y > 60 ? '52px' : '90px'; logo.style.width = y > 60 ? '52px' : '90px'; }
+  }, { passive: true });
+  
+  document.getElementById('burger')?.addEventListener('click', () => {
+    const m = document.getElementById('mobile-menu');
+    const b1=document.getElementById('b1'),b2=document.getElementById('b2'),b3=document.getElementById('b3');
+    m.classList.toggle('open');
+    if(m.classList.contains('open')){b1.style.transform='rotate(45deg) translate(4px,4px)';b2.style.opacity='0';b3.style.transform='rotate(-45deg) translate(4px,-4px)';}
+    else{b1.style.transform='';b2.style.opacity='';b3.style.transform='';}
+  });
+</script>
+</body>
+</html>
