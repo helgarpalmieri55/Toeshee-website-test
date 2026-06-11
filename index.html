@@ -45,9 +45,11 @@
       background: rgba(255,255,255,0.96) !important;
       backdrop-filter: blur(20px);
       box-shadow: 0 1px 0 #E5E7EB, 0 4px 20px rgba(0,0,0,0.06);
-      padding-top: 10px !important;
-      padding-bottom: 10px !important;
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
     }
+    #nav-logo-img { transition: height 0.3s ease; }
+    #navbar.scrolled #nav-logo-img { height: 52px !important; }
     #navbar.hidden-nav { transform: translateY(-100%); }
 
     .dropdown-menu {
@@ -271,11 +273,11 @@
 <body>
 
 <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 py-4" style="transition:background .35s,box-shadow .35s,padding .35s">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-3" style="transition:background .35s,box-shadow .35s,padding .35s">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
 
     <a href="#" class="flex items-center flex-shrink-0" id="nav-logo">
-      <img src="assets/images/logo.svg" id="nav-logo-img" alt="Toeshee" height="44" style="height:44px;width:auto;filter:brightness(0) invert(1);transition:filter 0.3s">
+      <img src="assets/images/Logo%20update.png" id="nav-logo-img" alt="Toeshee" style="height:90px;width:90px;object-fit:contain;transition:height 0.3s ease">
     </a>
 
     <div class="hidden lg:flex items-center gap-0.5">
@@ -286,23 +288,23 @@
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
         </button>
         <div class="dropdown-menu absolute top-full left-0 mt-2 w-72 rounded-2xl border border-gray-100 bg-white shadow-xl p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)">
-          <a href="#solutions" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
+          <a href="solution-crypto-support.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
             <div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10] transition-colors" style="font-family:'Space Grotesk',sans-serif">Crypto Customer Support</div>
             <div class="text-xs text-gray-400 mt-0.5">Critical layer of crypto security</div>
           </a>
-          <a href="#solutions" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
+          <a href="solution-technical-support.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
             <div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10] transition-colors" style="font-family:'Space Grotesk',sans-serif">Technical Support & Incident Handling</div>
             <div class="text-xs text-gray-400 mt-0.5">L1–L3 escalation models</div>
           </a>
-          <a href="#solutions" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
+          <a href="solution-trust-safety.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
             <div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10] transition-colors" style="font-family:'Space Grotesk',sans-serif">Trust & Safety Operations</div>
             <div class="text-xs text-gray-400 mt-0.5">Platform integrity at scale</div>
           </a>
-          <a href="#solutions" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
+          <a href="solution-risk-fraud.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
             <div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10] transition-colors" style="font-family:'Space Grotesk',sans-serif">Risk Operations & Fraud Response</div>
             <div class="text-xs text-gray-400 mt-0.5">Chain analysis signals</div>
           </a>
-          <a href="#solutions" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
+          <a href="solution-security-compliance.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
             <div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10] transition-colors" style="font-family:'Space Grotesk',sans-serif">Security & Compliance Support</div>
             <div class="text-xs text-gray-400 mt-0.5">KYC/AML, GDPR, MiCA, PCI-DSS</div>
           </a>
@@ -315,18 +317,18 @@
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
         </button>
         <div class="dropdown-menu absolute top-full left-0 mt-2 w-52 rounded-2xl border border-gray-100 bg-white shadow-xl p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)">
-          <a href="#industries" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Fintech</a>
-          <a href="#industries" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">iGaming</a>
-          <a href="#industries" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Exchanges</a>
-          <a href="#industries" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">DeFi</a>
-          <a href="#industries" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Payment Processors</a>
+          <a href="industry-fintech.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Fintech</a>
+          <a href="industry-igaming.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">iGaming</a>
+          <a href="industry-exchanges.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Exchanges</a>
+          <a href="industry-defi.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">DeFi</a>
+          <a href="industry-crypto-payments.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Payment Processors</a>
         </div>
       </div>
 
-      <a href="#case-studies" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Case Studies</a>
-      <a href="#insights"     class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Insights</a>
-      <a href="#about"        class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Company</a>
-      <a href="#careers"      class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Careers</a>
+      <a href="case-studies.html" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Case Studies</a>
+      <a href="insights.html"     class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Insights</a>
+      <a href="company.html"      class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Company</a>
+      <a href="careers.html"      class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Careers</a>
     </div>
 
     <div class="hidden lg:flex items-center gap-3">
@@ -347,22 +349,22 @@
   <div id="mobile-menu" class="lg:hidden border-t border-gray-100 mt-3 pt-3 pb-4 px-2">
     <div class="flex flex-col gap-1">
       <div class="text-xs text-gray-400 uppercase tracking-widest px-3 py-1 mt-1" style="font-family:'Space Grotesk',sans-serif">Solutions</div>
-      <a href="#solutions" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Crypto Customer Support Operations</a>
-      <a href="#solutions" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Technical Support & Incident Handling</a>
-      <a href="#solutions" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Trust & Safety Operations</a>
-      <a href="#solutions" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Risk Operations & Fraud Response</a>
-      <a href="#solutions" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Security & Compliance Support</a>
+      <a href="solution-crypto-support.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Crypto Customer Support Operations</a>
+      <a href="solution-technical-support.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Technical Support & Incident Handling</a>
+      <a href="solution-trust-safety.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Trust & Safety Operations</a>
+      <a href="solution-risk-fraud.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Risk Operations & Fraud Response</a>
+      <a href="solution-security-compliance.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Security & Compliance Support</a>
       <div class="text-xs text-gray-400 uppercase tracking-widest px-3 py-1 mt-2" style="font-family:'Space Grotesk',sans-serif">Industries</div>
-      <a href="#industries" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Fintech</a>
-      <a href="#industries" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">iGaming</a>
-      <a href="#industries" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Crypto Exchanges</a>
-      <a href="#industries" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">DeFi</a>
-      <a href="#industries" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Crypto Payment Processors</a>
+      <a href="industry-fintech.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Fintech</a>
+      <a href="industry-igaming.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">iGaming</a>
+      <a href="industry-exchanges.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Crypto Exchanges</a>
+      <a href="industry-defi.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">DeFi</a>
+      <a href="industry-crypto-payments.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Crypto Payment Processors</a>
       <div class="border-t border-gray-100 my-2"></div>
-      <a href="#case-studies" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Case Studies</a>
-      <a href="#insights"     class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Insights</a>
-      <a href="#about"        class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Company</a>
-      <a href="#careers"      class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Careers</a>
+      <a href="case-studies.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Case Studies</a>
+      <a href="insights.html"     class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Insights</a>
+      <a href="company.html"      class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Company</a>
+      <a href="careers.html"      class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Careers</a>
       <a href="#contact" class="btn-primary mt-3 text-center text-sm" onclick="closeMobile()" style="border-radius:10px;padding:12px">Request Evaluation</a>
     </div>
   </div>
@@ -1109,9 +1111,9 @@
     navbar.classList.toggle('scrolled', scrolled);
     navbar.classList.toggle('hidden-nav', y > lastY && y > 300);
     // Logo filter: inverted (white) over video, normal when scrolled
-    if (navLogoImg) navLogoImg.style.filter = scrolled ? 'none' : 'brightness(0) invert(1)';
-    // Nav text links
-    navbar.querySelectorAll('.hidden.lg\\:flex button, .hidden.lg\\:flex a:not(.btn-primary)').forEach(el => {
+    ;
+    // Nav text links (exclude dropdown menu items — they live on white bg)
+    navbar.querySelectorAll('.hidden.lg\\:flex > div > button, .hidden.lg\\:flex > a:not(.btn-primary)').forEach(el => {
       el.style.color = scrolled ? '' : 'rgba(255,255,255,0.85)';
     });
     lastY = y < 0 ? 0 : y;
@@ -1152,181 +1154,86 @@
 </script>
 
 <!-- Motion library animations (ESM module) -->
-<script type="module">
-  import { animate, scroll, inView, stagger } from './node_modules/motion/dist/es/index.mjs';
+<script src="assets/motion.js"></script>
+<script>
+  (function() {
+    var animate = window.Motion && window.Motion.animate;
+    var inView = window.Motion && window.Motion.inView;
+    var scroll = window.Motion && window.Motion.scroll;
 
-  // ── 1. HERO — fade + slide up on load ──
-  animate(
-    '#hero .badge',
-    { opacity: [0, 1], y: [20, 0] },
-    { duration: 0.6, easing: [0.16, 1, 0.3, 1] }
-  );
-  animate(
-    '#hero h1',
-    { opacity: [0, 1], y: [32, 0] },
-    { duration: 0.7, delay: 0.12, easing: [0.16, 1, 0.3, 1] }
-  );
-  animate(
-    '#hero p',
-    { opacity: [0, 1], y: [24, 0] },
-    { duration: 0.7, delay: 0.22, easing: [0.16, 1, 0.3, 1] }
-  );
-  animate(
-    '#hero .flex.flex-col',
-    { opacity: [0, 1], y: [20, 0] },
-    { duration: 0.6, delay: 0.34, easing: [0.16, 1, 0.3, 1] }
-  );
-  // Hero image collage
-  animate(
-    '#hero .hidden.lg\\:block',
-    { opacity: [0, 1], x: [40, 0] },
-    { duration: 0.9, delay: 0.2, easing: [0.16, 1, 0.3, 1] }
-  );
-
-  // ── 2. SECTION HEADINGS — scroll-triggered ──
-  inView('h2', ({ target }) => {
-    animate(target, { opacity: [0, 1], y: [28, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
-  }, { margin: '0px 0px -80px 0px' });
-
-  inView('.section-tag', ({ target }) => {
-    animate(target, { opacity: [0, 1], y: [12, 0] }, { duration: 0.5, easing: [0.16, 1, 0.3, 1] });
-  }, { margin: '0px 0px -60px 0px' });
-
-  // ── 3. CARDS — staggered entrance ──
-  inView('#solutions', ({ target }) => {
-    const cards = target.querySelectorAll('.card');
-    animate(cards, { opacity: [0, 1], y: [36, 0] }, {
-      duration: 0.6,
-      delay: stagger(0.09),
-      easing: [0.16, 1, 0.3, 1]
-    });
-  }, { margin: '0px 0px -60px 0px' });
-
-  inView('#industries', ({ target }) => {
-    const cards = target.querySelectorAll('.industry-card');
-    animate(cards, { opacity: [0, 1], y: [32, 0] }, {
-      duration: 0.6,
-      delay: stagger(0.08),
-      easing: [0.16, 1, 0.3, 1]
-    });
-  }, { margin: '0px 0px -60px 0px' });
-
-  inView('#insights', ({ target }) => {
-    const cards = target.querySelectorAll('.blog-card');
-    animate(cards, { opacity: [0, 1], y: [32, 0] }, {
-      duration: 0.6,
-      delay: stagger(0.1),
-      easing: [0.16, 1, 0.3, 1]
-    });
-  }, { margin: '0px 0px -60px 0px' });
-
-  // ── 4. ABOUT section — slide in from sides ──
-  inView('#about .reveal-left', ({ target }) => {
-    animate(target, { opacity: [0, 1], x: [-40, 0] }, { duration: 0.8, easing: [0.16, 1, 0.3, 1] });
-  }, { margin: '0px 0px -80px 0px' });
-
-  inView('#about p, #about h2, #about .grid', ({ target }) => {
-    animate(target, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, easing: [0.16, 1, 0.3, 1] });
-  }, { margin: '0px 0px -60px 0px' });
-
-  // ── 5. CASE STUDY cards ──
-  inView('#case-studies', ({ target }) => {
-    const cards = target.querySelectorAll('.case-card');
-    animate(cards, { opacity: [0, 1], y: [40, 0] }, {
-      duration: 0.7,
-      delay: stagger(0.15),
-      easing: [0.16, 1, 0.3, 1]
-    });
-
-    // Animated counters using Motion's animate with onUpdate
-    const counters = target.querySelectorAll('.counter');
-    counters.forEach(el => {
-      const to = parseInt(el.dataset.target);
-      const suffix = el.dataset.suffix || '';
-      animate(0, to, {
-        duration: 1.8,
-        easing: [0.16, 1, 0.3, 1],
-        onUpdate: v => { el.textContent = Math.round(v) + suffix; }
+    function showAll() {
+      document.querySelectorAll('.anim-fade,.anim-fade-left,.anim-fade-right').forEach(function(el) {
+        el.style.opacity = '1'; el.style.transform = 'none';
       });
-    });
-  }, { margin: '0px 0px -60px 0px' });
+      var h = document.getElementById('hero-content');
+      if (h) { h.style.opacity = '1'; h.style.transform = 'none'; }
+    }
 
-  // ── 6. TRUST BAR — fade in ──
-  inView('.trust-chip', ({ target }) => {
-    animate(target, { opacity: [0, 1] }, { duration: 0.4, easing: 'ease-out' });
-  }, { margin: '0px 0px -20px 0px' });
+    if (!animate || !inView) { showAll(); return; }
 
-  // ── 7. VIDEO SECTION text ──
-  inView('.video-section h2', ({ target }) => {
-    animate(target, { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, easing: [0.16, 1, 0.3, 1] });
-  }, { margin: '0px 0px -60px 0px' });
+    try {
+      var heroEl = document.getElementById('hero-content');
+      if (heroEl) animate(heroEl, { opacity: [0, 1], y: [28, 0] }, { duration: 0.85, easing: [0.16, 1, 0.3, 1] });
 
-  // ── 8. CONTACT section ──
-  inView('#contact', ({ target }) => {
-    animate(
-      target.querySelector('h2'),
-      { opacity: [0, 1], y: [28, 0] },
-      { duration: 0.65, easing: [0.16, 1, 0.3, 1] }
-    );
-    animate(
-      target.querySelector('.bg-white.rounded-3xl'),
-      { opacity: [0, 1], y: [32, 0] },
-      { duration: 0.7, delay: 0.15, easing: [0.16, 1, 0.3, 1] }
-    );
-    const items = target.querySelectorAll('.space-y-5 > div');
-    animate(items, { opacity: [0, 1], x: [-20, 0] }, {
-      duration: 0.5,
-      delay: stagger(0.1, { start: 0.2 }),
-      easing: [0.16, 1, 0.3, 1]
-    });
-  }, { margin: '0px 0px -60px 0px' });
+      document.querySelectorAll('.anim-fade').forEach(function(el, i) {
+        inView(el, function() {
+          animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, delay: (i % 3) * 0.1, easing: [0.16, 1, 0.3, 1] });
+        }, { margin: '-8% 0px' });
+      });
+      document.querySelectorAll('.anim-fade-left').forEach(function(el) {
+        inView(el, function() {
+          animate(el, { opacity: [0, 1], x: [-40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
+        }, { margin: '-8% 0px' });
+      });
+      document.querySelectorAll('.anim-fade-right').forEach(function(el) {
+        inView(el, function() {
+          animate(el, { opacity: [0, 1], x: [40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
+        }, { margin: '-8% 0px' });
+      });
 
-  // ── 9. FOOTER fade in ──
-  inView('footer', ({ target }) => {
-    animate(target, { opacity: [0, 1] }, { duration: 0.6, easing: 'ease-out' });
-  }, { margin: '0px 0px -20px 0px' });
+      if (scroll) {
+        scroll(function(info) {
+          var bar = document.getElementById('scroll-bar');
+          if (bar) bar.style.transform = 'scaleX(' + info.y.progress + ')';
+        });
+      }
 
-  // ── 10. SCROLL PARALLAX on hero image ──
-  const heroImg = document.querySelector('#hero .hidden.lg\\:block');
-  if (heroImg) {
-    scroll(
-      animate(heroImg, { y: [0, 60] }),
-      { target: document.querySelector('#hero'), offset: ['start start', 'end start'] }
-    );
-  }
+      var lastScrollY = 0;
+      var nav = document.getElementById('navbar');
+      window.addEventListener('scroll', function() {
+        var y = window.scrollY;
+        if (nav) {
+          if (y > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+          if (y > lastScrollY + 10 && y > 300) nav.classList.add('hidden-nav');
+          else if (y < lastScrollY - 10) nav.classList.remove('hidden-nav');
+        }
+        lastScrollY = y;
+        var logo = document.getElementById('nav-logo-img');
+        if (logo) { logo.style.height = y > 60 ? '52px' : '90px'; logo.style.width = y > 60 ? '52px' : '90px'; }
+      }, { passive: true });
 
-  // ── 11. STAT CARDS in about — scroll-linked scale ──
-  inView('#about .grid > div', ({ target }) => {
-    animate(target, { opacity: [0, 1], scale: [0.9, 1] }, {
-      duration: 0.55,
-      easing: [0.16, 1, 0.3, 1]
-    });
-  }, { margin: '0px 0px -40px 0px' });
-
-  // ── 12. Hover animations on solution cards using Motion ──
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      animate(card, { scale: 1.02 }, { duration: 0.25, easing: [0.16, 1, 0.3, 1] });
-    });
-    card.addEventListener('mouseleave', () => {
-      animate(card, { scale: 1 }, { duration: 0.25, easing: [0.16, 1, 0.3, 1] });
-    });
-  });
-
-  // ── 13. Blog card image zoom on hover using Motion ──
-  document.querySelectorAll('.blog-card').forEach(card => {
-    const img = card.querySelector('img');
-    if (!img) return;
-    card.addEventListener('mouseenter', () => animate(img, { scale: 1.07 }, { duration: 0.4, easing: [0.16, 1, 0.3, 1] }));
-    card.addEventListener('mouseleave', () => animate(img, { scale: 1 }, { duration: 0.4, easing: [0.16, 1, 0.3, 1] }));
-  });
-
-  // ── 14. CTA button pulse on hover using Motion ──
-  document.querySelectorAll('.btn-primary').forEach(btn => {
-    btn.addEventListener('mouseenter', () =>
-      animate(btn, { scale: [1, 1.03, 1] }, { duration: 0.4, easing: 'ease-in-out' })
-    );
-  });
+      var burger = document.getElementById('burger');
+      if (burger) {
+        burger.addEventListener('click', function() {
+          var m = document.getElementById('mobile-menu');
+          var b1 = document.getElementById('b1'), b2 = document.getElementById('b2'), b3 = document.getElementById('b3');
+          if (m) m.classList.toggle('open');
+          if (m && m.classList.contains('open')) {
+            if (b1) b1.style.transform = 'rotate(45deg) translate(5px,5px)';
+            if (b2) b2.style.opacity = '0';
+            if (b3) b3.style.transform = 'rotate(-45deg) translate(5px,-5px)';
+          } else {
+            if (b1) b1.style.transform = '';
+            if (b2) b2.style.opacity = '';
+            if (b3) b3.style.transform = '';
+          }
+        });
+      }
+    } catch(e) {
+      console.warn('Motion error:', e);
+      showAll();
+    }
+  })();
 </script>
 
 </body>
