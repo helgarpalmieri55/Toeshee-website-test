@@ -18,6 +18,13 @@
     #navbar{transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s;}
     #navbar.scrolled{background:rgba(255,255,255,0.96)!important;backdrop-filter:blur(20px);box-shadow:0 1px 0 #E5E7EB,0 4px 20px rgba(0,0,0,0.06);padding-top:10px!important;padding-bottom:10px!important;}
     #navbar.hidden-nav{transform:translateY(-100%);}
+    /* Switch nav text to dark when scrolled over light content */
+    #navbar.scrolled button:not(.btn-primary),
+    #navbar.scrolled > div > div > a:not(.btn-primary){color:#374151!important;}
+    #navbar.scrolled button:not(.btn-primary):hover,
+    #navbar.scrolled > div > div > a:not(.btn-primary):hover{color:#111827!important;background:rgba(0,0,0,0.04)!important;}
+    #navbar.scrolled #nav-phone{color:#6B7280!important;}
+    #navbar.scrolled #burger span{background:#374151!important;}
     .dropdown-menu{opacity:0;visibility:hidden;transform:translateY(6px);transition:all 0.2s cubic-bezier(0.16,1,0.3,1);}
     .dropdown:hover .dropdown-menu,.dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
     .badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.2);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:100px;}
@@ -57,7 +64,7 @@
       <a href="careers.html" class="px-3 py-2 text-sm rounded-lg" style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#FF8060;background:rgba(255,58,16,0.15)">Careers</a>
     </div>
     <div class="hidden lg:flex items-center gap-3">
-      <a href="tel:+18667157327" class="text-sm hover:opacity-70 transition-opacity" style="color:rgba(255,255,255,0.6);font-family:'Space Grotesk',sans-serif">+1 (866) 715-7327</a>
+      <a href="tel:+18667157327" id="nav-phone" class="text-sm hover:opacity-70 transition-opacity" style="color:rgba(255,255,255,0.6);font-family:'Space Grotesk',sans-serif">+1 (866) 715-7327</a>
       <a href="contact.html" class="btn-primary text-sm" style="padding:10px 20px;border-radius:8px">Request Evaluation</a>
     </div>
     <button id="burger" class="lg:hidden p-2" aria-label="Open menu"><div class="flex flex-col gap-1.5"><span id="b1" class="block w-6 h-0.5 bg-white transition-all origin-center"></span><span id="b2" class="block w-6 h-0.5 bg-white transition-all"></span><span id="b3" class="block w-6 h-0.5 bg-white transition-all origin-center"></span></div></button>
@@ -137,13 +144,13 @@
               <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background:var(--accent-light);color:var(--accent);font-family:'Space Grotesk',sans-serif">100% Remote</span>
             </div>
           </div>
-          <a href="mailto:awesome.jobs@toeshee.com?subject=Application%3A%20Crypto%20Customer%20Support%20Agent&body=Hello%20Toeshee%20Team%2C%0A%0AI%20am%20interested%20in%20applying%20for%20the%20Crypto%20Customer%20Support%20Agent%20position.%0A%0AName%3A%0ALinkedIn%20%2F%20Portfolio%3A%0AAvailability%3A%0A%0AThank%20you!" class="btn-primary flex-shrink-0">Apply Now</a>
+          <button onclick="openApplyModal('Crypto Customer Support Agent')" class="btn-primary flex-shrink-0">Apply Now</button>
         </div>
       </div>
     </div>
     <div class="text-center mt-12 anim-fade" id="open-cv">
       <p class="text-gray-500 mb-4">Don't see your role? We're always open to exceptional candidates.</p>
-      <a href="mailto:awesome.jobs@toeshee.com?subject=Open%20Application%20%E2%80%94%20Toeshee&body=Hello%20Toeshee%20Team%2C%0A%0AI%20am%20reaching%20out%20to%20share%20my%20profile%20for%20any%20suitable%20openings.%0A%0AName%3A%0ARole%20of%20interest%3A%0ALinkedIn%20%2F%20Portfolio%3A%0AAvailability%3A%0A%0AThank%20you!" class="btn-secondary">Send us your CV anyway</a>
+      <button onclick="openApplyModal('')" class="btn-secondary">Send us your CV anyway</button>
     </div>
   </div>
 </section>
@@ -242,6 +249,182 @@
     }
   })();
 </script>
+<!-- ── APPLICATION MODAL ── -->
+<div id="apply-modal" style="display:none;position:fixed;inset:0;z-index:999999;background:rgba(10,10,15,0.7);backdrop-filter:blur(6px);overflow-y:auto;padding:24px 16px" role="dialog" aria-modal="true" aria-label="Job Application">
+  <div style="max-width:520px;margin:40px auto;background:#fff;border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,0.22);overflow:hidden">
+    <!-- Header -->
+    <div style="background:#0A0A0F;padding:28px 32px;position:relative">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,58,16,0.18);border:1px solid rgba(255,58,16,0.3);border-radius:100px;padding:4px 12px;margin-bottom:14px">
+        <span style="width:6px;height:6px;background:#FF3A10;border-radius:50%;display:inline-block"></span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#FF8060">We're Hiring</span>
+      </div>
+      <h2 id="modal-title" style="font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:700;color:#fff;margin:0 0 4px">Apply Now</h2>
+      <p id="modal-role" style="font-size:0.85rem;color:rgba(255,255,255,0.45);margin:0"></p>
+      <button onclick="closeApplyModal()" aria-label="Close" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;border-radius:8px;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);font-size:18px;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">&times;</button>
+    </div>
+    <!-- Form -->
+    <form id="apply-form" style="padding:28px 32px" novalidate>
+      <input type="hidden" id="form-position" name="position">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div>
+          <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Full Name *</label>
+          <input type="text" name="from_name" id="field-name" required placeholder="Jane Smith" style="width:100%;padding:10px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0A0A0F;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#FF3A10'" onblur="this.style.borderColor='#E5E7EB'">
+        </div>
+        <div>
+          <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Email *</label>
+          <input type="email" name="reply_to" id="field-email" required placeholder="jane@email.com" style="width:100%;padding:10px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0A0A0F;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#FF3A10'" onblur="this.style.borderColor='#E5E7EB'">
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">LinkedIn / Portfolio URL</label>
+        <input type="url" name="linkedin" id="field-linkedin" placeholder="https://linkedin.com/in/yourprofile" style="width:100%;padding:10px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0A0A0F;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#FF3A10'" onblur="this.style.borderColor='#E5E7EB'">
+      </div>
+
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Availability</label>
+        <select name="availability" style="width:100%;padding:10px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0A0A0F;outline:none;background:#fff;transition:border-color .2s" onfocus="this.style.borderColor='#FF3A10'" onblur="this.style.borderColor='#E5E7EB'">
+          <option value="">Select availability...</option>
+          <option>Immediately</option>
+          <option>2 weeks notice</option>
+          <option>1 month notice</option>
+          <option>More than 1 month</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Tell us about yourself *</label>
+        <textarea name="message" id="field-message" required rows="4" placeholder="Briefly describe your background and why you'd be a great fit..." style="width:100%;padding:10px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0A0A0F;outline:none;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='#FF3A10'" onblur="this.style.borderColor='#E5E7EB'"></textarea>
+      </div>
+
+      <!-- Status messages -->
+      <div id="form-success" style="display:none;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:10px;padding:14px 16px;margin-bottom:16px;text-align:center">
+        <p style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#065F46;margin:0">Application sent! ✓</p>
+        <p style="font-size:13px;color:#047857;margin:4px 0 0">We'll be in touch within 3–5 business days.</p>
+      </div>
+      <div id="form-error" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:14px 16px;margin-bottom:16px;text-align:center">
+        <p style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#991B1B;margin:0">Something went wrong</p>
+        <p style="font-size:13px;color:#B91C1C;margin:4px 0 0">Please try again or email us at <a href="mailto:awesome.jobs@toeshee.com" style="color:#B91C1C">awesome.jobs@toeshee.com</a></p>
+      </div>
+
+      <button type="submit" id="form-submit-btn" style="width:100%;background:#FF3A10;color:#fff;border:none;border-radius:10px;padding:13px 24px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:background .2s,transform .2s;box-shadow:0 4px 14px rgba(255,58,16,0.3)" onmouseover="this.style.background='#E5330E'" onmouseout="this.style.background='#FF3A10'">
+        Send Application
+      </button>
+      <p style="text-align:center;font-size:12px;color:#9CA3AF;margin-top:12px">Your information is kept confidential and used only for recruitment.</p>
+    </form>
+  </div>
+</div>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ── EmailJS Configuration ──────────────────────────────────────────────────
+  // Sign up free at https://emailjs.com, create a service + template, then fill in:
+  var EMAILJS_PUBLIC_KEY   = 'YOUR_PUBLIC_KEY';    // Account → API Keys → Public Key
+  var EMAILJS_SERVICE_ID   = 'YOUR_SERVICE_ID';    // Email Services → your service ID
+  var EMAILJS_TEMPLATE_ID  = 'YOUR_TEMPLATE_ID';   // Email Templates → your template ID
+  // Template variables used: {{from_name}}, {{reply_to}}, {{position}}, {{linkedin}}, {{availability}}, {{message}}
+  // ─────────────────────────────────────────────────────────────────────────
+
+  (function () {
+    if (EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    }
+  })();
+
+  function openApplyModal(role) {
+    var modal = document.getElementById('apply-modal');
+    var title = document.getElementById('modal-title');
+    var roleEl = document.getElementById('modal-role');
+    var posInput = document.getElementById('form-position');
+    document.getElementById('form-success').style.display = 'none';
+    document.getElementById('form-error').style.display = 'none';
+    document.getElementById('apply-form').reset();
+
+    if (role) {
+      title.textContent = 'Apply: ' + role;
+      roleEl.textContent = role;
+      posInput.value = role;
+    } else {
+      title.textContent = 'Open Application';
+      roleEl.textContent = 'General / Open Role';
+      posInput.value = 'Open Application';
+    }
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeApplyModal() {
+    document.getElementById('apply-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  // Close on backdrop click
+  document.getElementById('apply-modal').addEventListener('click', function (e) {
+    if (e.target === this) closeApplyModal();
+  });
+
+  // Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeApplyModal();
+  });
+
+  document.getElementById('apply-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = this;
+    var btn = document.getElementById('form-submit-btn');
+    var name = document.getElementById('field-name').value.trim();
+    var email = document.getElementById('field-email').value.trim();
+    var msg = document.getElementById('field-message').value.trim();
+
+    if (!name || !email || !msg) {
+      document.getElementById('form-error').style.display = 'block';
+      document.getElementById('form-error').querySelector('p').textContent = 'Please fill in all required fields.';
+      return;
+    }
+
+    document.getElementById('form-success').style.display = 'none';
+    document.getElementById('form-error').style.display = 'none';
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+      // Demo mode — show success after short delay
+      setTimeout(function () {
+        document.getElementById('form-success').style.display = 'block';
+        btn.textContent = 'Send Application';
+        btn.disabled = false;
+        form.reset();
+      }, 900);
+      return;
+    }
+
+    var params = {
+      from_name:    name,
+      reply_to:     email,
+      position:     document.getElementById('form-position').value,
+      linkedin:     document.getElementById('field-linkedin').value,
+      availability: form.querySelector('[name="availability"]').value,
+      message:      msg,
+      to_email:     'awesome.jobs@toeshee.com'
+    };
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
+      .then(function () {
+        document.getElementById('form-success').style.display = 'block';
+        btn.textContent = 'Send Application';
+        btn.disabled = false;
+        form.reset();
+      })
+      .catch(function () {
+        document.getElementById('form-error').style.display = 'block';
+        btn.textContent = 'Send Application';
+        btn.disabled = false;
+      });
+  });
+</script>
+
 <script src="assets/js/cookie-banner.js"></script>
 <script src="assets/js/i18n.js"></script>
 </body>
