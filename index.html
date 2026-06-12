@@ -57,10 +57,11 @@
       transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1),
                   visibility 0.2s cubic-bezier(0.16,1,0.3,1),
                   transform 0.2s cubic-bezier(0.16,1,0.3,1);
-      z-index: 200;
+      /* Use fixed positioning so the dropdown escapes the hero's stacking context */
+      position: fixed !important;
+      z-index: 9999;
     }
-    .dropdown:hover .dropdown-menu,
-    .dropdown:focus-within .dropdown-menu {
+    .dropdown-menu.open {
       opacity: 1; visibility: visible; transform: translateY(0);
     }
 
@@ -1137,6 +1138,28 @@
     document.getElementById('b2').style.opacity = '1';
     document.getElementById('b3').style.transform = '';
   }
+
+  // ── Dropdowns: JS hover to escape hero stacking context ──
+  document.querySelectorAll('.dropdown').forEach(function(dd) {
+    var menu = dd.querySelector('.dropdown-menu');
+    var btn  = dd.querySelector('button');
+    if (!menu || !btn) return;
+
+    function positionMenu() {
+      var r = btn.getBoundingClientRect();
+      menu.style.top  = (r.bottom + 8) + 'px';
+      menu.style.left = r.left + 'px';
+      menu.style.width = ''; // let CSS width (w-72/w-52) take over
+    }
+
+    function openMenu() { positionMenu(); menu.classList.add('open'); }
+    function closeMenu() { menu.classList.remove('open'); }
+
+    dd.addEventListener('mouseenter', openMenu);
+    dd.addEventListener('mouseleave', closeMenu);
+    // Reposition on scroll/resize
+    window.addEventListener('scroll', function() { if (menu.classList.contains('open')) positionMenu(); }, { passive: true });
+  });
 
   // ── Form submit ──
   function handleSubmit(e) {
