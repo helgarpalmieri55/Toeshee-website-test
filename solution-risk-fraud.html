@@ -18,7 +18,7 @@
   #navbar{transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s;}
   #navbar.scrolled{background:rgba(255,255,255,0.96)!important;backdrop-filter:blur(20px);box-shadow:0 1px 0 #E5E7EB,0 4px 20px rgba(0,0,0,0.06);padding-top:10px!important;padding-bottom:10px!important;}
   #navbar.hidden-nav{transform:translateY(-100%);}
-  .dropdown-menu{opacity:0;visibility:hidden;transform:translateY(6px);transition:all 0.2s cubic-bezier(0.16,1,0.3,1);}
+  .dropdown-menu{opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity 0.2s cubic-bezier(0.16,1,0.3,1),visibility 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s cubic-bezier(0.16,1,0.3,1);z-index:200;}
   .dropdown:hover .dropdown-menu,.dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
   .badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.2);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:100px;}
   .badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;}
@@ -122,6 +122,35 @@
   </div>
 </section>
 
+<!-- VISUAL SECTION -->
+<section style="padding:0;overflow:hidden;background:#0A0A0F">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:420px">
+    <!-- Image -->
+    <div style="position:relative;overflow:hidden">
+      <img src="assets/images/blog-security.jpg" alt="Risk and fraud operations" style="width:100%;height:100%;object-fit:cover;min-height:380px;display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,15,0.15) 0%,transparent 60%)"></div>
+    </div>
+    <!-- Stats -->
+    <div style="background:linear-gradient(135deg,#0A0A0F 0%,#141420 100%);padding:64px 56px;display:flex;flex-direction:column;justify-content:center">
+      <div class="section-tag" style="color:#FF8060;margin-bottom:16px">Operational Performance</div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;color:white;line-height:1.25;margin-bottom:40px">Proven metrics from<br>live client deployments</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px">
+        <div class="anim-fade">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:800;color:#FF3A10;line-height:1">65%</div>
+          <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.06em;margin-top:6px">Faster Fraud Detection</div>
+        </div>
+        <div class="anim-fade">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:800;color:#FF3A10;line-height:1">99.1%</div>
+          <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.06em;margin-top:6px">Case Accuracy Rate</div>
+        </div>
+        <div class="anim-fade">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:800;color:#FF3A10;line-height:1">24/7</div>
+          <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.06em;margin-top:6px">Live Monitoring</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- WHAT THIS SOLUTION COVERS -->
 <section style="padding:96px 24px;background:white">
   <div class="max-w-6xl mx-auto">
@@ -304,8 +333,9 @@
     <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
       <p style="color:rgba(255,255,255,0.35);font-size:13px">&copy; 2026 Toeshee. All rights reserved.</p>
       <div style="display:flex;gap:20px">
-        <a href="#" style="color:rgba(255,255,255,0.35);font-size:13px;text-decoration:none">Privacy Policy</a>
-        <a href="#" style="color:rgba(255,255,255,0.35);font-size:13px;text-decoration:none">Terms &amp; Conditions</a>
+        <a href="privacy.html" style="color:rgba(255,255,255,0.35);font-size:13px;text-decoration:none">Privacy Policy</a>
+        <a href="terms.html" style="color:rgba(255,255,255,0.35);font-size:13px;text-decoration:none">Terms &amp; Conditions</a>
+        <a href="cookie-policy.html" style="color:rgba(255,255,255,0.35);font-size:13px;text-decoration:none">Cookie Policy</a>
       </div>
     </div>
   </div>
@@ -392,5 +422,7 @@
     }
   })();
 </script>
+<script src="assets/js/cookie-banner.js"></script>
+<script src="assets/js/i18n.js"></script>
 </body>
 </html>

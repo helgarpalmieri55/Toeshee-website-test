@@ -52,9 +52,21 @@
     #navbar.scrolled #nav-logo-img { height: 52px !important; }
     #navbar.hidden-nav { transform: translateY(-100%); }
 
+    /* Over the dark hero (not scrolled) the JS paints link text white,
+       so the hover pill must be translucent white — never gray-50,
+       which made white text invisible (white-on-white). */
+    #navbar:not(.scrolled) .hidden.lg\:flex > div > button:hover,
+    #navbar:not(.scrolled) .hidden.lg\:flex > a:not(.btn-primary):hover {
+      background: rgba(255,255,255,0.14) !important;
+      color: #fff !important;
+    }
+
     .dropdown-menu {
       opacity: 0; visibility: hidden; transform: translateY(6px);
-      transition: all 0.2s cubic-bezier(0.16,1,0.3,1);
+      transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1),
+                  visibility 0.2s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.2s cubic-bezier(0.16,1,0.3,1);
+      z-index: 200;
     }
     .dropdown:hover .dropdown-menu,
     .dropdown:focus-within .dropdown-menu {
@@ -158,7 +170,7 @@
     .card:hover { border-color: rgba(255,58,16,0.25); box-shadow: 0 12px 40px rgba(255,58,16,0.08), 0 4px 12px rgba(0,0,0,0.05); transform: translateY(-4px); }
 
     .industry-card {
-      background: white; border: 1px solid var(--border);
+      background: white; cursor: pointer; border: 1px solid var(--border);
       border-radius: 16px; cursor: pointer;
       transition: all 0.28s cubic-bezier(0.16,1,0.3,1);
     }
@@ -1031,14 +1043,8 @@
     <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/8">
 
       <div class="lg:col-span-2">
-        <div class="flex items-center gap-2 mb-4">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--accent)">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M2.5 9L7 4.5L11.5 9L7 13.5L2.5 9Z" fill="white"/>
-              <path d="M8.5 9L13 4.5L17.5 9L13 13.5L8.5 9Z" fill="white" opacity=".5"/>
-            </svg>
-          </div>
-          <span class="text-white font-bold text-lg" style="font-family:'Space Grotesk',sans-serif">Toeshee</span>
+        <div class="flex items-center mb-5">
+          <img src="assets/images/Logo%20update.png" alt="Toeshee" style="height:64px;width:64px;object-fit:contain">
         </div>
         <p class="text-gray-400 text-sm leading-relaxed max-w-xs mb-5">The first outsourcing provider built for the decentralized economy. Crypto-native customer support infrastructure.</p>
         <div class="flex gap-3">
@@ -1088,10 +1094,11 @@
 
     </div>
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-8">
-      <p class="text-sm text-gray-600">© 2026 BlockchainIA Solutions Edge. All rights reserved.</p>
+      <p class="text-sm text-gray-600">© 2026 TOESHEE. All rights reserved.</p>
       <div class="flex gap-6">
-        <a href="#" class="text-sm text-gray-600 hover:text-gray-400 transition-colors cursor-pointer">Terms and conditions</a>
-        <a href="#" class="text-sm text-gray-600 hover:text-gray-400 transition-colors cursor-pointer">Privacy policy</a>
+        <a href="terms.html" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Terms and conditions</a>
+        <a href="privacy.html" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Privacy policy</a>
+        <a href="cookie-policy.html" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Cookie Policy</a>
       </div>
     </div>
   </div>
@@ -1140,6 +1147,7 @@
     document.getElementById('b3').style.transform = '';
   }
 
+
   // ── Form submit ──
   function handleSubmit(e) {
     e.preventDefault();
@@ -1175,20 +1183,21 @@
       var heroEl = document.getElementById('hero-content');
       if (heroEl) animate(heroEl, { opacity: [0, 1], y: [28, 0] }, { duration: 0.85, easing: [0.16, 1, 0.3, 1] });
 
-      document.querySelectorAll('.anim-fade').forEach(function(el, i) {
+      // Animate both class naming schemes (.anim-fade and .reveal)
+      document.querySelectorAll('.anim-fade, .reveal').forEach(function(el, i) {
         inView(el, function() {
-          animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, delay: (i % 3) * 0.1, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-8% 0px' });
+          animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, delay: (i % 4) * 0.08, easing: [0.16, 1, 0.3, 1] });
+        }, { margin: '-6% 0px' });
       });
-      document.querySelectorAll('.anim-fade-left').forEach(function(el) {
+      document.querySelectorAll('.anim-fade-left, .reveal-left').forEach(function(el) {
         inView(el, function() {
           animate(el, { opacity: [0, 1], x: [-40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-8% 0px' });
+        }, { margin: '-6% 0px' });
       });
-      document.querySelectorAll('.anim-fade-right').forEach(function(el) {
+      document.querySelectorAll('.anim-fade-right, .reveal-right').forEach(function(el) {
         inView(el, function() {
           animate(el, { opacity: [0, 1], x: [40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-8% 0px' });
+        }, { margin: '-6% 0px' });
       });
 
       if (scroll) {
@@ -1236,5 +1245,7 @@
   })();
 </script>
 
+<script src="assets/js/cookie-banner.js"></script>
+<script src="assets/js/i18n.js"></script>
 </body>
 </html>

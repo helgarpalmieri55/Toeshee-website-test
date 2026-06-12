@@ -18,7 +18,14 @@
     #navbar{transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s;}
     #navbar.scrolled{background:rgba(255,255,255,0.96)!important;backdrop-filter:blur(20px);box-shadow:0 1px 0 #E5E7EB,0 4px 20px rgba(0,0,0,0.06);padding-top:10px!important;padding-bottom:10px!important;}
     #navbar.hidden-nav{transform:translateY(-100%);}
-    .dropdown-menu{opacity:0;visibility:hidden;transform:translateY(6px);transition:all 0.2s cubic-bezier(0.16,1,0.3,1);}
+    /* Switch nav text to dark when scrolled over light content */
+    #navbar.scrolled button:not(.btn-primary),
+    #navbar.scrolled > div > div > a:not(.btn-primary){color:#374151!important;}
+    #navbar.scrolled button:not(.btn-primary):hover,
+    #navbar.scrolled > div > div > a:not(.btn-primary):hover{color:#111827!important;background:rgba(0,0,0,0.04)!important;}
+    #navbar.scrolled #nav-phone{color:#6B7280!important;}
+    #navbar.scrolled #burger span{background:#374151!important;}
+    .dropdown-menu{opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity 0.2s cubic-bezier(0.16,1,0.3,1),visibility 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s cubic-bezier(0.16,1,0.3,1);z-index:200;}
     .dropdown:hover .dropdown-menu,.dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
     .badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.2);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:100px;}
     .badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;}
@@ -57,7 +64,7 @@
       <a href="careers.html" class="px-3 py-2 text-sm rounded-lg" style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#FF8060;background:rgba(255,58,16,0.15)">Careers</a>
     </div>
     <div class="hidden lg:flex items-center gap-3">
-      <a href="tel:+18667157327" class="text-sm hover:opacity-70 transition-opacity" style="color:rgba(255,255,255,0.6);font-family:'Space Grotesk',sans-serif">+1 (866) 715-7327</a>
+      <a href="tel:+18667157327" id="nav-phone" class="text-sm hover:opacity-70 transition-opacity" style="color:rgba(255,255,255,0.6);font-family:'Space Grotesk',sans-serif">+1 (866) 715-7327</a>
       <a href="contact.html" class="btn-primary text-sm" style="padding:10px 20px;border-radius:8px">Request Evaluation</a>
     </div>
     <button id="burger" class="lg:hidden p-2" aria-label="Open menu"><div class="flex flex-col gap-1.5"><span id="b1" class="block w-6 h-0.5 bg-white transition-all origin-center"></span><span id="b2" class="block w-6 h-0.5 bg-white transition-all"></span><span id="b3" class="block w-6 h-0.5 bg-white transition-all origin-center"></span></div></button>
@@ -81,7 +88,7 @@
       <a href="#culture" class="btn-ghost-white">Our Culture</a>
     </div>
     <!-- Stats -->
-    <div class="flex flex-wrap justify-center gap-4" id="hero-stats">
+    <div class="flex flex-wrap justify-center gap-4 anim-fade" id="hero-stats">
       <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3"><div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">100+</div><div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Team Members</div></div>
       <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3"><div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">3</div><div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Countries</div></div>
       <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3"><div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">6+</div><div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Open Roles</div></div>
@@ -134,16 +141,16 @@
             <div class="flex flex-wrap gap-2">
               <span class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600" style="font-family:'Space Grotesk',sans-serif">Global</span>
               <span class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600" style="font-family:'Space Grotesk',sans-serif">Full-time</span>
-              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background:var(--accent-light);color:var(--accent);font-family:'Space Grotesk',sans-serif">100% Remote</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background:var(--accent-light);color:var(--accent);font-family:'Space Grotesk',sans-serif">100% On-Site</span>
             </div>
           </div>
-          <a href="contact.html" class="btn-primary flex-shrink-0">Apply Now</a>
+          <button onclick="openApplyModal('Crypto Customer Support Agent')" class="btn-primary flex-shrink-0">Apply Now</button>
         </div>
       </div>
     </div>
-    <div class="text-center mt-12" id="open-cv">
+    <div class="text-center mt-12 anim-fade" id="open-cv">
       <p class="text-gray-500 mb-4">Don't see your role? We're always open to exceptional candidates.</p>
-      <a href="contact.html" class="btn-secondary">Send us your CV anyway</a>
+      <button onclick="openApplyModal('')" class="btn-secondary">Send us your CV anyway</button>
     </div>
   </div>
 </section>
@@ -152,32 +159,15 @@
 <footer class="bg-gray-900 pt-16 pb-8 px-4 sm:px-6">
   <div class="max-w-7xl mx-auto">
     <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/[0.08]">
-      <div class="lg:col-span-2"><div class="flex items-center gap-2 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--accent)"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.5 9L7 4.5L11.5 9L7 13.5L2.5 9Z" fill="white"/><path d="M8.5 9L13 4.5L17.5 9L13 13.5L8.5 9Z" fill="white" opacity=".5"/></svg></div><span class="text-white font-bold text-lg" style="font-family:'Space Grotesk',sans-serif">Toeshee</span></div><p class="text-gray-400 text-sm leading-relaxed max-w-xs mb-5">The first outsourcing provider built for the decentralized economy.</p><div class="flex gap-3"><a href="https://www.instagram.com/toeshee.co/" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FF3A10]/10 transition-all"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#9CA3AF" stroke="none"/></svg></a><a href="https://www.linkedin.com/company/toesheecorp" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FF3A10]/10 transition-all"><svg width="16" height="16" viewBox="0 0 24 24" fill="#9CA3AF"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a></div></div>
+      <div class="lg:col-span-2"><div class="flex items-center mb-5"><img src="assets/images/Logo%20update.png" alt="Toeshee" style="height:64px;width:64px;object-fit:contain"></div><p class="text-gray-400 text-sm leading-relaxed max-w-xs mb-5">The first outsourcing provider built for the decentralized economy.</p><div class="flex gap-3"><a href="https://www.instagram.com/toeshee.co/" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FF3A10]/10 transition-all"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#9CA3AF" stroke="none"/></svg></a><a href="https://www.linkedin.com/company/toesheecorp" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FF3A10]/10 transition-all"><svg width="16" height="16" viewBox="0 0 24 24" fill="#9CA3AF"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a></div></div>
       <div><div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-4" style="font-family:'Space Grotesk',sans-serif">Solutions</div><ul class="space-y-3"><li><a href="solutions.html" class="text-sm text-gray-400 hover:text-white transition-colors">Crypto Customer Support</a></li><li><a href="solutions.html" class="text-sm text-gray-400 hover:text-white transition-colors">Technical Support</a></li><li><a href="solutions.html" class="text-sm text-gray-400 hover:text-white transition-colors">Trust &amp; Safety</a></li><li><a href="solutions.html" class="text-sm text-gray-400 hover:text-white transition-colors">Risk &amp; Fraud</a></li><li><a href="solutions.html" class="text-sm text-gray-400 hover:text-white transition-colors">Compliance</a></li></ul></div>
       <div><div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-4" style="font-family:'Space Grotesk',sans-serif">Industries</div><ul class="space-y-3"><li><a href="industries.html" class="text-sm text-gray-400 hover:text-white transition-colors">Fintech</a></li><li><a href="industries.html" class="text-sm text-gray-400 hover:text-white transition-colors">iGaming</a></li><li><a href="industries.html" class="text-sm text-gray-400 hover:text-white transition-colors">Crypto Exchanges</a></li><li><a href="industries.html" class="text-sm text-gray-400 hover:text-white transition-colors">DeFi</a></li><li><a href="industries.html" class="text-sm text-gray-400 hover:text-white transition-colors">Crypto Payments</a></li></ul></div>
       <div><div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-4" style="font-family:'Space Grotesk',sans-serif">Company</div><ul class="space-y-3"><li><a href="company.html" class="text-sm text-gray-400 hover:text-white transition-colors">About</a></li><li><a href="case-studies.html" class="text-sm text-gray-400 hover:text-white transition-colors">Case Studies</a></li><li><a href="insights.html" class="text-sm text-gray-400 hover:text-white transition-colors">Insights</a></li><li><a href="careers.html" class="text-sm text-gray-400 hover:text-white transition-colors">Careers</a></li><li><a href="contact.html" class="text-sm text-gray-400 hover:text-white transition-colors">Contact</a></li></ul></div>
     </div>
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-8"><p class="text-sm text-gray-600">© 2026 BlockchainIA Solutions Edge. All rights reserved.</p><div class="flex gap-6"><a href="#" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Terms and conditions</a><a href="#" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Privacy policy</a></div></div>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-8"><p class="text-sm text-gray-600">© 2026 TOESHEE. All rights reserved.</p><div class="flex gap-6"><a href="terms.html" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Terms and conditions</a><a href="privacy.html" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Privacy policy</a><a href="cookie-policy.html" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Cookie Policy</a></div></div>
   </div>
 </footer>
 
-<script>
-  const navbar=document.getElementById('navbar');const navLogoImg=document.getElementById('nav-logo-img');let lastY=0;
-  function updateNav(y){
-    const scrolled=y>80;
-    navbar.classList.toggle('scrolled',scrolled);
-    navbar.classList.toggle('hidden-nav',y>lastY&&y>300);
-    if(navLogoImg) navLogoImg.style.filter=scrolled?'none':'brightness(0) invert(1)';
-    navbar.querySelectorAll('.hidden.lg\\:flex button,.hidden.lg\\:flex a:not(.btn-primary)').forEach(el=>{
-      el.style.color=scrolled?'':undefined;
-    });
-    lastY=y<0?0:y;
-  }
-  window.addEventListener('scroll',()=>updateNav(window.scrollY),{passive:true});
-  updateNav(0);
-  const burger=document.getElementById('burger');const mobileMenu=document.getElementById('mobile-menu');let open=false;
-  burger.addEventListener('click',()=>{open=!open;mobileMenu.classList.toggle('open',open);document.getElementById('b1').style.transform=open?'rotate(45deg) translate(5px,5px)':'';document.getElementById('b2').style.opacity=open?'0':'1';document.getElementById('b3').style.transform=open?'rotate(-45deg) translate(5px,-5px)':'';});
-</script>
 <script src="assets/motion.js"></script>
 <script>
   (function() {
@@ -259,5 +249,265 @@
     }
   })();
 </script>
+<!-- ── APPLICATION MODAL ── -->
+<div id="apply-modal" style="display:none;position:fixed;inset:0;z-index:999999;background:rgba(10,10,15,0.7);backdrop-filter:blur(6px);overflow-y:auto;padding:24px 16px" role="dialog" aria-modal="true" aria-label="Job Application">
+  <div style="max-width:520px;margin:40px auto;background:#fff;border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,0.22);overflow:hidden">
+    <!-- Header -->
+    <div style="background:#0A0A0F;padding:28px 32px;position:relative">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,58,16,0.18);border:1px solid rgba(255,58,16,0.3);border-radius:100px;padding:4px 12px;margin-bottom:14px">
+        <span style="width:6px;height:6px;background:#FF3A10;border-radius:50%;display:inline-block"></span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#FF8060">We're Hiring</span>
+      </div>
+      <h2 id="modal-title" style="font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:700;color:#fff;margin:0 0 4px">Apply Now</h2>
+      <p id="modal-role" style="font-size:0.85rem;color:rgba(255,255,255,0.45);margin:0"></p>
+      <button onclick="closeApplyModal()" aria-label="Close" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;border-radius:8px;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);font-size:18px;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">&times;</button>
+    </div>
+    <!-- Form -->
+    <form id="apply-form" style="padding:28px 32px" novalidate>
+      <input type="hidden" id="form-position" name="position">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div>
+          <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Full Name *</label>
+          <input type="text" name="from_name" id="field-name" required placeholder="Jane Smith" style="width:100%;padding:10px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0A0A0F;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#FF3A10'" onblur="this.style.borderColor='#E5E7EB'">
+        </div>
+        <div>
+          <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Email *</label>
+          <input type="email" name="reply_to" id="field-email" required placeholder="jane@email.com" style="width:100%;padding:10px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0A0A0F;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#FF3A10'" onblur="this.style.borderColor='#E5E7EB'">
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">LinkedIn / Portfolio URL</label>
+        <input type="url" name="linkedin" id="field-linkedin" placeholder="https://linkedin.com/in/yourprofile" style="width:100%;padding:10px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0A0A0F;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#FF3A10'" onblur="this.style.borderColor='#E5E7EB'">
+      </div>
+
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Availability</label>
+        <select name="availability" style="width:100%;padding:10px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0A0A0F;outline:none;background:#fff;transition:border-color .2s" onfocus="this.style.borderColor='#FF3A10'" onblur="this.style.borderColor='#E5E7EB'">
+          <option value="">Select availability...</option>
+          <option>Immediately</option>
+          <option>2 weeks notice</option>
+          <option>1 month notice</option>
+          <option>More than 1 month</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Tell us about yourself *</label>
+        <textarea name="message" id="field-message" required rows="4" placeholder="Briefly describe your background and why you'd be a great fit..." style="width:100%;padding:10px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0A0A0F;outline:none;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='#FF3A10'" onblur="this.style.borderColor='#E5E7EB'"></textarea>
+      </div>
+
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Attach CV / Résumé</label>
+        <label id="cv-dropzone" for="field-cv" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1.5px dashed #D1D5DB;border-radius:10px;padding:22px 16px;cursor:pointer;transition:border-color .2s,background .2s;background:#FAFAFA">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span id="cv-label" style="font-size:13px;color:#6B7280;font-family:'Inter',sans-serif;text-align:center">Click to upload or drag &amp; drop<br><span style="font-size:11px;color:#9CA3AF">PDF, DOC, DOCX — max 5 MB</span></span>
+        </label>
+        <input type="file" id="field-cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none">
+        <p id="cv-error" style="display:none;color:#DC2626;font-size:12px;margin-top:6px">File too large (max 5 MB) or unsupported format.</p>
+      </div>
+
+      <!-- Status messages -->
+      <div id="form-success" style="display:none;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:10px;padding:14px 16px;margin-bottom:16px;text-align:center">
+        <p style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#065F46;margin:0">Application sent! ✓</p>
+        <p style="font-size:13px;color:#047857;margin:4px 0 0">We'll be in touch within 3–5 business days.</p>
+      </div>
+      <div id="form-error" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:14px 16px;margin-bottom:16px;text-align:center">
+        <p style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#991B1B;margin:0">Something went wrong</p>
+        <p style="font-size:13px;color:#B91C1C;margin:4px 0 0">Please try again or email us at <a href="mailto:awesome.jobs@toeshee.com" style="color:#B91C1C">awesome.jobs@toeshee.com</a></p>
+      </div>
+
+      <button type="submit" id="form-submit-btn" style="width:100%;background:#FF3A10;color:#fff;border:none;border-radius:10px;padding:13px 24px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:background .2s,transform .2s;box-shadow:0 4px 14px rgba(255,58,16,0.3)" onmouseover="this.style.background='#E5330E'" onmouseout="this.style.background='#FF3A10'">
+        Send Application
+      </button>
+      <p style="text-align:center;font-size:12px;color:#9CA3AF;margin-top:12px">Your information is kept confidential and used only for recruitment.</p>
+    </form>
+  </div>
+</div>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ── EmailJS Configuration ──────────────────────────────────────────────────
+  // Sign up free at https://emailjs.com, create a service + template, then fill in:
+  var EMAILJS_PUBLIC_KEY   = 'YOUR_PUBLIC_KEY';    // Account → API Keys → Public Key
+  var EMAILJS_SERVICE_ID   = 'YOUR_SERVICE_ID';    // Email Services → your service ID
+  var EMAILJS_TEMPLATE_ID  = 'YOUR_TEMPLATE_ID';   // Email Templates → your template ID
+  // Template variables used: {{from_name}}, {{reply_to}}, {{position}}, {{linkedin}}, {{availability}}, {{message}}
+  // ─────────────────────────────────────────────────────────────────────────
+
+  (function () {
+    if (EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    }
+  })();
+
+  function openApplyModal(role) {
+    var modal = document.getElementById('apply-modal');
+    var title = document.getElementById('modal-title');
+    var roleEl = document.getElementById('modal-role');
+    var posInput = document.getElementById('form-position');
+    document.getElementById('form-success').style.display = 'none';
+    document.getElementById('form-error').style.display = 'none';
+    document.getElementById('apply-form').reset();
+
+    if (role) {
+      title.textContent = 'Apply: ' + role;
+      roleEl.textContent = role;
+      posInput.value = role;
+    } else {
+      title.textContent = 'Open Application';
+      roleEl.textContent = 'General / Open Role';
+      posInput.value = 'Open Application';
+    }
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    // Reset CV dropzone
+    document.getElementById('field-cv').value = '';
+    document.getElementById('cv-label').innerHTML = 'Click to upload or drag &amp; drop<br><span style="font-size:11px;color:#9CA3AF">PDF, DOC, DOCX — max 5 MB</span>';
+    document.getElementById('cv-dropzone').style.borderColor = '#D1D5DB';
+    document.getElementById('cv-dropzone').style.background = '#FAFAFA';
+    document.getElementById('cv-error').style.display = 'none';
+  }
+
+  function closeApplyModal() {
+    document.getElementById('apply-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  // ── CV file dropzone UX ──────────────────────────────────────────────────
+  var cvFileInput = document.getElementById('field-cv');
+  var cvDropzone  = document.getElementById('cv-dropzone');
+
+  cvFileInput.addEventListener('change', function () { updateCvLabel(this.files[0]); });
+
+  cvDropzone.addEventListener('dragover', function (e) {
+    e.preventDefault();
+    this.style.borderColor = '#FF3A10';
+    this.style.background = 'rgba(255,58,16,0.04)';
+  });
+  cvDropzone.addEventListener('dragleave', function () {
+    this.style.borderColor = '#D1D5DB';
+    this.style.background = '#FAFAFA';
+  });
+  cvDropzone.addEventListener('drop', function (e) {
+    e.preventDefault();
+    this.style.borderColor = '#D1D5DB';
+    this.style.background = '#FAFAFA';
+    var file = e.dataTransfer.files[0];
+    if (file) { cvFileInput.files = e.dataTransfer.files; updateCvLabel(file); }
+  });
+
+  function updateCvLabel(file) {
+    var errEl = document.getElementById('cv-error');
+    if (!file) return;
+    var allowed = ['application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    if (file.size > 5 * 1024 * 1024 || allowed.indexOf(file.type) === -1) {
+      errEl.style.display = 'block';
+      cvFileInput.value = '';
+      document.getElementById('cv-label').innerHTML = 'Click to upload or drag &amp; drop<br><span style="font-size:11px;color:#9CA3AF">PDF, DOC, DOCX — max 5 MB</span>';
+      cvDropzone.style.borderColor = '#DC2626';
+      return;
+    }
+    errEl.style.display = 'none';
+    cvDropzone.style.borderColor = '#34D399';
+    cvDropzone.style.background = 'rgba(52,211,153,0.05)';
+    document.getElementById('cv-label').innerHTML =
+      '<span style="color:#065F46;font-weight:600">' + file.name + '</span><br>' +
+      '<span style="font-size:11px;color:#9CA3AF">' + (file.size / 1024).toFixed(0) + ' KB — click to change</span>';
+  }
+
+  function readFileAsBase64(file) {
+    return new Promise(function (resolve) {
+      if (!file) { resolve(null); return; }
+      var reader = new FileReader();
+      reader.onload = function (e) { resolve(e.target.result); };
+      reader.onerror = function () { resolve(null); };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Close on backdrop click
+  document.getElementById('apply-modal').addEventListener('click', function (e) {
+    if (e.target === this) closeApplyModal();
+  });
+
+  // Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeApplyModal();
+  });
+
+  document.getElementById('apply-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = this;
+    var btn = document.getElementById('form-submit-btn');
+    var name = document.getElementById('field-name').value.trim();
+    var email = document.getElementById('field-email').value.trim();
+    var msg = document.getElementById('field-message').value.trim();
+
+    if (!name || !email || !msg) {
+      document.getElementById('form-error').style.display = 'block';
+      document.getElementById('form-error').querySelector('p').textContent = 'Please fill in all required fields.';
+      return;
+    }
+
+    document.getElementById('form-success').style.display = 'none';
+    document.getElementById('form-error').style.display = 'none';
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    var cvFile = cvFileInput.files[0] || null;
+
+    if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+      // Demo mode — show success after short delay
+      setTimeout(function () {
+        document.getElementById('form-success').style.display = 'block';
+        btn.textContent = 'Send Application';
+        btn.disabled = false;
+        form.reset();
+        cvFileInput.value = '';
+        document.getElementById('cv-label').innerHTML = 'Click to upload or drag &amp; drop<br><span style="font-size:11px;color:#9CA3AF">PDF, DOC, DOCX — max 5 MB</span>';
+        cvDropzone.style.borderColor = '#D1D5DB';
+        cvDropzone.style.background = '#FAFAFA';
+      }, 900);
+      return;
+    }
+
+    readFileAsBase64(cvFile).then(function (b64) {
+      var params = {
+        from_name:    name,
+        reply_to:     email,
+        position:     document.getElementById('form-position').value,
+        linkedin:     document.getElementById('field-linkedin').value,
+        availability: form.querySelector('[name="availability"]').value,
+        message:      msg,
+        to_email:     'awesome.jobs@toeshee.com',
+        cv_name:      cvFile ? cvFile.name : 'No CV attached',
+        cv_data:      b64 || ''
+      };
+
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
+        .then(function () {
+          document.getElementById('form-success').style.display = 'block';
+          btn.textContent = 'Send Application';
+          btn.disabled = false;
+          form.reset();
+          cvFileInput.value = '';
+          document.getElementById('cv-label').innerHTML = 'Click to upload or drag &amp; drop<br><span style="font-size:11px;color:#9CA3AF">PDF, DOC, DOCX — max 5 MB</span>';
+          cvDropzone.style.borderColor = '#D1D5DB';
+          cvDropzone.style.background = '#FAFAFA';
+        })
+        .catch(function () {
+          document.getElementById('form-error').style.display = 'block';
+          btn.textContent = 'Send Application';
+          btn.disabled = false;
+        });
+    }); // end readFileAsBase64.then
+  }); // end submit listener
+</script>
+
+<script src="assets/js/cookie-banner.js"></script>
+<script src="assets/js/i18n.js"></script>
 </body>
 </html>
