@@ -52,16 +52,24 @@
     #navbar.scrolled #nav-logo-img { height: 52px !important; }
     #navbar.hidden-nav { transform: translateY(-100%); }
 
+    /* Over the dark hero (not scrolled) the JS paints link text white,
+       so the hover pill must be translucent white — never gray-50,
+       which made white text invisible (white-on-white). */
+    #navbar:not(.scrolled) .hidden.lg\:flex > div > button:hover,
+    #navbar:not(.scrolled) .hidden.lg\:flex > a:not(.btn-primary):hover {
+      background: rgba(255,255,255,0.14) !important;
+      color: #fff !important;
+    }
+
     .dropdown-menu {
       opacity: 0; visibility: hidden; transform: translateY(6px);
       transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1),
                   visibility 0.2s cubic-bezier(0.16,1,0.3,1),
                   transform 0.2s cubic-bezier(0.16,1,0.3,1);
-      /* Use fixed positioning so the dropdown escapes the hero's stacking context */
-      position: fixed !important;
-      z-index: 9999;
+      z-index: 200;
     }
-    .dropdown-menu.open {
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
       opacity: 1; visibility: visible; transform: translateY(0);
     }
 
@@ -1139,27 +1147,6 @@
     document.getElementById('b3').style.transform = '';
   }
 
-  // ── Dropdowns: JS hover to escape hero stacking context ──
-  document.querySelectorAll('.dropdown').forEach(function(dd) {
-    var menu = dd.querySelector('.dropdown-menu');
-    var btn  = dd.querySelector('button');
-    if (!menu || !btn) return;
-
-    function positionMenu() {
-      var r = btn.getBoundingClientRect();
-      menu.style.top  = (r.bottom + 8) + 'px';
-      menu.style.left = r.left + 'px';
-      menu.style.width = ''; // let CSS width (w-72/w-52) take over
-    }
-
-    function openMenu() { positionMenu(); menu.classList.add('open'); }
-    function closeMenu() { menu.classList.remove('open'); }
-
-    dd.addEventListener('mouseenter', openMenu);
-    dd.addEventListener('mouseleave', closeMenu);
-    // Reposition on scroll/resize
-    window.addEventListener('scroll', function() { if (menu.classList.contains('open')) positionMenu(); }, { passive: true });
-  });
 
   // ── Form submit ──
   function handleSubmit(e) {
