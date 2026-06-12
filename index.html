@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,1201 +7,559 @@
   <meta name="description" content="The first outsourcing provider built for the decentralized economy. Crypto-native customer support infrastructure for Web3, blockchain, fintech, and iGaming.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root {
-      --accent: #FF3A10;
-      --accent-light: rgba(255,58,16,0.08);
-      --accent-mid: rgba(255,58,16,0.15);
-      --text-primary: #0A0A0F;
-      --text-secondary: #4B5563;
-      --text-muted: #9CA3AF;
-      --bg-white: #FFFFFF;
-      --bg-off: #F8F8FA;
-      --bg-subtle: #F3F4F6;
-      --border: #E5E7EB;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.07), 0 2px 6px rgba(0,0,0,0.04);
-      --shadow-lg: 0 20px 50px rgba(0,0,0,0.1), 0 8px 20px rgba(0,0,0,0.06);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg-white);
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    h1,h2,h3,h4,h5 { font-family: 'Space Grotesk', sans-serif; }
-
-    /* ── NAV ── */
-    #navbar {
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s, background 0.3s;
-    }
-    #navbar.scrolled {
-      background: rgba(255,255,255,0.96) !important;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 1px 0 #E5E7EB, 0 4px 20px rgba(0,0,0,0.06);
-      padding-top: 8px !important;
-      padding-bottom: 8px !important;
-    }
-    #nav-logo-img { transition: height 0.3s ease; }
-    #navbar.scrolled #nav-logo-img { height: 52px !important; }
-    #navbar.hidden-nav { transform: translateY(-100%); }
-
-    /* Over the dark hero (not scrolled) the JS paints link text white,
-       so the hover pill must be translucent white — never gray-50,
-       which made white text invisible (white-on-white). */
-    #navbar:not(.scrolled) .hidden.lg\:flex > div > button:hover,
-    #navbar:not(.scrolled) .hidden.lg\:flex > a:not(.btn-primary):hover {
-      background: rgba(255,255,255,0.14) !important;
-      color: #fff !important;
-    }
-
-    .dropdown-menu {
-      opacity: 0; visibility: hidden; transform: translateY(6px);
-      transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1),
-                  visibility 0.2s cubic-bezier(0.16,1,0.3,1),
-                  transform 0.2s cubic-bezier(0.16,1,0.3,1);
-      z-index: 200;
-    }
-    .dropdown:hover .dropdown-menu,
-    .dropdown:focus-within .dropdown-menu {
-      opacity: 1; visibility: visible; transform: translateY(0);
-    }
-
-    /* ── HERO VIDEO BG ── */
-    .hero-bg {
-      position: relative;
-      overflow: hidden;
-      background: #0A0A0F;
-    }
-    .hero-video {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0.55;
-      z-index: 0;
-    }
-    /* Layered overlay: dark at edges + subtle brand tint */
-    .hero-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background:
-        radial-gradient(ellipse at 60% 50%, rgba(255,58,16,0.08) 0%, transparent 60%),
-        linear-gradient(to bottom, rgba(5,5,8,0.55) 0%, rgba(5,5,8,0.3) 40%, rgba(5,5,8,0.7) 100%);
-    }
-    /* Dot grid on top of video */
-    .hero-pattern {
-      position: absolute; inset: 0; z-index: 2;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 36px 36px;
-      pointer-events: none;
-    }
-
-    /* ── ANIMATIONS — handled by Motion library ── */
-    /* Initial states set by Motion's animate(); no CSS fallback needed */
-
-    /* ── BADGE ── */
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent-light); border: 1px solid rgba(255,58,16,0.2);
-      color: #CC2D0A; font-family:'Space Grotesk',sans-serif;
-      font-size: 12px; font-weight: 700; letter-spacing: .07em;
-      text-transform: uppercase; padding: 5px 13px; border-radius: 100px;
-    }
-    .badge-dot {
-      width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.6)} }
-
-    /* ── BUTTONS ── */
-    .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      background: var(--accent); color: #fff;
-      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px;
-      padding: 13px 26px; border-radius: 10px;
-      border: none; cursor: pointer;
-      transition: background .2s, transform .2s, box-shadow .2s;
-      box-shadow: 0 4px 14px rgba(255,58,16,0.3);
-      text-decoration: none;
-    }
-    .btn-primary:hover { background: #E5330E; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,58,16,0.38); }
-
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: white; color: var(--text-primary);
-      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px;
-      padding: 13px 26px; border-radius: 10px;
-      border: 1px solid var(--border); cursor: pointer;
-      transition: border-color .2s, transform .2s, box-shadow .2s;
-      text-decoration: none;
-    }
-    .btn-secondary:hover { border-color: #aaa; transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
-    /* Ghost button for use on dark/video backgrounds */
-    .btn-ghost-white {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.1); color: #fff;
-      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px;
-      padding: 13px 26px; border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.3); cursor: pointer;
-      backdrop-filter: blur(8px);
-      transition: background .2s, border-color .2s, transform .2s;
-      text-decoration: none;
-    }
-    .btn-ghost-white:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
-
-    /* ── SECTION TAG ── */
-    .section-tag {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 11px; font-weight: 700; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--accent);
-    }
-
-    /* ── CARDS ── */
-    .card {
-      background: white; border: 1px solid var(--border);
-      border-radius: 16px; transition: all 0.28s cubic-bezier(0.16,1,0.3,1);
-    }
-    .card:hover { border-color: rgba(255,58,16,0.25); box-shadow: 0 12px 40px rgba(255,58,16,0.08), 0 4px 12px rgba(0,0,0,0.05); transform: translateY(-4px); }
-
-    .industry-card {
-      background: white; cursor: pointer; border: 1px solid var(--border);
-      border-radius: 16px; cursor: pointer;
-      transition: all 0.28s cubic-bezier(0.16,1,0.3,1);
-    }
-    .industry-card:hover { border-color: var(--accent); box-shadow: 0 10px 36px rgba(255,58,16,0.09); transform: translateY(-3px); }
-    .industry-card:hover .ind-num { color: var(--accent); }
-    .ind-num { color: #D1D5DB; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color .25s; }
-
-    .blog-card {
-      background: white; border: 1px solid var(--border); border-radius: 16px;
-      overflow: hidden; cursor: pointer;
-      transition: all 0.28s cubic-bezier(0.16,1,0.3,1);
-    }
-    .blog-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(255,58,16,0.2); }
-    .blog-card:hover .blog-img img { transform: scale(1.05); }
-    .blog-img img { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
-
-    /* ── SOL ICON ── */
-    .sol-icon {
-      width: 46px; height: 46px; border-radius: 12px;
-      background: var(--accent-light); border: 1px solid rgba(255,58,16,0.18);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-
-    /* ── STAT ── */
-    .stat-num {
-      font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--accent);
-    }
-
-    /* ── CASE CARD ── */
-    .case-card {
-      background: white; border: 1px solid var(--border); border-radius: 20px;
-      overflow: hidden; transition: box-shadow .3s;
-    }
-    .case-card:hover { box-shadow: var(--shadow-lg); }
-
-    /* ── FORM ── */
-    .form-input {
-      background: var(--bg-off); border: 1px solid var(--border); color: var(--text-primary);
-      font-family: 'Inter', sans-serif; font-size: 14px;
-      width: 100%; padding: 12px 16px; border-radius: 10px; outline: none;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    .form-input::placeholder { color: var(--text-muted); }
-    .form-input:focus { border-color: var(--accent); background: white; box-shadow: 0 0 0 3px rgba(255,58,16,0.1); }
-
-    /* ── VIDEO section ── */
-    .video-section {
-      position: relative; overflow: hidden; background: #0A0A0F;
-    }
-    .video-section video {
-      width: 100%; height: 100%; object-fit: cover;
-      position: absolute; inset: 0; opacity: .35;
-    }
-    .video-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(10,10,15,.85) 0%, rgba(10,10,15,.7) 100%);
-    }
-
-    /* ── SCROLL indicator ── */
-    .scroll-ind { width: 22px; height: 38px; border: 2px solid rgba(0,0,0,.15); border-radius: 11px; display:flex; align-items:flex-start; justify-content:center; padding-top:5px; }
-    .scroll-dot { width: 3px; height: 7px; background: var(--accent); border-radius: 2px; animation: scroll-bounce 2s ease-in-out infinite; }
-    @keyframes scroll-bounce { 0%,100%{transform:translateY(0);opacity:1} 50%{transform:translateY(12px);opacity:.2} }
-
-    /* ── IMAGE FLOAT ── */
-    .float-card {
-      animation: float-y 5s ease-in-out infinite;
-    }
-    .float-card-2 { animation-delay: -2.5s; }
-    @keyframes float-y { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
-
-    /* ── TYPING CURSOR ── */
-    .cursor {
-      display: inline-block; width: 3px; height: 1em;
-      background: var(--accent); border-radius: 2px; margin-left: 2px;
-      animation: blink .9s step-end infinite; vertical-align: middle;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-    /* ── LINE ACCENT ── */
-    .accent-bar { width: 44px; height: 4px; background: var(--accent); border-radius: 2px; }
-
-    /* ── MOBILE MENU ── */
-    #mobile-menu { display: none; }
-    #mobile-menu.open { display: block; }
-
-    /* ── NUMBER PILL ── */
-    .num-pill {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 28px; height: 28px; border-radius: 8px;
-      background: var(--accent-light); color: var(--accent);
-      font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700; flex-shrink:0;
-    }
-
-    /* ── REDUCED MOTION ── */
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .reveal-left, .reveal-right { opacity:1; transform:none; transition:none; }
-      .float-card, .badge-dot, .scroll-dot, .orb-orange, .orb-blue { animation:none; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..800&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/toeshee.css">
 </head>
 <body>
 
-<!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-3" style="transition:background .35s,box-shadow .35s,padding .35s">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
-
-    <a href="#" class="flex items-center flex-shrink-0" id="nav-logo">
-      <img src="assets/images/Logo%20update.png" id="nav-logo-img" alt="Toeshee" style="height:90px;width:90px;object-fit:contain;transition:height 0.3s ease">
+<!-- ═══════════════ NAV ═══════════════ -->
+<header class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand" aria-label="Toeshee home">
+      <img src="assets/images/Logo%20update.png" alt="" width="38" height="38">
+      <span class="nav__wordmark">TOESHEE</span>
     </a>
 
-    <div class="hidden lg:flex items-center gap-0.5">
-
-      <div class="dropdown relative">
-        <button class="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">
+    <nav class="nav__links" aria-label="Primary">
+      <div class="dropdown">
+        <button class="nav__link" aria-haspopup="true">
           Solutions
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
         </button>
-        <div class="dropdown-menu absolute top-full left-0 mt-2 w-72 rounded-2xl border border-gray-100 bg-white shadow-xl p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)">
-          <a href="solution-crypto-support.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
-            <div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10] transition-colors" style="font-family:'Space Grotesk',sans-serif">Crypto Customer Support</div>
-            <div class="text-xs text-gray-400 mt-0.5">Critical layer of crypto security</div>
-          </a>
-          <a href="solution-technical-support.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
-            <div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10] transition-colors" style="font-family:'Space Grotesk',sans-serif">Technical Support & Incident Handling</div>
-            <div class="text-xs text-gray-400 mt-0.5">L1–L3 escalation models</div>
-          </a>
-          <a href="solution-trust-safety.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
-            <div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10] transition-colors" style="font-family:'Space Grotesk',sans-serif">Trust & Safety Operations</div>
-            <div class="text-xs text-gray-400 mt-0.5">Platform integrity at scale</div>
-          </a>
-          <a href="solution-risk-fraud.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
-            <div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10] transition-colors" style="font-family:'Space Grotesk',sans-serif">Risk Operations & Fraud Response</div>
-            <div class="text-xs text-gray-400 mt-0.5">Chain analysis signals</div>
-          </a>
-          <a href="solution-security-compliance.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group">
-            <div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10] transition-colors" style="font-family:'Space Grotesk',sans-serif">Security & Compliance Support</div>
-            <div class="text-xs text-gray-400 mt-0.5">KYC/AML, GDPR, MiCA, PCI-DSS</div>
-          </a>
+        <div class="dropdown__menu">
+          <a class="dropdown__item" href="solution-crypto-support.html"><strong>Crypto Customer Support</strong><span>Critical layer of crypto security</span></a>
+          <a class="dropdown__item" href="solution-technical-support.html"><strong>Technical Support &amp; Incident Handling</strong><span>L1–L3 escalation models</span></a>
+          <a class="dropdown__item" href="solution-trust-safety.html"><strong>Trust &amp; Safety Operations</strong><span>Platform integrity at scale</span></a>
+          <a class="dropdown__item" href="solution-risk-fraud.html"><strong>Risk Operations &amp; Fraud Response</strong><span>Chain analysis signals</span></a>
+          <a class="dropdown__item" href="solution-security-compliance.html"><strong>Security &amp; Compliance Support</strong><span>KYC/AML, GDPR, MiCA, PCI-DSS</span></a>
         </div>
       </div>
-
-      <div class="dropdown relative">
-        <button class="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">
+      <div class="dropdown">
+        <button class="nav__link" aria-haspopup="true">
           Industries
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
         </button>
-        <div class="dropdown-menu absolute top-full left-0 mt-2 w-52 rounded-2xl border border-gray-100 bg-white shadow-xl p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)">
-          <a href="industry-fintech.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Fintech</a>
-          <a href="industry-igaming.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">iGaming</a>
-          <a href="industry-exchanges.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Exchanges</a>
-          <a href="industry-defi.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">DeFi</a>
-          <a href="industry-crypto-payments.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Payment Processors</a>
+        <div class="dropdown__menu">
+          <a class="dropdown__item" href="industry-fintech.html"><strong>Fintech</strong></a>
+          <a class="dropdown__item" href="industry-igaming.html"><strong>iGaming</strong></a>
+          <a class="dropdown__item" href="industry-exchanges.html"><strong>Crypto Exchanges</strong></a>
+          <a class="dropdown__item" href="industry-defi.html"><strong>DeFi</strong></a>
+          <a class="dropdown__item" href="industry-crypto-payments.html"><strong>Crypto Payment Processors</strong></a>
         </div>
       </div>
+      <a class="nav__link" href="case-studies.html">Case Studies</a>
+      <a class="nav__link" href="insights.html">Insights</a>
+      <a class="nav__link" href="company.html">Company</a>
+      <a class="nav__link" href="careers.html">Careers</a>
+    </nav>
 
-      <a href="case-studies.html" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Case Studies</a>
-      <a href="insights.html"     class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Insights</a>
-      <a href="company.html"      class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Company</a>
-      <a href="careers.html"      class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Careers</a>
-    </div>
-
-    <div class="hidden lg:flex items-center gap-3">
-      <a href="tel:+18667157327" class="text-sm text-gray-500 hover:text-gray-800 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif">+1 (866) 715-7327</a>
-      <a href="#contact" class="btn-primary text-sm" style="padding:10px 20px;border-radius:8px">Request Evaluation</a>
-    </div>
-
-    <button id="burger" class="lg:hidden p-2 cursor-pointer" aria-label="Open menu">
-      <div class="flex flex-col gap-1.5">
-        <span id="b1" class="block w-6 h-0.5 bg-gray-800 transition-all origin-center"></span>
-        <span id="b2" class="block w-6 h-0.5 bg-gray-800 transition-all"></span>
-        <span id="b3" class="block w-6 h-0.5 bg-gray-800 transition-all origin-center"></span>
-      </div>
-    </button>
-
-  </div>
-
-  <div id="mobile-menu" class="lg:hidden border-t border-gray-100 mt-3 pt-3 pb-4 px-2">
-    <div class="flex flex-col gap-1">
-      <div class="text-xs text-gray-400 uppercase tracking-widest px-3 py-1 mt-1" style="font-family:'Space Grotesk',sans-serif">Solutions</div>
-      <a href="solution-crypto-support.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Crypto Customer Support Operations</a>
-      <a href="solution-technical-support.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Technical Support & Incident Handling</a>
-      <a href="solution-trust-safety.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Trust & Safety Operations</a>
-      <a href="solution-risk-fraud.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Risk Operations & Fraud Response</a>
-      <a href="solution-security-compliance.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Security & Compliance Support</a>
-      <div class="text-xs text-gray-400 uppercase tracking-widest px-3 py-1 mt-2" style="font-family:'Space Grotesk',sans-serif">Industries</div>
-      <a href="industry-fintech.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Fintech</a>
-      <a href="industry-igaming.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">iGaming</a>
-      <a href="industry-exchanges.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Crypto Exchanges</a>
-      <a href="industry-defi.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">DeFi</a>
-      <a href="industry-crypto-payments.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors cursor-pointer" onclick="closeMobile()">Crypto Payment Processors</a>
-      <div class="border-t border-gray-100 my-2"></div>
-      <a href="case-studies.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Case Studies</a>
-      <a href="insights.html"     class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Insights</a>
-      <a href="company.html"      class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Company</a>
-      <a href="careers.html"      class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer" onclick="closeMobile()">Careers</a>
-      <a href="#contact" class="btn-primary mt-3 text-center text-sm" onclick="closeMobile()" style="border-radius:10px;padding:12px">Request Evaluation</a>
+    <div class="nav__cta">
+      <a class="nav__phone" href="tel:+18667157327">+1 866 715 7327</a>
+      <a class="btn btn--primary btn--small" href="#contact">Request Evaluation</a>
+      <button class="nav__burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
-</nav>
 
-<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
-<section class="hero-bg min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6" id="hero">
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu__group">SOLUTIONS</div>
+    <a href="solution-crypto-support.html">Crypto Customer Support</a>
+    <a href="solution-technical-support.html">Technical Support &amp; Incident Handling</a>
+    <a href="solution-trust-safety.html">Trust &amp; Safety Operations</a>
+    <a href="solution-risk-fraud.html">Risk Operations &amp; Fraud Response</a>
+    <a href="solution-security-compliance.html">Security &amp; Compliance Support</a>
+    <div class="mobile-menu__group">INDUSTRIES</div>
+    <a href="industry-fintech.html">Fintech</a>
+    <a href="industry-igaming.html">iGaming</a>
+    <a href="industry-exchanges.html">Crypto Exchanges</a>
+    <a href="industry-defi.html">DeFi</a>
+    <a href="industry-crypto-payments.html">Crypto Payment Processors</a>
+    <div class="mobile-menu__group">COMPANY</div>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="insights.html">Insights</a>
+    <a href="company.html">Company</a>
+    <a href="careers.html">Careers</a>
+    <a class="btn btn--primary" href="#contact">Request Evaluation</a>
+  </div>
+</header>
 
-  <!-- Video background -->
-  <video class="hero-video" autoplay muted playsinline loop preload="auto"
-    poster="assets/images/video-poster.jpg">
-    <source src="assets/videos/hero.mp4" type="video/mp4">
-  </video>
+<main>
 
-  <!-- Overlays -->
-  <div class="hero-overlay"></div>
-  <div class="hero-pattern"></div>
-
-  <!-- Content -->
-  <div class="max-w-5xl mx-auto w-full relative z-10 text-center">
-
-    <div class="mb-6 reveal">
-      <span class="badge"><span class="badge-dot"></span>Crypto-Native Operations</span>
-    </div>
-
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.07] tracking-tight text-white mb-6 reveal d1">
-      We support complex <span style="color:var(--accent)">customer operations</span><br class="hidden sm:block"> across blockchain, DeFi, and iGaming.
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" aria-label="Introduction">
+  <div class="wrap">
+    <p class="mono hero__meta" data-reveal="0" data-hero>CRYPTO-NATIVE SUPPORT OPERATIONS — COLOMBIA · PANAMA · DOMINICAN REPUBLIC</p>
+    <h1 class="display" data-reveal="0.12" data-hero>
+      We support complex customer operations across blockchain, DeFi, and&nbsp;iGaming.
     </h1>
-
-    <p class="text-lg sm:text-xl text-white/70 leading-relaxed mb-9 max-w-2xl mx-auto reveal d2">
-      Our teams work within your workflows to resolve incidents faster, manage fraud and KYC exceptions, and maintain compliance at scale.
-    </p>
-
-    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 reveal d3">
-      <a href="#contact" class="btn-primary">Request a Technical Evaluation</a>
-      <a href="#about" class="btn-ghost-white">
-        See How We Operate
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-
-    <!-- Floating stat pills -->
-    <div class="flex flex-wrap justify-center gap-4 mb-12 reveal d4">
-      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3">
-        <div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">−54%</div>
-        <div class="text-left">
-          <div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Resolution Time</div>
-          <div class="text-xs text-white/50">BitPay deployment</div>
-        </div>
-      </div>
-      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3">
-        <div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">96%</div>
-        <div class="text-left">
-          <div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Service Level</div>
-          <div class="text-xs text-white/50">Post-deployment avg</div>
-        </div>
-      </div>
-      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3">
-        <div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">60%</div>
-        <div class="text-left">
-          <div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Crypto Adoption</div>
-          <div class="text-xs text-white/50">iGaming client, 24mo</div>
-        </div>
+    <div class="hero__foot">
+      <p class="lead" data-reveal="0.28" data-hero>
+        Our teams work within your workflows to resolve incidents faster, manage fraud and KYC exceptions, and maintain compliance at scale.
+      </p>
+      <div class="cluster" data-reveal="0.4" data-hero>
+        <a class="btn btn--primary" href="#contact">
+          Request a Technical Evaluation
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn--line" href="#about">See How We Operate</a>
       </div>
     </div>
-
-    <div class="flex justify-center reveal d5">
-      <div class="scroll-ind" style="border-color:rgba(255,255,255,.3)"><div class="scroll-dot"></div></div>
+  </div>
+  <div class="hero__line" data-reveal-line>
+    <div class="signal">
+      <span class="signal-node" style="left:18%"></span>
+      <span class="signal-node" style="left:52%"></span>
+      <span class="signal-node" style="left:83%"></span>
     </div>
-
+    <div class="wrap hero__line-meta">
+      <span class="mono">SIGNAL / LIVE</span>
+      <span class="mono">24·7·365 COVERAGE</span>
+      <span class="mono mono--accent">TOESHEE.COM</span>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ ABOUT / VALUE PROP ═══════════════════════════ -->
-<section class="py-28 px-4 sm:px-6" id="about">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-      <!-- Left: image -->
-      <div class="relative reveal-left">
-        <div class="rounded-3xl overflow-hidden aspect-[4/3]" style="box-shadow:0 30px 70px rgba(0,0,0,.1)">
-          <img src="assets/images/about-operations-team.jpg" alt="Operations team" class="w-full h-full object-cover">
-        </div>
-        <!-- Badge overlay -->
-        <div class="absolute -bottom-5 -right-5 bg-white rounded-2xl p-5 shadow-xl" style="box-shadow:0 20px 50px rgba(0,0,0,.1)">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:var(--accent-light)">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.4 4.9 5.4.8-3.9 3.8.9 5.3L10 14.3l-4.8 2.5.9-5.3L2.2 7.7l5.4-.8L10 2z" fill="#FF3A10"/></svg>
-            </div>
-            <div>
-              <div class="text-sm font-bold text-gray-900" style="font-family:'Space Grotesk',sans-serif">#1 Quality Ranking</div>
-              <div class="text-xs text-gray-400">iGaming operations</div>
-            </div>
-          </div>
-        </div>
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:center">
+      <div class="photo" style="aspect-ratio:4/3" data-reveal="0">
+        <img src="assets/images/about-operations-team.jpg" alt="Toeshee operations specialists working live support queues" loading="lazy">
+        <span class="photo__tag">OPERATIONS FLOOR — RANKED #1 FOR QUALITY, IGAMING</span>
       </div>
-
-      <!-- Right: text -->
-      <div>
-        <div class="section-tag mb-4 reveal">About Toeshee</div>
-        <div class="accent-bar mb-6 reveal d1"></div>
-        <h2 class="text-3xl sm:text-4xl lg:text-[2.8rem] font-bold text-gray-900 leading-tight mb-6 reveal d1">
-          The first outsourcing provider built for the <span style="color:var(--accent)">decentralized economy.</span>
-        </h2>
-        <p class="text-gray-500 text-lg leading-relaxed mb-6 reveal d2">
+      <div class="flow">
+        <h2 class="h-section" data-reveal="0">The first outsourcing provider built for the decentralized economy.</h2>
+        <p class="muted" data-reveal="0.08">
           Toeshee delivers crypto-native customer support infrastructure for Web3, blockchain, fintech, gaming, and emerging digital industries. We work with organizations where scale, regulation, and operational exposure converge.
         </p>
-        <p class="text-gray-500 leading-relaxed mb-8 reveal d3">
+        <p class="muted" data-reveal="0.14">
           Where mistakes carry real financial, security, and reputational consequences — Toeshee is the operational partner that has already been there.
         </p>
-
-        <div class="grid grid-cols-2 gap-4 mb-8 reveal d3">
-          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-            <div class="text-3xl font-bold stat-num mb-1">54%</div>
-            <div class="text-sm text-gray-500">Resolution time reduction</div>
-          </div>
-          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-            <div class="text-3xl font-bold stat-num mb-1">96%</div>
-            <div class="text-sm text-gray-500">Service level achieved</div>
-          </div>
+        <div data-reveal="0.2">
+          <a class="link-arrow" href="company.html">
+            About the company
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
-
-        <a href="#solutions" class="btn-primary reveal d4">See How We Operate</a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ VIDEO SECTION ═══════════════════════════ -->
-<section class="video-section" style="height:520px">
-  <video autoplay muted playsinline loop poster="assets/images/video-poster.jpg">
-    <source src="https://toeshee.imaginamos.com/wp-content/uploads/2026/02/toe-3.mp4" type="video/mp4">
-  </video>
-  <div class="video-overlay"></div>
-  <div class="relative z-10 h-full flex items-center justify-center px-4">
-    <div class="max-w-3xl text-center">
-      <p class="text-sm text-orange-400 font-bold uppercase tracking-widest mb-5" style="font-family:'Space Grotesk',sans-serif">Our Mission</p>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6 reveal" style="font-family:'Space Grotesk',sans-serif">
-        "The first outsourcing provider built for the decentralized economy."
-      </h2>
-      <p class="text-lg text-gray-300 leading-relaxed mb-8 reveal d1" style="max-width:600px;margin-left:auto;margin-right:auto">
-        We deliver crypto-native customer support infrastructure for Web3, blockchain, fintech, gaming, and emerging digital industries.
-      </p>
-      <a href="#contact" class="btn-primary reveal d2">Get Started Today</a>
+<!-- ═══════════════ PROOF ═══════════════ -->
+<section class="section section--dim" aria-label="Measured results">
+  <div class="wrap">
+    <h2 class="h-block" style="max-width:24em" data-reveal="0">Measured on live deployments, not in proposals.</h2>
+    <div class="grid-3" style="margin-top:clamp(36px,6vw,64px)">
+      <div class="stat" data-reveal="0">
+        <div class="figure figure--accent"><span data-count="54" data-prefix="−" data-suffix="%">−54%</span></div>
+        <span class="mono">RESOLUTION TIME — BITPAY DEPLOYMENT, 12H → 5.5H AVG</span>
+      </div>
+      <div class="stat" data-reveal="0.08">
+        <div class="figure"><span data-count="96" data-suffix="%">96%</span></div>
+        <span class="mono">SERVICE LEVEL — POST-DEPLOYMENT AVERAGE, UP FROM 80%</span>
+      </div>
+      <div class="stat" data-reveal="0.16">
+        <div class="figure"><span data-count="60" data-prefix="6%→" data-suffix="%">6%→60%</span></div>
+        <span class="mono">CRYPTO-PAYMENT ADOPTION — IGAMING CLIENT, 24 MONTHS</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ SOLUTIONS ═══════════════════════════ -->
-<section class="py-28 px-4 sm:px-6 bg-gray-50" id="solutions">
-  <div class="max-w-7xl mx-auto">
-
-    <div class="max-w-3xl mb-16">
-      <div class="section-tag mb-4 reveal">Solutions</div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-5 reveal d1">
-        Operational Solutions Built for Regulated Digital Platforms
-      </h2>
-      <p class="text-gray-500 text-lg leading-relaxed reveal d2">
+<!-- ═══════════════ SOLUTIONS INDEX ═══════════════ -->
+<section class="section" id="solutions">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:end; margin-bottom:clamp(34px,5vw,56px)">
+      <h2 class="h-section" data-reveal="0">Operational solutions built for regulated digital platforms.</h2>
+      <p class="muted" data-reveal="0.1">
         Purpose-built operational solutions for Web3, DeFi, Fintech, and iGaming platforms — designed to resolve incidents, support fraud operations, and manage compliance-critical workflows.
       </p>
     </div>
 
-    <!-- 3 top -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
-
-      <div class="card p-7 flex flex-col gap-4 reveal d1">
-        <div class="sol-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#FF3A10" stroke-width="1.5"/><path d="M8 11l2 2 4-4" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div>
-          <h3 class="text-base font-semibold text-gray-900 mb-2" style="font-family:'Space Grotesk',sans-serif">Crypto Customer Support Operations</h3>
-          <p class="text-sm text-gray-500 leading-relaxed">Support operations are a critical yet overlooked layer of crypto security, shaping user protection and trust.</p>
-        </div>
-        <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-semibold cursor-pointer hover:gap-3 transition-all mt-auto" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">
-          Let's get started
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <div class="card p-7 flex flex-col gap-4 reveal d2">
-        <div class="sol-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3v4M11 15v4M3 11h4M15 11h4" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="11" r="3" stroke="#FF3A10" stroke-width="1.5"/></svg>
-        </div>
-        <div>
-          <h3 class="text-base font-semibold text-gray-900 mb-2" style="font-family:'Space Grotesk',sans-serif">Technical Support &amp; Incident Handling</h3>
-          <p class="text-sm text-gray-500 leading-relaxed">Operational support for fraud detection, investigation, and response. Supporting Risk teams to identify patterns and reduce exposure across on-chain and off-chain activity.</p>
-        </div>
-        <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-semibold cursor-pointer hover:gap-3 transition-all mt-auto" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">
-          Let's get started
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <div class="card p-7 flex flex-col gap-4 reveal d3">
-        <div class="sol-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 4L4 7v5c0 3.3 3 6.3 7 7 4-.7 7-3.7 7-7V7l-7-3z" stroke="#FF3A10" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        </div>
-        <div>
-          <h3 class="text-base font-semibold text-gray-900 mb-2" style="font-family:'Space Grotesk',sans-serif">Trust &amp; Safety Operations</h3>
-          <p class="text-sm text-gray-500 leading-relaxed">Structured triage and escalation through L1–L3 support models aligned with internal engineering teams for platform errors, transaction failures, and smart contract issues.</p>
-        </div>
-        <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-semibold cursor-pointer hover:gap-3 transition-all mt-auto" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">
-          Let's get started
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-    </div>
-
-    <!-- 2 bottom -->
-    <div class="grid sm:grid-cols-2 gap-5">
-
-      <div class="card p-7 flex flex-col gap-4 reveal d1">
-        <div class="sol-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 17l4-4 3 3 4-5 4 6" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 5h16" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg>
-        </div>
-        <div>
-          <h3 class="text-base font-semibold text-gray-900 mb-2" style="font-family:'Space Grotesk',sans-serif">Risk Operations &amp; Fraud Response</h3>
-          <p class="text-sm text-gray-500 leading-relaxed">Context-driven threat identification through monitoring, pattern detection, and chain analysis signals. Enables structured response across on-chain and off-chain environments.</p>
-        </div>
-        <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-semibold cursor-pointer hover:gap-3 transition-all mt-auto" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">
-          Let's get started
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <div class="card p-7 flex flex-col gap-4 reveal d2">
-        <div class="sol-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="7" width="16" height="12" rx="2" stroke="#FF3A10" stroke-width="1.5"/><path d="M7 7V5a4 4 0 018 0v2" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <h3 class="text-base font-semibold text-gray-900 mb-2" style="font-family:'Space Grotesk',sans-serif">Security &amp; Compliance Support</h3>
-          <p class="text-sm text-gray-500 leading-relaxed">Operational support aligned with KYC/AML, GDPR, MiCA, and PCI-DSS frameworks. Enables compliance-aware operations through integrated governance and audit readiness.</p>
-        </div>
-        <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-semibold cursor-pointer hover:gap-3 transition-all mt-auto" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">
-          Let's get started
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════ INDUSTRIES ═══════════════════════════ -->
-<section class="py-28 px-4 sm:px-6" id="industries">
-  <div class="max-w-7xl mx-auto">
-
-    <div class="max-w-2xl mb-16">
-      <div class="section-tag mb-4 reveal">Industries</div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight reveal d1">
-        Built for the Industries That Cannot Afford to Fail
-      </h2>
-    </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-      <div class="industry-card p-7 reveal d1">
-        <div class="mb-5">
-          <img src="assets/images/industry-fintech.jpg" alt="Fintech" class="w-full h-36 object-cover rounded-xl mb-5">
-          <div class="ind-num mb-3">01 — Fintech</div>
-          <h3 class="text-base font-semibold text-gray-900 mb-3" style="font-family:'Space Grotesk',sans-serif">Fintech Support Operations</h3>
-          <p class="text-sm text-gray-500 leading-relaxed">Fintech operations must navigate PCI-DSS, GDPR, KYC/AML, and jurisdictional regimes. Support must be ready for continuous risk and external-auditor evaluation.</p>
-        </div>
-        <a href="#contact" class="text-xs font-bold uppercase tracking-wider cursor-pointer hover:opacity-70 transition-opacity" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Read more →</a>
-      </div>
-
-      <div class="industry-card p-7 reveal d2">
-        <div class="mb-5">
-          <img src="assets/images/industry-igaming.jpg" alt="iGaming" class="w-full h-36 object-cover rounded-xl mb-5">
-          <div class="ind-num mb-3">02 — iGaming</div>
-          <h3 class="text-base font-semibold text-gray-900 mb-3" style="font-family:'Space Grotesk',sans-serif">iGaming Support Operations</h3>
-          <p class="text-sm text-gray-500 leading-relaxed">In iGaming, peak volume leaves no room for error. Support is a critical layer of the product experience, directly shaping player retention and trust.</p>
-        </div>
-        <a href="#contact" class="text-xs font-bold uppercase tracking-wider cursor-pointer hover:opacity-70 transition-opacity" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Read more →</a>
-      </div>
-
-      <div class="industry-card p-7 reveal d3">
-        <div class="mb-5">
-          <img src="assets/images/industry-exchange.jpg" alt="Crypto Exchanges" class="w-full h-36 object-cover rounded-xl mb-5">
-          <div class="ind-num mb-3">03 — Exchanges</div>
-          <h3 class="text-base font-semibold text-gray-900 mb-3" style="font-family:'Space Grotesk',sans-serif">Crypto Exchange Operations</h3>
-          <p class="text-sm text-gray-500 leading-relaxed">For exchanges, customer support is tied directly to client funds, custody, and trust. The operation requires proven and auditable processes.</p>
-        </div>
-        <a href="#contact" class="text-xs font-bold uppercase tracking-wider cursor-pointer hover:opacity-70 transition-opacity" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Read more →</a>
-      </div>
-
-      <div class="industry-card p-7 reveal d1">
-        <div class="mb-5">
-          <img src="assets/images/industry-defi.jpg" alt="DeFi" class="w-full h-36 object-cover rounded-xl mb-5">
-          <div class="ind-num mb-3">04 — DeFi</div>
-          <h3 class="text-base font-semibold text-gray-900 mb-3" style="font-family:'Space Grotesk',sans-serif">DeFi Support Operations</h3>
-          <p class="text-sm text-gray-500 leading-relaxed">DeFi operations require early detection, fast containment, and clear escalation paths before minor user issues become critical operational incidents.</p>
-        </div>
-        <a href="#contact" class="text-xs font-bold uppercase tracking-wider cursor-pointer hover:opacity-70 transition-opacity" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Read more →</a>
-      </div>
-
-      <div class="industry-card p-7 sm:col-span-2 reveal d2" style="display:flex;flex-direction:column">
-        <div class="grid sm:grid-cols-2 gap-6 flex-1">
-          <img src="assets/images/industry-payments.jpg" alt="Crypto Payments" class="w-full h-full object-cover rounded-xl" style="max-height:200px">
-          <div class="flex flex-col justify-between">
-            <div>
-              <div class="ind-num mb-3">05 — Payments</div>
-              <h3 class="text-base font-semibold text-gray-900 mb-3" style="font-family:'Space Grotesk',sans-serif">Crypto Payment Processors</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">Payment processors operate under constant risk-committee and audit evaluation. The support layer must protect operational stability without adding regulatory exposure.</p>
-            </div>
-            <a href="#contact" class="text-xs font-bold uppercase tracking-wider cursor-pointer hover:opacity-70 transition-opacity mt-5" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Read more →</a>
-          </div>
-        </div>
-      </div>
-
+    <div class="index-list">
+      <a class="index-row" href="solution-crypto-support.html" data-reveal="0">
+        <span class="idx">01</span>
+        <h3>Crypto Customer Support Operations</h3>
+        <p>Support operations are a critical yet overlooked layer of crypto security, shaping user protection and trust.</p>
+        <span class="go" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="index-row" href="solution-technical-support.html" data-reveal="0.05">
+        <span class="idx">02</span>
+        <h3>Technical Support &amp; Incident Handling</h3>
+        <p>Structured triage and escalation through L1–L3 support models aligned with internal engineering teams for platform errors, transaction failures, and smart contract issues.</p>
+        <span class="go" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="index-row" href="solution-trust-safety.html" data-reveal="0.1">
+        <span class="idx">03</span>
+        <h3>Trust &amp; Safety Operations</h3>
+        <p>Platform integrity at scale — moderation, account integrity, and abuse response aligned with your policy framework.</p>
+        <span class="go" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="index-row" href="solution-risk-fraud.html" data-reveal="0.15">
+        <span class="idx">04</span>
+        <h3>Risk Operations &amp; Fraud Response</h3>
+        <p>Context-driven threat identification through monitoring, pattern detection, and chain analysis signals. Enables structured response across on-chain and off-chain environments.</p>
+        <span class="go" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="index-row" href="solution-security-compliance.html" data-reveal="0.2">
+        <span class="idx">05</span>
+        <h3>Security &amp; Compliance Support</h3>
+        <p>Operational support aligned with KYC/AML, GDPR, MiCA, and PCI-DSS frameworks. Enables compliance-aware operations through integrated governance and audit readiness.</p>
+        <span class="go" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ CASE STUDIES ═══════════════════════════ -->
-<section class="py-28 px-4 sm:px-6 bg-gray-50" id="case-studies">
-  <div class="max-w-7xl mx-auto">
-
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
-      <div class="max-w-xl">
-        <div class="section-tag mb-4 reveal">Case Studies</div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight reveal d1">Operational Outcomes from Anchor Accounts</h2>
-        <p class="text-gray-500 mt-4 leading-relaxed reveal d2">Toeshee operates with verifiable discipline. These cases show outcomes anchor accounts have cleared for external reference.</p>
-      </div>
-      <a href="#insights" class="btn-secondary text-sm self-start sm:self-end reveal d2" style="padding:10px 20px">Explore Case Studies →</a>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-6">
-
-      <!-- BitPay -->
-      <div class="case-card reveal d1">
-        <div class="overflow-hidden" style="height:220px">
-          <img src="assets/images/case-bitpay.jpg" alt="BitPay" class="w-full h-full object-cover" style="transition:transform .5s">
-          <div style="background:linear-gradient(to bottom,transparent,rgba(0,0,0,.4));position:relative;margin-top:-220px;height:220px;display:flex;align-items:flex-end;padding:20px">
-            <span class="bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30" style="font-family:'Space Grotesk',sans-serif">BitPay Operational Impact</span>
-          </div>
-        </div>
-        <div class="p-8">
-          <div class="grid grid-cols-3 gap-4 mb-7">
-            <div class="text-center">
-              <div class="text-3xl font-bold stat-num counter" data-target="54" data-suffix="%">0%</div>
-              <div class="text-xs text-gray-400 mt-1">Resolution reduction</div>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl font-bold stat-num">1h</div>
-              <div class="text-xs text-gray-400 mt-1">First response (was 4h)</div>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl font-bold stat-num counter" data-target="96" data-suffix="%">0%</div>
-              <div class="text-xs text-gray-400 mt-1">Service level</div>
-            </div>
-          </div>
-          <div class="border-t border-gray-100 pt-6 space-y-2.5">
-            <div class="flex items-center gap-2 text-sm text-gray-600">
-              <div class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style="background:var(--accent-light)">
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              Moving from 12 hours to 5.5 hours average resolution
-            </div>
-            <div class="flex items-center gap-2 text-sm text-gray-600">
-              <div class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style="background:var(--accent-light)">
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              Service levels increased from 80% to 94–96%
-            </div>
-            <div class="flex items-center gap-2 text-sm text-gray-600">
-              <div class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style="background:var(--accent-light)">
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              Scope expanded into onboarding and verification support
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- iGaming -->
-      <div class="case-card reveal d2">
-        <div class="overflow-hidden" style="height:220px">
-          <img src="assets/images/case-igaming.jpg" alt="iGaming" class="w-full h-full object-cover">
-          <div style="background:linear-gradient(to bottom,transparent,rgba(0,0,0,.4));position:relative;margin-top:-220px;height:220px;display:flex;align-items:flex-end;padding:20px">
-            <span class="bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/30" style="font-family:'Space Grotesk',sans-serif">Confidential iGaming Client</span>
-          </div>
-        </div>
-        <div class="p-8">
-          <div class="grid grid-cols-3 gap-4 mb-7">
-            <div class="text-center col-span-2">
-              <div class="text-3xl font-bold stat-num">6%→<span class="counter" data-target="60" data-suffix="%">0%</span></div>
-              <div class="text-xs text-gray-400 mt-1">Crypto-payment adoption (24 months)</div>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl font-bold stat-num">#1</div>
-              <div class="text-xs text-gray-400 mt-1">Quality ranking</div>
-            </div>
-          </div>
-          <div class="border-t border-gray-100 pt-6 space-y-2.5">
-            <div class="flex items-center gap-2 text-sm text-gray-600">
-              <div class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style="background:var(--accent-light)">
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              Crypto-payment adoption grew from 6% to 60% over 24 months
-            </div>
-            <div class="flex items-center gap-2 text-sm text-gray-600">
-              <div class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style="background:var(--accent-light)">
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              Ranked #1 for quality and performance across all providers
-            </div>
-            <div class="flex items-center gap-2 text-sm text-gray-600">
-              <div class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style="background:var(--accent-light)">
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              Identity withheld by agreement — results independently verified
-            </div>
-          </div>
-        </div>
-      </div>
-
+<!-- ═══════════════ MISSION BAND ═══════════════ -->
+<section class="band section" aria-label="Mission">
+  <div class="wrap">
+    <p class="mono" style="margin-bottom:26px" data-reveal="0">OUR MISSION</p>
+    <h2 class="h-section" style="max-width:18em" data-reveal="0.08">
+      “The first outsourcing provider built for the decentralized economy.”
+    </h2>
+    <p class="band__sub" style="margin-top:24px" data-reveal="0.16">
+      We deliver crypto-native customer support infrastructure for Web3, blockchain, fintech, gaming, and emerging digital industries.
+    </p>
+    <div class="cluster" style="margin-top:36px" data-reveal="0.24">
+      <a class="btn btn--reverse" href="#contact">Get Started Today</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ INSIGHTS ═══════════════════════════ -->
-<section class="py-28 px-4 sm:px-6" id="insights">
-  <div class="max-w-7xl mx-auto">
+<!-- ═══════════════ INDUSTRIES ═══════════════ -->
+<section class="section" id="industries">
+  <div class="wrap">
+    <h2 class="h-section" style="max-width:16em; margin-bottom:clamp(34px,5vw,56px)" data-reveal="0">
+      Built for the industries that cannot afford to&nbsp;fail.
+    </h2>
 
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
-      <div class="max-w-xl">
-        <div class="section-tag mb-4 reveal">Insights</div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight reveal d1">Operational Insights for Web3 &amp; iGaming Teams</h2>
-        <p class="text-gray-500 mt-4 leading-relaxed reveal d2">Technical perspectives on customer operations, fraud, compliance, and risk management — based on real operational experience.</p>
-      </div>
-      <a href="#contact" class="btn-secondary text-sm self-start sm:self-end reveal d2" style="padding:10px 20px">View All Articles</a>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-5">
-
-      <div class="blog-card reveal d1">
-        <div class="blog-img overflow-hidden" style="height:200px">
-          <img src="assets/images/blog-exchanges.jpg" alt="Exchange article" class="w-full h-full object-cover">
+    <div class="ind-mosaic">
+      <a class="ind-tile ind-tile--wide" href="industry-fintech.html" data-reveal="0">
+        <div class="photo" style="aspect-ratio:21/9">
+          <img src="assets/images/industry-fintech.jpg" alt="Fintech operations environment" loading="lazy">
+          <span class="photo__tag">01 — FINTECH</span>
         </div>
-        <div class="p-6">
-          <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Crypto Exchanges</div>
-          <h3 class="text-sm font-semibold text-gray-900 leading-snug mb-4" style="font-family:'Space Grotesk',sans-serif">Four Patterns That Separate Exchanges Re-Architecting Customer Support From Those Closing Public Channels Permanently After the 2025 Cycle</h3>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-gray-400">5 min read</span>
-            <svg class="blog-arrow w-5 h-5 text-gray-400" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+        <h3 class="h-item">Fintech Support Operations</h3>
+        <p>Fintech operations must navigate PCI-DSS, GDPR, KYC/AML, and jurisdictional regimes. Support must be ready for continuous risk and external-auditor evaluation.</p>
+      </a>
+      <a class="ind-tile" href="industry-igaming.html" data-reveal="0.06">
+        <div class="photo" style="aspect-ratio:16/10">
+          <img src="assets/images/industry-igaming.jpg" alt="iGaming platform support" loading="lazy">
+          <span class="photo__tag">02 — IGAMING</span>
         </div>
-      </div>
-
-      <div class="blog-card reveal d2">
-        <div class="blog-img overflow-hidden" style="height:200px">
-          <img src="assets/images/blog-igaming.jpg" alt="iGaming article" class="w-full h-full object-cover">
+        <h3 class="h-item">iGaming Support Operations</h3>
+        <p>In iGaming, peak volume leaves no room for error. Support is a critical layer of the product experience, directly shaping player retention and trust.</p>
+      </a>
+      <a class="ind-tile" href="industry-exchanges.html" data-reveal="0">
+        <div class="photo" style="aspect-ratio:16/10">
+          <img src="assets/images/industry-exchange.jpg" alt="Crypto exchange trading environment" loading="lazy">
+          <span class="photo__tag">03 — EXCHANGES</span>
         </div>
-        <div class="p-6">
-          <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">iGaming</div>
-          <h3 class="text-sm font-semibold text-gray-900 leading-snug mb-4" style="font-family:'Space Grotesk',sans-serif">Four Patterns That Separate iGaming Operators Scaling Crypto Payment From Those Losing It at the Edges</h3>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-gray-400">4 min read</span>
-            <svg class="blog-arrow w-5 h-5 text-gray-400" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+        <h3 class="h-item">Crypto Exchange Operations</h3>
+        <p>For exchanges, customer support is tied directly to client funds, custody, and trust. The operation requires proven and auditable processes.</p>
+      </a>
+      <a class="ind-tile" href="industry-defi.html" data-reveal="0.06">
+        <div class="photo" style="aspect-ratio:16/10">
+          <img src="assets/images/industry-defi.jpg" alt="DeFi protocol interfaces" loading="lazy">
+          <span class="photo__tag">04 — DEFI</span>
         </div>
-      </div>
-
-      <div class="blog-card reveal d3">
-        <div class="blog-img overflow-hidden" style="height:200px">
-          <img src="assets/images/blog-wallet.jpg" alt="Wallet support" class="w-full h-full object-cover">
+        <h3 class="h-item">DeFi Support Operations</h3>
+        <p>DeFi operations require early detection, fast containment, and clear escalation paths before minor user issues become critical operational incidents.</p>
+      </a>
+      <a class="ind-tile" href="industry-crypto-payments.html" data-reveal="0.12">
+        <div class="photo" style="aspect-ratio:16/10">
+          <img src="assets/images/industry-payments.jpg" alt="Crypto payment processing" loading="lazy">
+          <span class="photo__tag">05 — PAYMENTS</span>
         </div>
-        <div class="p-6">
-          <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Web3</div>
-          <h3 class="text-sm font-semibold text-gray-900 leading-snug mb-4" style="font-family:'Space Grotesk',sans-serif">Wallet Support Operations: Why 'My Crypto Disappeared' Is Your Most Expensive Ticket</h3>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-gray-400">6 min read</span>
-            <svg class="blog-arrow w-5 h-5 text-gray-400" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 2 more articles -->
-    <div class="grid md:grid-cols-2 gap-5 mt-5">
-      <div class="blog-card flex overflow-hidden reveal d1">
-        <img src="assets/images/blog-security.jpg" alt="Security" class="w-32 object-cover flex-shrink-0" style="transition:transform .5s">
-        <div class="p-5 flex flex-col justify-center">
-          <div class="text-xs font-bold uppercase tracking-wider mb-2" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Security</div>
-          <h3 class="text-sm font-semibold text-gray-900 leading-snug" style="font-family:'Space Grotesk',sans-serif">Four Questions Boards Now Ask Security Leaders</h3>
-        </div>
-      </div>
-      <div class="blog-card flex overflow-hidden reveal d2">
-        <img src="assets/images/blog-crypto.jpg" alt="Crypto" class="w-32 object-cover flex-shrink-0" style="transition:transform .5s">
-        <div class="p-5 flex flex-col justify-center">
-          <div class="text-xs font-bold uppercase tracking-wider mb-2" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">Crypto</div>
-          <h3 class="text-sm font-semibold text-gray-900 leading-snug" style="font-family:'Space Grotesk',sans-serif">Speaking the Language of Crypto: Why Traditional Support Teams Miss the Point</h3>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
-<!-- CAREERS -->
-<section id="careers" class="py-24" style="background:var(--bg-off)">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <div class="section-tag mb-3">We're Hiring</div>
-      <h2 class="text-4xl lg:text-5xl font-bold mb-5" style="font-family:'Space Grotesk',sans-serif">Build your career in the<br><span style="color:var(--accent)">digital frontier</span></h2>
-      <p class="text-gray-500 max-w-2xl mx-auto text-lg">Join a team at the intersection of Web3, DeFi, iGaming, and Fintech. We're looking for sharp, motivated people who want to grow with us and make an impact on the world's most innovative digital platforms.</p>
-    </div>
-    <!-- Stats row -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-      <div class="card p-8 text-center">
-        <div class="text-4xl font-bold mb-1" style="font-family:'Space Grotesk',sans-serif;color:var(--accent)">100+</div>
-        <div class="text-sm text-gray-500" style="font-family:'Space Grotesk',sans-serif">Team Members</div>
-      </div>
-      <div class="card p-8 text-center">
-        <div class="text-4xl font-bold mb-1" style="font-family:'Space Grotesk',sans-serif;color:var(--accent)">3</div>
-        <div class="text-sm text-gray-500" style="font-family:'Space Grotesk',sans-serif">Countries</div>
-      </div>
-      <div class="card p-8 text-center">
-        <div class="text-4xl font-bold mb-1" style="font-family:'Space Grotesk',sans-serif;color:var(--accent)">6+</div>
-        <div class="text-sm text-gray-500" style="font-family:'Space Grotesk',sans-serif">Open Roles</div>
-      </div>
-      <div class="card p-8 text-center">
-        <div class="text-4xl font-bold mb-1" style="font-family:'Space Grotesk',sans-serif;color:var(--accent)">95%</div>
-        <div class="text-sm text-gray-500" style="font-family:'Space Grotesk',sans-serif">Retention Rate</div>
-      </div>
-    </div>
-    <!-- CTA buttons -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#contact" class="btn-primary">See Open Positions</a>
-      <a href="#about" class="btn-secondary">Our Culture</a>
+        <h3 class="h-item">Crypto Payment Processors</h3>
+        <p>Payment processors operate under constant risk-committee and audit evaluation. The support layer must protect operational stability without adding regulatory exposure.</p>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="py-28 px-4 sm:px-6" id="contact" style="background:linear-gradient(135deg,#FFF5F3 0%,#FFFFFF 50%,#F0F4FF 100%)">
-  <div class="max-w-7xl mx-auto">
-
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
-
-      <!-- Left -->
-      <div>
-        <div class="section-tag mb-4 reveal">Contact</div>
-        <div class="accent-bar mb-6 reveal d1"></div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-5 reveal d1">Ready to Build Operational Discipline?</h2>
-        <p class="text-gray-500 text-lg leading-relaxed mb-10 reveal d2">We're here to answer your questions about crypto support operations.</p>
-
-        <div class="space-y-5 mb-10 reveal d3">
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--accent-light);border:1px solid rgba(255,58,16,.2)">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="#FF3A10" stroke-width="1.5"/><path d="M2 6l8 5 8-5" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </div>
-            <div>
-              <div class="text-xs text-gray-400 uppercase tracking-wider mb-0.5" style="font-family:'Space Grotesk',sans-serif;font-weight:600">Email</div>
-              <a href="mailto:sales@toeshee.com" class="text-gray-900 font-medium hover:text-[#FF3A10] transition-colors cursor-pointer">sales@toeshee.com</a>
-            </div>
-          </div>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--accent-light);border:1px solid rgba(255,58,16,.2)">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 3h3l1.5 3.5-2 1C7.4 9.7 10.3 12.6 12.5 13.5l1-2L17 13v3a1 1 0 01-1 1A13 13 0 013 4a1 1 0 011-1z" stroke="#FF3A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <div class="text-xs text-gray-400 uppercase tracking-wider mb-0.5" style="font-family:'Space Grotesk',sans-serif;font-weight:600">Phone</div>
-              <a href="tel:+18667157327" class="text-gray-900 font-medium hover:text-[#FF3A10] transition-colors cursor-pointer">+1 (866) 715-7327</a>
-            </div>
-          </div>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--accent-light);border:1px solid rgba(255,58,16,.2)">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7.2 2 5 4.2 5 7c0 4.5 5 11 5 11s5-6.5 5-11c0-2.8-2.2-5-5-5z" stroke="#FF3A10" stroke-width="1.5"/><circle cx="10" cy="7" r="2" stroke="#FF3A10" stroke-width="1.5"/></svg>
-            </div>
-            <div>
-              <div class="text-xs text-gray-400 uppercase tracking-wider mb-0.5" style="font-family:'Space Grotesk',sans-serif;font-weight:600">Locations</div>
-              <div class="text-gray-900 font-medium">Colombia · Panama · Dominican Republic</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contact image -->
-        <div class="rounded-2xl overflow-hidden reveal d4" style="height:200px">
-          <img src="assets/images/contact-team.jpg" alt="Team" class="w-full h-full object-cover">
-        </div>
+<!-- ═══════════════ CASE STUDIES ═══════════════ -->
+<section class="section section--dim" id="case-studies">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:end; margin-bottom:clamp(34px,5vw,56px)">
+      <div class="flow">
+        <h2 class="h-section" data-reveal="0">Operational outcomes from anchor accounts.</h2>
+        <p class="muted" data-reveal="0.08">Toeshee operates with verifiable discipline. These cases show outcomes anchor accounts have cleared for external reference.</p>
       </div>
+      <div style="justify-self:start" data-reveal="0.12">
+        <a class="btn btn--line" href="case-studies.html">Explore Case Studies</a>
+      </div>
+    </div>
 
-      <!-- Right: form -->
-      <div class="bg-white rounded-3xl p-8 shadow-xl reveal d2" style="box-shadow:0 30px 80px rgba(0,0,0,.08)">
-        <h3 class="text-xl font-bold text-gray-900 mb-6" style="font-family:'Space Grotesk',sans-serif">Send us a message</h3>
-        <form onsubmit="handleSubmit(event)" class="space-y-5">
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label for="name" class="block text-sm font-medium text-gray-600 mb-1.5">Full Name</label>
-              <input id="name" type="text" placeholder="Jane Smith" class="form-input" required>
-            </div>
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-600 mb-1.5">Work Email</label>
-              <input id="email" type="email" placeholder="jane@company.com" class="form-input" required>
-            </div>
+    <div class="grid-2">
+      <article class="case" data-reveal="0">
+        <div class="photo" style="aspect-ratio:16/9">
+          <img src="assets/images/case-bitpay.jpg" alt="BitPay support operations" loading="lazy">
+          <span class="photo__tag">BITPAY — OPERATIONAL IMPACT</span>
+        </div>
+        <div class="case__figures">
+          <div>
+            <div class="figure figure--accent" style="font-size:clamp(1.9rem,3vw,2.6rem)"><span data-count="54" data-prefix="−" data-suffix="%">−54%</span></div>
+            <span class="mono">RESOLUTION TIME</span>
           </div>
           <div>
-            <label for="company" class="block text-sm font-medium text-gray-600 mb-1.5">Company</label>
-            <input id="company" type="text" placeholder="Your company name" class="form-input">
+            <div class="figure" style="font-size:clamp(1.9rem,3vw,2.6rem)">1h</div>
+            <span class="mono">FIRST RESPONSE — WAS 4H</span>
           </div>
           <div>
-            <label for="message" class="block text-sm font-medium text-gray-600 mb-1.5">Message</label>
-            <textarea id="message" rows="4" placeholder="Tell us about your operational needs..." class="form-input resize-none"></textarea>
+            <div class="figure" style="font-size:clamp(1.9rem,3vw,2.6rem)"><span data-count="96" data-suffix="%">96%</span></div>
+            <span class="mono">SERVICE LEVEL</span>
           </div>
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="terms" class="mt-0.5 w-4 h-4 cursor-pointer rounded" style="accent-color:#FF3A10" required>
-            <label for="terms" class="text-sm text-gray-500 cursor-pointer">
-              I agree to the <a href="#" class="hover:underline" style="color:var(--accent)">terms and conditions</a>
-            </label>
-          </div>
-          <button type="submit" class="btn-primary w-full" style="justify-content:center">Send Message</button>
-          <div id="form-success" class="hidden text-center text-sm text-green-600 font-medium py-2">
-            Message sent! We'll be in touch within 24 hours.
-          </div>
-        </form>
-      </div>
+        </div>
+        <ul class="case__points">
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Moving from 12 hours to 5.5 hours average resolution</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Service levels increased from 80% to 94–96%</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Scope expanded into onboarding and verification support</li>
+        </ul>
+      </article>
 
+      <article class="case" data-reveal="0.08">
+        <div class="photo" style="aspect-ratio:16/9">
+          <img src="assets/images/case-igaming.jpg" alt="iGaming client operations" loading="lazy">
+          <span class="photo__tag">CONFIDENTIAL IGAMING CLIENT</span>
+        </div>
+        <div class="case__figures">
+          <div>
+            <div class="figure figure--accent" style="font-size:clamp(1.9rem,3vw,2.6rem)"><span data-count="60" data-prefix="6%→" data-suffix="%">6%→60%</span></div>
+            <span class="mono">CRYPTO-PAYMENT ADOPTION — 24 MONTHS</span>
+          </div>
+          <div>
+            <div class="figure" style="font-size:clamp(1.9rem,3vw,2.6rem)">#1</div>
+            <span class="mono">QUALITY RANKING</span>
+          </div>
+        </div>
+        <ul class="case__points">
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Crypto-payment adoption grew from 6% to 60% over 24 months</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Ranked #1 for quality and performance across all providers</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Identity withheld by agreement — results independently verified</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
-<footer class="bg-gray-900 pt-16 pb-8 px-4 sm:px-6">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/8">
+<!-- ═══════════════ INSIGHTS ═══════════════ -->
+<section class="section" id="insights">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:end; margin-bottom:clamp(34px,5vw,56px)">
+      <div class="flow">
+        <h2 class="h-section" data-reveal="0">Operational insights for Web3 &amp; iGaming teams.</h2>
+        <p class="muted" data-reveal="0.08">Technical perspectives on customer operations, fraud, compliance, and risk management — based on real operational experience.</p>
+      </div>
+      <div style="justify-self:start" data-reveal="0.12">
+        <a class="btn btn--line" href="insights.html">View All Articles</a>
+      </div>
+    </div>
 
-      <div class="lg:col-span-2">
-        <div class="flex items-center mb-5">
-          <img src="assets/images/Logo%20update.png" alt="Toeshee" style="height:64px;width:64px;object-fit:contain">
+    <div class="grid-3">
+      <a class="post" href="insights.html" data-reveal="0">
+        <div class="photo" style="aspect-ratio:16/10">
+          <img src="assets/images/blog-exchanges.jpg" alt="Exchange support operations article" loading="lazy">
         </div>
-        <p class="text-gray-400 text-sm leading-relaxed max-w-xs mb-5">The first outsourcing provider built for the decentralized economy. Crypto-native customer support infrastructure.</p>
-        <div class="flex gap-3">
-          <a href="https://www.instagram.com/toeshee.co/" target="_blank" rel="noopener" aria-label="Instagram"
-            class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FF3A10]/10 hover:border-[#FF3A10]/30 transition-all cursor-pointer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#9CA3AF" stroke="none"/></svg>
+        <div class="rule-row">
+          <span class="mono mono--accent">CRYPTO EXCHANGES</span>
+          <span class="mono">5 MIN</span>
+        </div>
+        <h3 class="h-item">Four Patterns That Separate Exchanges Re-Architecting Customer Support From Those Closing Public Channels Permanently After the 2025 Cycle</h3>
+      </a>
+      <a class="post" href="insights.html" data-reveal="0.06">
+        <div class="photo" style="aspect-ratio:16/10">
+          <img src="assets/images/blog-igaming.jpg" alt="iGaming payments article" loading="lazy">
+        </div>
+        <div class="rule-row">
+          <span class="mono mono--accent">IGAMING</span>
+          <span class="mono">4 MIN</span>
+        </div>
+        <h3 class="h-item">Four Patterns That Separate iGaming Operators Scaling Crypto Payment From Those Losing It at the Edges</h3>
+      </a>
+      <a class="post" href="insights.html" data-reveal="0.12">
+        <div class="photo" style="aspect-ratio:16/10">
+          <img src="assets/images/blog-wallet.jpg" alt="Wallet support article" loading="lazy">
+        </div>
+        <div class="rule-row">
+          <span class="mono mono--accent">WEB3</span>
+          <span class="mono">6 MIN</span>
+        </div>
+        <h3 class="h-item">Wallet Support Operations: Why ‘My Crypto Disappeared’ Is Your Most Expensive Ticket</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CAREERS STRIP ═══════════════ -->
+<section class="section section--dim" id="careers">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:center">
+      <div class="flow">
+        <h2 class="h-section" data-reveal="0">Build your career in the digital frontier.</h2>
+        <p class="muted" data-reveal="0.08">
+          Join a team at the intersection of Web3, DeFi, iGaming, and Fintech. We're looking for sharp, motivated people who want to grow with us and make an impact on the world's most innovative digital platforms.
+        </p>
+        <div class="cluster" data-reveal="0.14">
+          <a class="btn btn--ink" href="careers.html">See Open Positions</a>
+          <a class="btn btn--line" href="company.html">Our Culture</a>
+        </div>
+      </div>
+      <div class="grid-2" style="gap:clamp(20px,3vw,36px)">
+        <div class="stat" data-reveal="0">
+          <div class="figure" style="font-size:clamp(2rem,3.4vw,3rem)"><span data-count="100" data-suffix="+">100+</span></div>
+          <span class="mono">TEAM MEMBERS</span>
+        </div>
+        <div class="stat" data-reveal="0.05">
+          <div class="figure" style="font-size:clamp(2rem,3.4vw,3rem)">3</div>
+          <span class="mono">COUNTRIES</span>
+        </div>
+        <div class="stat" data-reveal="0.1">
+          <div class="figure" style="font-size:clamp(2rem,3.4vw,3rem)"><span data-count="6" data-suffix="+">6+</span></div>
+          <span class="mono">OPEN ROLES</span>
+        </div>
+        <div class="stat" data-reveal="0.15">
+          <div class="figure" style="font-size:clamp(2rem,3.4vw,3rem)"><span data-count="95" data-suffix="%">95%</span></div>
+          <span class="mono">RETENTION RATE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:start">
+      <div class="flow">
+        <h2 class="h-section" data-reveal="0">Ready to build operational discipline?</h2>
+        <p class="lead" data-reveal="0.08">We're here to answer your questions about crypto support operations.</p>
+
+        <div style="margin-top:clamp(28px,4vw,44px); display:grid; gap:18px" data-reveal="0.14">
+          <div class="rule-row">
+            <span class="mono">EMAIL</span>
+            <a href="mailto:sales@toeshee.com" style="font-weight:560; text-decoration:none">sales@toeshee.com</a>
+          </div>
+          <div class="rule-row">
+            <span class="mono">PHONE</span>
+            <a href="tel:+18667157327" style="font-weight:560; text-decoration:none">+1 (866) 715-7327</a>
+          </div>
+          <div class="rule-row">
+            <span class="mono">LOCATIONS</span>
+            <span style="font-weight:560">Colombia · Panama · Dominican Republic</span>
+          </div>
+        </div>
+
+        <div class="photo" style="aspect-ratio:16/8; margin-top:clamp(28px,4vw,44px)" data-reveal="0.2">
+          <img src="assets/images/contact-team.jpg" alt="Toeshee team members in conversation" loading="lazy">
+        </div>
+      </div>
+
+      <form class="spec" id="contact-form" novalidate data-reveal="0.1">
+        <h3 class="h-block" style="margin-bottom:26px">Send us a message</h3>
+        <div style="display:grid; gap:18px">
+          <div class="grid-2" style="gap:18px">
+            <div class="field">
+              <label for="cf-name">Full Name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required>
+              <span class="field__error">Please enter your name.</span>
+            </div>
+            <div class="field">
+              <label for="cf-email">Work Email</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="jane@company.com" required>
+              <span class="field__error">Please enter a valid work email.</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-company">Company</label>
+            <input id="cf-company" name="company" type="text" autocomplete="organization" placeholder="Your company name">
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your operational needs…"></textarea>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start">
+            <input type="checkbox" id="cf-terms" required style="margin-top:4px">
+            <label for="cf-terms" class="form-note">I agree to the <a href="terms.html" style="color:var(--accent-text)">terms and conditions</a></label>
+          </div>
+          <button type="submit" class="btn btn--primary" style="width:100%">Send Message</button>
+          <div class="form-success" role="status">Message sent — we'll be in touch within 24 hours.</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <a href="index.html" class="nav__brand" aria-label="Toeshee home">
+          <img src="assets/images/Logo%20update.png" alt="" width="38" height="38">
+          <span class="nav__wordmark">TOESHEE</span>
+        </a>
+        <p class="footer__about">The first outsourcing provider built for the decentralized economy. Crypto-native customer support infrastructure.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/toeshee.co/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
           </a>
-          <a href="https://www.linkedin.com/company/toesheecorp" target="_blank" rel="noopener" aria-label="LinkedIn"
-            class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FF3A10]/10 hover:border-[#FF3A10]/30 transition-all cursor-pointer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#9CA3AF"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://www.linkedin.com/company/toesheecorp" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
         </div>
       </div>
-
-      <div>
-        <div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-4" style="font-family:'Space Grotesk',sans-serif">Solutions</div>
-        <ul class="space-y-3">
-          <li><a href="#solutions" class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Crypto Customer Support</a></li>
-          <li><a href="#solutions" class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Technical Support</a></li>
-          <li><a href="#solutions" class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Trust & Safety</a></li>
-          <li><a href="#solutions" class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Risk & Fraud</a></li>
-          <li><a href="#solutions" class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Compliance</a></li>
+      <div class="footer__col">
+        <span class="mono">SOLUTIONS</span>
+        <ul>
+          <li><a href="solution-crypto-support.html">Crypto Customer Support</a></li>
+          <li><a href="solution-technical-support.html">Technical Support</a></li>
+          <li><a href="solution-trust-safety.html">Trust &amp; Safety</a></li>
+          <li><a href="solution-risk-fraud.html">Risk &amp; Fraud</a></li>
+          <li><a href="solution-security-compliance.html">Compliance</a></li>
         </ul>
       </div>
-
-      <div>
-        <div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-4" style="font-family:'Space Grotesk',sans-serif">Industries</div>
-        <ul class="space-y-3">
-          <li><a href="#industries" class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Fintech</a></li>
-          <li><a href="#industries" class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">iGaming</a></li>
-          <li><a href="#industries" class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Crypto Exchanges</a></li>
-          <li><a href="#industries" class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">DeFi</a></li>
-          <li><a href="#industries" class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Crypto Payments</a></li>
+      <div class="footer__col">
+        <span class="mono">INDUSTRIES</span>
+        <ul>
+          <li><a href="industry-fintech.html">Fintech</a></li>
+          <li><a href="industry-igaming.html">iGaming</a></li>
+          <li><a href="industry-exchanges.html">Crypto Exchanges</a></li>
+          <li><a href="industry-defi.html">DeFi</a></li>
+          <li><a href="industry-crypto-payments.html">Crypto Payments</a></li>
         </ul>
       </div>
-
-      <div>
-        <div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-4" style="font-family:'Space Grotesk',sans-serif">Company</div>
-        <ul class="space-y-3">
-          <li><a href="#about"        class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">About</a></li>
-          <li><a href="#case-studies" class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Case Studies</a></li>
-          <li><a href="#insights"     class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Insights</a></li>
-          <li><a href="#careers"      class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Careers</a></li>
-          <li><a href="#contact"      class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer">Contact</a></li>
+      <div class="footer__col">
+        <span class="mono">COMPANY</span>
+        <ul>
+          <li><a href="company.html">About</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </div>
-
     </div>
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-8">
-      <p class="text-sm text-gray-600">© 2026 TOESHEE. All rights reserved.</p>
-      <div class="flex gap-6">
-        <a href="terms.html" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Terms and conditions</a>
-        <a href="privacy.html" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Privacy policy</a>
-        <a href="cookie-policy.html" class="text-sm text-gray-600 hover:text-gray-400 transition-colors">Cookie Policy</a>
+    <div class="footer__base">
+      <span class="mono">© 2026 TOESHEE — ALL RIGHTS RESERVED</span>
+      <div class="footer__legal">
+        <a href="terms.html">Terms and conditions</a>
+        <a href="privacy.html">Privacy policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
-
-<!-- Non-animated utilities (nav, mobile menu, form) -->
-<script>
-  // ── Nav scroll behaviour (transparent over video → white on scroll) ──
-  const navbar = document.getElementById('navbar');
-  const navLogoImg = document.getElementById('nav-logo-img');
-  let lastY = 0;
-
-  function updateNav(y) {
-    const scrolled = y > 80;
-    navbar.classList.toggle('scrolled', scrolled);
-    navbar.classList.toggle('hidden-nav', y > lastY && y > 300);
-    // Logo filter: inverted (white) over video, normal when scrolled
-    ;
-    // Nav text links (exclude dropdown menu items — they live on white bg)
-    navbar.querySelectorAll('.hidden.lg\\:flex > div > button, .hidden.lg\\:flex > a:not(.btn-primary)').forEach(el => {
-      el.style.color = scrolled ? '' : 'rgba(255,255,255,0.85)';
-    });
-    lastY = y < 0 ? 0 : y;
-  }
-
-  window.addEventListener('scroll', () => updateNav(window.scrollY), { passive: true });
-  updateNav(0);
-
-  // ── Mobile menu ──
-  const burger = document.getElementById('burger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  let open = false;
-  burger.addEventListener('click', () => {
-    open = !open;
-    mobileMenu.classList.toggle('open', open);
-    document.getElementById('b1').style.transform = open ? 'rotate(45deg) translate(5px, 5px)' : '';
-    document.getElementById('b2').style.opacity  = open ? '0' : '1';
-    document.getElementById('b3').style.transform = open ? 'rotate(-45deg) translate(5px, -5px)' : '';
-  });
-  function closeMobile() {
-    open = false; mobileMenu.classList.remove('open');
-    document.getElementById('b1').style.transform = '';
-    document.getElementById('b2').style.opacity = '1';
-    document.getElementById('b3').style.transform = '';
-  }
-
-
-  // ── Form submit ──
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button[type=submit]');
-    btn.textContent = 'Sending…'; btn.disabled = true;
-    setTimeout(() => {
-      document.getElementById('form-success').classList.remove('hidden');
-      btn.textContent = 'Sent!';
-      e.target.reset();
-    }, 1200);
-  }
-</script>
-
-<!-- Motion library animations (ESM module) -->
 <script src="assets/motion.js"></script>
-<script>
-  (function() {
-    var animate = window.Motion && window.Motion.animate;
-    var inView = window.Motion && window.Motion.inView;
-    var scroll = window.Motion && window.Motion.scroll;
-
-    function showAll() {
-      document.querySelectorAll('.anim-fade,.anim-fade-left,.anim-fade-right').forEach(function(el) {
-        el.style.opacity = '1'; el.style.transform = 'none';
-      });
-      var h = document.getElementById('hero-content');
-      if (h) { h.style.opacity = '1'; h.style.transform = 'none'; }
-    }
-
-    if (!animate || !inView) { showAll(); return; }
-
-    try {
-      var heroEl = document.getElementById('hero-content');
-      if (heroEl) animate(heroEl, { opacity: [0, 1], y: [28, 0] }, { duration: 0.85, easing: [0.16, 1, 0.3, 1] });
-
-      // Animate both class naming schemes (.anim-fade and .reveal)
-      document.querySelectorAll('.anim-fade, .reveal').forEach(function(el, i) {
-        inView(el, function() {
-          animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, delay: (i % 4) * 0.08, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-6% 0px' });
-      });
-      document.querySelectorAll('.anim-fade-left, .reveal-left').forEach(function(el) {
-        inView(el, function() {
-          animate(el, { opacity: [0, 1], x: [-40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-6% 0px' });
-      });
-      document.querySelectorAll('.anim-fade-right, .reveal-right').forEach(function(el) {
-        inView(el, function() {
-          animate(el, { opacity: [0, 1], x: [40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-6% 0px' });
-      });
-
-      if (scroll) {
-        scroll(function(info) {
-          var bar = document.getElementById('scroll-bar');
-          if (bar) bar.style.transform = 'scaleX(' + info.y.progress + ')';
-        });
-      }
-
-      var lastScrollY = 0;
-      var nav = document.getElementById('navbar');
-      window.addEventListener('scroll', function() {
-        var y = window.scrollY;
-        if (nav) {
-          if (y > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
-          if (y > lastScrollY + 10 && y > 300) nav.classList.add('hidden-nav');
-          else if (y < lastScrollY - 10) nav.classList.remove('hidden-nav');
-        }
-        lastScrollY = y;
-        var logo = document.getElementById('nav-logo-img');
-        if (logo) { logo.style.height = y > 60 ? '52px' : '90px'; logo.style.width = y > 60 ? '52px' : '90px'; }
-      }, { passive: true });
-
-      var burger = document.getElementById('burger');
-      if (burger) {
-        burger.addEventListener('click', function() {
-          var m = document.getElementById('mobile-menu');
-          var b1 = document.getElementById('b1'), b2 = document.getElementById('b2'), b3 = document.getElementById('b3');
-          if (m) m.classList.toggle('open');
-          if (m && m.classList.contains('open')) {
-            if (b1) b1.style.transform = 'rotate(45deg) translate(5px,5px)';
-            if (b2) b2.style.opacity = '0';
-            if (b3) b3.style.transform = 'rotate(-45deg) translate(5px,-5px)';
-          } else {
-            if (b1) b1.style.transform = '';
-            if (b2) b2.style.opacity = '';
-            if (b3) b3.style.transform = '';
-          }
-        });
-      }
-    } catch(e) {
-      console.warn('Motion error:', e);
-      showAll();
-    }
-  })();
-</script>
-
+<script src="assets/js/toeshee.js"></script>
 <script src="assets/js/cookie-banner.js"></script>
 <script src="assets/js/i18n.js"></script>
+
 </body>
 </html>
