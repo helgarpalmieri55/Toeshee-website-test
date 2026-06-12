@@ -31,12 +31,7 @@
       autoDisplay: false,
       layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
     }, 'google_translate_element');
-
-    // If a non-English language was previously selected, restore it
-    if (current === 'es') {
-      // Small delay to let GT finish initializing
-      setTimeout(function () { triggerGoogleTranslate('es'); }, 800);
-    }
+    // Google Translate reads the googtrans cookie automatically — no reload needed.
   };
 
   var gtScript = document.createElement('script');
