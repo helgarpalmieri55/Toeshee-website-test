@@ -7,17 +7,22 @@
   // ── Hide ALL Google Translate UI ──────────────────────────────────────────
   var styleEl = document.createElement('style');
   styleEl.textContent = [
-    '.goog-te-banner-frame { display:none !important; }',
+    '.goog-te-banner-frame  { display:none !important; }',
     '.goog-te-balloon-frame { display:none !important; }',
-    '.goog-te-menu-frame { display:none !important; }',
-    '#goog-gt-tt { display:none !important; }',
-    '.goog-tooltip { display:none !important; }',
-    '.goog-text-highlight { background:none !important; box-shadow:none !important; }',
-    '.goog-te-gadget { display:none !important; }',
+    '.goog-te-menu-frame    { display:none !important; }',
+    '.goog-te-ftab-float    { display:none !important; }',
+    '#goog-gt-tt            { display:none !important; }',
+    '.goog-tooltip          { display:none !important; }',
+    '.goog-te-gadget        { display:none !important; }',
     '.goog-te-gadget-simple { display:none !important; }',
-    '#google_translate_element { display:none !important; }',
+    '#google_translate_element   { display:none !important; }',
     '#google_translate_element * { display:none !important; }',
-    'body { top:0 !important; position:static !important; }',
+    /* The balloon iframe GT injects on hover over translated text */
+    'iframe[src*="translate.google"] { display:none !important; }',
+    /* GT wraps body content in .skiptranslate — undo its positioning */
+    'body > .skiptranslate { display:none !important; }',
+    'body { top:0 !important; }',
+    '.goog-text-highlight { background:none !important; box-shadow:none !important; }',
   ].join('\n');
   document.head.appendChild(styleEl);
 
@@ -103,29 +108,55 @@
     }
   }
 
-  // ── Periodically nuke any GT UI that slipped through ─────────────────────
+  var GT_SELECTORS = [
+    '.goog-te-banner-frame', '.goog-te-balloon-frame',
+    '.goog-te-menu-frame',   '#goog-gt-tt',
+    '.goog-te-gadget',       '.goog-te-gadget-simple',
+    '.goog-te-ftab-float',   '.goog-tooltip',
+    '#goog-gt-',             '.skiptranslate',
+  ];
+
   function suppressGtUI() {
-    var selectors = [
-      '.goog-te-banner-frame', '.goog-te-balloon-frame',
-      '.goog-te-menu-frame', '#goog-gt-tt',
-      '.goog-te-gadget', '.goog-te-gadget-simple',
-    ];
-    selectors.forEach(function (sel) {
+    GT_SELECTORS.forEach(function (sel) {
       document.querySelectorAll(sel).forEach(function (el) {
+        // Don't remove the container we need for init
+        if (el.id === 'google_translate_element') return;
         el.style.setProperty('display', 'none', 'important');
+        el.style.setProperty('visibility', 'hidden', 'important');
       });
     });
-    // Keep body at top
     document.body.style.setProperty('top', '0', 'important');
+  }
+
+  // Kill GT elements the instant they land in the DOM
+  function watchForGtElements() {
+    var observer = new MutationObserver(function (mutations) {
+      var dirty = false;
+      mutations.forEach(function (m) {
+        m.addedNodes.forEach(function (node) {
+          if (node.nodeType !== 1) return;
+          var cls = node.className || '';
+          var id  = node.id || '';
+          if (
+            cls.indexOf('goog-') !== -1 ||
+            id.indexOf('goog-') !== -1 ||
+            id === 'google_translate_element' ||
+            node.tagName === 'IFRAME'
+          ) { dirty = true; }
+        });
+      });
+      if (dirty) suppressGtUI();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
   }
 
   function init() {
     syncState();
     injectToggle();
-    // Run once after GT loads, then every 2s briefly to catch late-injected elements
-    setTimeout(suppressGtUI, 1500);
-    setTimeout(suppressGtUI, 3000);
-    setTimeout(suppressGtUI, 5000);
+    watchForGtElements();
+    suppressGtUI();
+    setTimeout(suppressGtUI, 800);
+    setTimeout(suppressGtUI, 2000);
   }
 
   if (document.readyState === 'loading') {
