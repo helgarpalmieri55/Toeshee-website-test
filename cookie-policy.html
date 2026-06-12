@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,354 +7,343 @@
   <meta name="description" content="Learn how Toeshee uses cookies and similar technologies on our website.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root {
-      --accent: #FF3A10;
-      --accent-light: rgba(255,58,16,0.08);
-      --text-primary: #0A0A0F;
-      --text-secondary: #4B5563;
-      --border: #E5E7EB;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #fff; color: var(--text-primary); font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
-    #navbar { transition: background .35s, box-shadow .35s, padding .35s; }
-    #navbar.scrolled { background: rgba(255,255,255,0.96) !important; backdrop-filter: blur(20px); box-shadow: 0 1px 0 #E5E7EB, 0 4px 20px rgba(0,0,0,.06); padding-top: 8px !important; padding-bottom: 8px !important; }
-    #navbar.hidden-nav { transform: translateY(-100%); }
-    .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(6px); transition: all 0.2s cubic-bezier(0.16,1,0.3,1); }
-    .dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-    .btn-primary { display: inline-flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 600; border-radius: 8px; padding: 12px 24px; font-size: 15px; text-decoration: none; border: none; cursor: pointer; transition: background .2s, transform .2s; }
-    .btn-primary:hover { background: #E5330E; transform: translateY(-1px); }
-    .prose-section h2 { font-size: 1.35rem; font-weight: 700; color: #0A0A0F; margin: 2rem 0 0.75rem; }
-    .prose-section h3 { font-size: 1.05rem; font-weight: 600; color: #0A0A0F; margin: 1.5rem 0 0.5rem; }
-    .prose-section p { font-size: 0.9375rem; line-height: 1.75; color: #374151; margin-bottom: 0.75rem; }
-    .prose-section ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 0.75rem; }
-    .prose-section ul li { font-size: 0.9375rem; line-height: 1.75; color: #374151; margin-bottom: 0.25rem; }
-    .prose-section table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.875rem; }
-    .prose-section th { background: #F3F4F6; font-weight: 600; color: #0A0A0F; text-align: left; padding: 10px 14px; border: 1px solid #E5E7EB; font-family: 'Space Grotesk', sans-serif; }
-    .prose-section td { padding: 10px 14px; border: 1px solid #E5E7EB; color: #374151; vertical-align: top; }
-    .prose-section tr:nth-child(even) td { background: #F9FAFB; }
-    a { color: var(--accent); text-decoration: underline; }
-    a:hover { color: #E5330E; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..800&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/toeshee.css">
 </head>
 <body>
 
-<!-- ── NAV ── -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-3" style="background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);box-shadow:0 1px 0 #E5E7EB">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <a href="index.html" class="flex items-center flex-shrink-0">
-      <img src="assets/images/Logo%20update.png" id="nav-logo-img" alt="Toeshee" style="height:70px;width:70px;object-fit:contain;transition:height 0.3s ease">
+<!-- ═══════════════ NAV ═══════════════ -->
+<header class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand" aria-label="Toeshee home">
+      <img src="assets/images/Logo%20update.png" alt="" width="38" height="38">
+      <span class="nav__wordmark">TOESHEE</span>
     </a>
-    <div class="hidden lg:flex items-center gap-0.5">
-      <div class="dropdown relative">
-        <button class="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">
-          Solutions <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-        </button>
-        <div class="dropdown-menu absolute top-full left-0 mt-2 w-72 rounded-2xl border border-gray-100 bg-white shadow-xl p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)">
-          <a href="solution-crypto-support.html" style="text-decoration:none" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Crypto Customer Support</div><div class="text-xs text-gray-400 mt-0.5">Critical layer of crypto security</div></a>
-          <a href="solution-technical-support.html" style="text-decoration:none" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Technical Support & Incident Handling</div><div class="text-xs text-gray-400 mt-0.5">L1–L3 escalation models</div></a>
-          <a href="solution-trust-safety.html" style="text-decoration:none" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Trust & Safety Operations</div><div class="text-xs text-gray-400 mt-0.5">Platform integrity at scale</div></a>
-          <a href="solution-risk-fraud.html" style="text-decoration:none" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Risk Operations & Fraud Response</div><div class="text-xs text-gray-400 mt-0.5">Chain analysis signals</div></a>
-          <a href="solution-security-compliance.html" style="text-decoration:none" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Security & Compliance Support</div><div class="text-xs text-gray-400 mt-0.5">KYC/AML, GDPR, MiCA, PCI-DSS</div></a>
-        </div>
-      </div>
-      <div class="dropdown relative">
-        <button class="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" style="font-family:'Space Grotesk',sans-serif;font-weight:500">
-          Industries <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-        </button>
-        <div class="dropdown-menu absolute top-full left-0 mt-2 w-52 rounded-2xl border border-gray-100 bg-white shadow-xl p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)">
-          <a href="industry-fintech.html" style="text-decoration:none" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Fintech</a>
-          <a href="industry-igaming.html" style="text-decoration:none" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">iGaming</a>
-          <a href="industry-exchanges.html" style="text-decoration:none" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Exchanges</a>
-          <a href="industry-defi.html" style="text-decoration:none" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">DeFi</a>
-          <a href="industry-crypto-payments.html" style="text-decoration:none" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 cursor-pointer transition-colors text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Payment Processors</a>
-        </div>
-      </div>
-      <a href="case-studies.html" style="text-decoration:none" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Case Studies</a>
-      <a href="insights.html"     style="text-decoration:none" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Insights</a>
-      <a href="company.html"      style="text-decoration:none" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Company</a>
-      <a href="careers.html"      style="text-decoration:none" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Careers</a>
-    </div>
-    <div class="hidden lg:flex items-center gap-3">
-      <a href="index.html#contact" class="btn-primary text-sm" style="padding:10px 20px;border-radius:8px">Request Evaluation</a>
-    </div>
-    <button id="burger" class="lg:hidden p-2 cursor-pointer" aria-label="Open menu">
-      <div class="flex flex-col gap-1.5">
-        <span id="b1" class="block w-6 h-0.5 bg-gray-800 transition-all origin-center"></span>
-        <span id="b2" class="block w-6 h-0.5 bg-gray-800 transition-all"></span>
-        <span id="b3" class="block w-6 h-0.5 bg-gray-800 transition-all origin-center"></span>
-      </div>
-    </button>
-  </div>
-  <div id="mobile-menu" class="lg:hidden border-t border-gray-100 mt-3 pt-3 pb-4 px-2 hidden">
-    <div class="flex flex-col gap-1">
-      <a href="solution-crypto-support.html" style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Crypto Customer Support</a>
-      <a href="solution-technical-support.html" style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Technical Support</a>
-      <a href="solution-trust-safety.html" style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Trust & Safety</a>
-      <a href="solution-risk-fraud.html" style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Risk & Fraud</a>
-      <a href="solution-security-compliance.html" style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Security & Compliance</a>
-      <hr class="my-2 border-gray-100">
-      <a href="industry-fintech.html" style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Fintech</a>
-      <a href="industry-igaming.html" style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">iGaming</a>
-      <a href="industry-exchanges.html" style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Crypto Exchanges</a>
-      <a href="industry-defi.html" style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">DeFi</a>
-      <a href="industry-crypto-payments.html" style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Crypto Payment Processors</a>
-      <hr class="my-2 border-gray-100">
-      <a href="case-studies.html" style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Case Studies</a>
-      <a href="insights.html"     style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Insights</a>
-      <a href="company.html"      style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Company</a>
-      <a href="careers.html"      style="text-decoration:none" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-[#FF3A10] transition-colors">Careers</a>
-      <div class="mt-3 px-3">
-        <a href="index.html#contact" class="btn-primary w-full text-center">Request Evaluation</a>
-      </div>
-    </div>
-  </div>
-</nav>
 
-<!-- ── HERO ── -->
-<section style="background:#0A0A0F;padding:140px 24px 80px">
-  <div class="max-w-3xl mx-auto text-center">
-    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,58,16,0.12);border:1px solid rgba(255,58,16,0.25);border-radius:100px;padding:6px 16px;margin-bottom:28px">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF3A10" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:#FF3A10">Cookie Policy</span>
+    <nav class="nav__links" aria-label="Primary">
+      <div class="dropdown">
+        <button class="nav__link" aria-haspopup="true">
+          Solutions
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown__menu">
+          <a class="dropdown__item" href="solution-crypto-support.html"><strong>Crypto Customer Support</strong><span>Critical layer of crypto security</span></a>
+          <a class="dropdown__item" href="solution-technical-support.html"><strong>Technical Support &amp; Incident Handling</strong><span>L1–L3 escalation models</span></a>
+          <a class="dropdown__item" href="solution-trust-safety.html"><strong>Trust &amp; Safety Operations</strong><span>Platform integrity at scale</span></a>
+          <a class="dropdown__item" href="solution-risk-fraud.html"><strong>Risk Operations &amp; Fraud Response</strong><span>Chain analysis signals</span></a>
+          <a class="dropdown__item" href="solution-security-compliance.html"><strong>Security &amp; Compliance Support</strong><span>KYC/AML, GDPR, MiCA, PCI-DSS</span></a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="nav__link" aria-haspopup="true">
+          Industries
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown__menu">
+          <a class="dropdown__item" href="industry-fintech.html"><strong>Fintech</strong></a>
+          <a class="dropdown__item" href="industry-igaming.html"><strong>iGaming</strong></a>
+          <a class="dropdown__item" href="industry-exchanges.html"><strong>Crypto Exchanges</strong></a>
+          <a class="dropdown__item" href="industry-defi.html"><strong>DeFi</strong></a>
+          <a class="dropdown__item" href="industry-crypto-payments.html"><strong>Crypto Payment Processors</strong></a>
+        </div>
+      </div>
+      <a class="nav__link" href="case-studies.html">Case Studies</a>
+      <a class="nav__link" href="insights.html">Insights</a>
+      <a class="nav__link" href="company.html">Company</a>
+      <a class="nav__link" href="careers.html">Careers</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="nav__phone" href="tel:+18667157327">+1 866 715 7327</a>
+      <a class="btn btn--primary btn--small" href="index.html#contact">Request Evaluation</a>
+      <button class="nav__burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:20px">How We Use Cookies</h1>
-    <p style="font-size:1.0625rem;color:rgba(255,255,255,0.6);line-height:1.7;max-width:580px;margin:0 auto">This Cookie Policy explains what cookies are, how Toeshee uses them, and the choices you have regarding their use.</p>
-    <p style="margin-top:16px;font-size:0.875rem;color:rgba(255,255,255,0.35)">Last updated: June 12, 2026</p>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu__group">SOLUTIONS</div>
+    <a href="solution-crypto-support.html">Crypto Customer Support</a>
+    <a href="solution-technical-support.html">Technical Support &amp; Incident Handling</a>
+    <a href="solution-trust-safety.html">Trust &amp; Safety Operations</a>
+    <a href="solution-risk-fraud.html">Risk Operations &amp; Fraud Response</a>
+    <a href="solution-security-compliance.html">Security &amp; Compliance Support</a>
+    <div class="mobile-menu__group">INDUSTRIES</div>
+    <a href="industry-fintech.html">Fintech</a>
+    <a href="industry-igaming.html">iGaming</a>
+    <a href="industry-exchanges.html">Crypto Exchanges</a>
+    <a href="industry-defi.html">DeFi</a>
+    <a href="industry-crypto-payments.html">Crypto Payment Processors</a>
+    <div class="mobile-menu__group">COMPANY</div>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="insights.html">Insights</a>
+    <a href="company.html">Company</a>
+    <a href="careers.html">Careers</a>
+    <a class="btn btn--primary" href="index.html#contact">Request Evaluation</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════ PAGE HEAD ═══════════════ -->
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumb mono" data-reveal="0" data-hero><a href="index.html">TOESHEE</a> <span aria-hidden="true">/</span> <span class="mono--accent">COOKIE POLICY</span></p>
+    <h1 class="display" data-reveal="0.1" data-hero style="max-width:14em">How we use cookies.</h1>
+    <p class="lead" data-reveal="0.22" data-hero>This Cookie Policy explains what cookies are, how Toeshee uses them, and the choices you have regarding their use.</p>
+    <p class="mono" data-reveal="0.3" data-hero style="margin-top:22px">LAST UPDATED: JUNE 12, 2026</p>
   </div>
 </section>
 
-<!-- ── CONTENT ── -->
-<section style="padding:80px 24px 100px">
-  <div class="max-w-3xl mx-auto prose-section">
+<!-- ═══════════════ LEGAL BODY ═══════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="flow" style="max-width:72ch; margin-inline:auto">
 
-    <h2>1. What Are Cookies?</h2>
-    <p>Cookies are small text files that are placed on your device (computer, smartphone, or other internet-connected device) when you visit a website. They are widely used to make websites work more efficiently, provide a better user experience, and give website operators information about how the site is being used.</p>
-    <p>Cookies may be set by the website you are visiting ("first-party cookies") or by third parties, such as analytics and advertising providers ("third-party cookies").</p>
+      <h2 class="h-block" id="c1">1. What Are Cookies?</h2>
+      <p class="muted">Cookies are small text files that are placed on your device (computer, smartphone, or other internet-connected device) when you visit a website. They are widely used to make websites work more efficiently, provide a better user experience, and give website operators information about how the site is being used.</p>
+      <p class="muted">Cookies may be set by the website you are visiting ("first-party cookies") or by third parties, such as analytics and advertising providers ("third-party cookies").</p>
 
-    <h2>2. Who We Are</h2>
-    <p>This Cookie Policy applies to the website operated by <strong>TOESHEE</strong> (also referred to as "we," "us," or "our"). If you have any questions about how we use cookies, please contact us at <a href="mailto:compliance@center-source.com">compliance@center-source.com</a>.</p>
+      <hr class="rule" style="margin-block:2.4em">
 
-    <h2>3. Types of Cookies We Use</h2>
-    <p>We use the following categories of cookies on our website:</p>
+      <h2 class="h-block" id="c2">2. Who We Are</h2>
+      <p class="muted">This Cookie Policy applies to the website operated by <strong>TOESHEE</strong> (also referred to as "we," "us," or "our"). If you have any questions about how we use cookies, please contact us at <a href="mailto:compliance@center-source.com">compliance@center-source.com</a>.</p>
 
-    <h3>3.1 Strictly Necessary Cookies</h3>
-    <p>These cookies are essential for the website to function properly. They enable core functionality such as page navigation, security, and access to secure areas. The website cannot function properly without these cookies, and they cannot be switched off.</p>
+      <hr class="rule" style="margin-block:2.4em">
 
-    <table>
-      <thead>
-        <tr>
-          <th>Cookie Name</th>
-          <th>Purpose</th>
-          <th>Duration</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>toeshee_cookie_consent</code></td>
-          <td>Stores your cookie consent preferences so we don't show the consent banner on every page visit</td>
-          <td>1 year</td>
-          <td>First-party</td>
-        </tr>
-        <tr>
-          <td><code>toeshee_lang</code></td>
-          <td>Stores your preferred language (English or Spanish) for the website interface</td>
-          <td>1 year</td>
-          <td>First-party</td>
-        </tr>
-      </tbody>
-    </table>
+      <h2 class="h-block" id="c3">3. Types of Cookies We Use</h2>
+      <p class="muted">We use the following categories of cookies on our website:</p>
 
-    <h3>3.2 Performance &amp; Analytics Cookies</h3>
-    <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. They allow us to measure and improve the performance of our site.</p>
+      <h3 class="h-item">3.1 Strictly Necessary Cookies</h3>
+      <p class="muted">These cookies are essential for the website to function properly. They enable core functionality such as page navigation, security, and access to secure areas. The website cannot function properly without these cookies, and they cannot be switched off.</p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Cookie Name</th>
-          <th>Provider</th>
-          <th>Purpose</th>
-          <th>Duration</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>_ga</code></td>
-          <td>Google Analytics</td>
-          <td>Distinguishes unique users by assigning a randomly generated number as a client identifier</td>
-          <td>2 years</td>
-        </tr>
-        <tr>
-          <td><code>_ga_*</code></td>
-          <td>Google Analytics</td>
-          <td>Persists session state across page requests</td>
-          <td>2 years</td>
-        </tr>
-        <tr>
-          <td><code>_gid</code></td>
-          <td>Google Analytics</td>
-          <td>Distinguishes users and stores information about how visitors use the website</td>
-          <td>24 hours</td>
-        </tr>
-        <tr>
-          <td><code>_gat</code></td>
-          <td>Google Analytics</td>
-          <td>Used to throttle request rate</td>
-          <td>1 minute</td>
-        </tr>
-      </tbody>
-    </table>
+      <table style="width:100%; border-collapse:collapse; font-size:0.875rem">
+        <thead>
+          <tr>
+            <th style="border:1px solid var(--line-strong); padding:10px 14px; text-align:left; background:var(--bg-dim)">Cookie Name</th>
+            <th style="border:1px solid var(--line-strong); padding:10px 14px; text-align:left; background:var(--bg-dim)">Purpose</th>
+            <th style="border:1px solid var(--line-strong); padding:10px 14px; text-align:left; background:var(--bg-dim)">Duration</th>
+            <th style="border:1px solid var(--line-strong); padding:10px 14px; text-align:left; background:var(--bg-dim)">Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)"><code>toeshee_cookie_consent</code></td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">Stores your cookie consent preferences so we don't show the consent banner on every page visit</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">1 year</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">First-party</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)"><code>toeshee_lang</code></td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">Stores your preferred language (English or Spanish) for the website interface</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">1 year</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">First-party</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <h3>3.3 Functional Cookies</h3>
-    <p>Functional cookies enable the website to remember choices you make (such as your language preference) and provide enhanced, more personal features. These cookies are not used to track you across other websites.</p>
+      <h3 class="h-item">3.2 Performance &amp; Analytics Cookies</h3>
+      <p class="muted">These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. They allow us to measure and improve the performance of our site.</p>
 
-    <h3>3.4 Marketing &amp; Targeting Cookies</h3>
-    <p>We currently do not use marketing or advertising cookies on our website. If this changes in the future, we will update this Cookie Policy and seek your consent where required by law.</p>
+      <table style="width:100%; border-collapse:collapse; font-size:0.875rem">
+        <thead>
+          <tr>
+            <th style="border:1px solid var(--line-strong); padding:10px 14px; text-align:left; background:var(--bg-dim)">Cookie Name</th>
+            <th style="border:1px solid var(--line-strong); padding:10px 14px; text-align:left; background:var(--bg-dim)">Provider</th>
+            <th style="border:1px solid var(--line-strong); padding:10px 14px; text-align:left; background:var(--bg-dim)">Purpose</th>
+            <th style="border:1px solid var(--line-strong); padding:10px 14px; text-align:left; background:var(--bg-dim)">Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)"><code>_ga</code></td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">Google Analytics</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">Distinguishes unique users by assigning a randomly generated number as a client identifier</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">2 years</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)"><code>_ga_*</code></td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">Google Analytics</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">Persists session state across page requests</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">2 years</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)"><code>_gid</code></td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">Google Analytics</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">Distinguishes users and stores information about how visitors use the website</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">24 hours</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)"><code>_gat</code></td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">Google Analytics</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">Used to throttle request rate</td>
+            <td style="border:1px solid var(--line); padding:10px 14px; vertical-align:top; color:var(--ink-2)">1 minute</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <h2>4. How We Use Cookies</h2>
-    <p>We use cookies to:</p>
-    <ul>
-      <li>Remember your cookie consent preferences</li>
-      <li>Remember your language preference</li>
-      <li>Understand how visitors navigate and use our website</li>
-      <li>Monitor and improve the performance and reliability of our website</li>
-      <li>Ensure our website functions correctly across different browsers and devices</li>
-    </ul>
+      <h3 class="h-item">3.3 Functional Cookies</h3>
+      <p class="muted">Functional cookies enable the website to remember choices you make (such as your language preference) and provide enhanced, more personal features. These cookies are not used to track you across other websites.</p>
 
-    <h2>5. Third-Party Cookies</h2>
-    <p>Some cookies on our website are placed by third parties. We do not control these cookies and they are subject to the relevant third party's privacy and cookie policies. Third parties whose cookies may be present on our website include:</p>
-    <ul>
-      <li><strong>Google Analytics</strong> — for website performance measurement. See Google's <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">opt-out tool</a>.</li>
-      <li><strong>Google Fonts</strong> — for loading web fonts. See Google's <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</li>
-    </ul>
+      <h3 class="h-item">3.4 Marketing &amp; Targeting Cookies</h3>
+      <p class="muted">We currently do not use marketing or advertising cookies on our website. If this changes in the future, we will update this Cookie Policy and seek your consent where required by law.</p>
 
-    <h2>6. Your Cookie Choices</h2>
-    <p>You have several options for controlling or limiting how cookies are used on our website:</p>
+      <hr class="rule" style="margin-block:2.4em">
 
-    <h3>6.1 Cookie Consent Banner</h3>
-    <p>When you first visit our website, you will see a cookie consent banner at the bottom-left of the screen. You can:</p>
-    <ul>
-      <li><strong>Accept All</strong> — Allow all cookies described in this policy</li>
-      <li><strong>Decline</strong> — Only strictly necessary cookies will be used</li>
-    </ul>
-    <p>Your choice is remembered for one year. You can change your preference at any time by clearing your browser's local storage for our website.</p>
+      <h2 class="h-block" id="c4">4. How We Use Cookies</h2>
+      <p class="muted">We use cookies to:</p>
+      <ul style="padding-left:1.4em; color:var(--ink-2)">
+        <li>Remember your cookie consent preferences</li>
+        <li>Remember your language preference</li>
+        <li>Understand how visitors navigate and use our website</li>
+        <li>Monitor and improve the performance and reliability of our website</li>
+        <li>Ensure our website functions correctly across different browsers and devices</li>
+      </ul>
 
-    <h3>6.2 Browser Settings</h3>
-    <p>Most web browsers allow you to control cookies through their settings. You can configure your browser to:</p>
-    <ul>
-      <li>Block all cookies</li>
-      <li>Delete cookies when you close your browser</li>
-      <li>Alert you when a cookie is placed on your device</li>
-    </ul>
-    <p>Please note that restricting cookies may impact your experience on our website. For guidance on managing cookies in popular browsers:</p>
-    <ul>
-      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
-      <li><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Mozilla Firefox</a></li>
-      <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
-      <li><a href="https://support.microsoft.com/en-us/windows/manage-cookies-in-microsoft-edge-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener">Microsoft Edge</a></li>
-    </ul>
+      <hr class="rule" style="margin-block:2.4em">
 
-    <h3>6.3 Opt Out of Analytics</h3>
-    <p>To opt out of Google Analytics tracking across all websites, you can install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
+      <h2 class="h-block" id="c5">5. Third-Party Cookies</h2>
+      <p class="muted">Some cookies on our website are placed by third parties. We do not control these cookies and they are subject to the relevant third party's privacy and cookie policies. Third parties whose cookies may be present on our website include:</p>
+      <ul style="padding-left:1.4em; color:var(--ink-2)">
+        <li><strong>Google Analytics</strong> — for website performance measurement. See Google's <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">opt-out tool</a>.</li>
+        <li><strong>Google Fonts</strong> — for loading web fonts. See Google's <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</li>
+      </ul>
 
-    <h2>7. Local Storage</h2>
-    <p>In addition to cookies, we use the browser's <strong>localStorage</strong> API to store your consent preferences (<code>toeshee_cookie_consent</code>) and language preference (<code>toeshee_lang</code>). Unlike cookies, localStorage data is not transmitted to our servers; it remains on your device. You can clear this data through your browser's developer tools or by clearing your site data.</p>
+      <hr class="rule" style="margin-block:2.4em">
 
-    <h2>8. Do Not Track</h2>
-    <p>Some browsers include a "Do Not Track" (DNT) feature that signals to websites that you do not want your online activity tracked. As there is currently no industry-wide standard for DNT, our website does not respond differently to DNT signals. We encourage you to use the cookie controls described above to manage your preferences.</p>
+      <h2 class="h-block" id="c6">6. Your Cookie Choices</h2>
+      <p class="muted">You have several options for controlling or limiting how cookies are used on our website:</p>
 
-    <h2>9. Changes to This Cookie Policy</h2>
-    <p>We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our data practices. The "Last updated" date at the top of this page will be revised accordingly. We encourage you to review this policy periodically.</p>
-    <p>If we make significant changes that affect your rights, we will notify you through a prominent notice on our website or, where we have your contact details, by email.</p>
+      <h3 class="h-item">6.1 Cookie Consent Banner</h3>
+      <p class="muted">When you first visit our website, you will see a cookie consent banner at the bottom-left of the screen. You can:</p>
+      <ul style="padding-left:1.4em; color:var(--ink-2)">
+        <li><strong>Accept All</strong> — Allow all cookies described in this policy</li>
+        <li><strong>Decline</strong> — Only strictly necessary cookies will be used</li>
+      </ul>
+      <p class="muted">Your choice is remembered for one year. You can change your preference at any time by clearing your browser's local storage for our website.</p>
 
-    <h2>10. Contact Us</h2>
-    <p>If you have any questions about our use of cookies, please contact us:</p>
-    <ul>
-      <li><strong>Email:</strong> <a href="mailto:compliance@center-source.com">compliance@center-source.com</a></li>
-      <li><strong>General enquiries:</strong> <a href="mailto:sales@toeshee.com">sales@toeshee.com</a></li>
-    </ul>
-    <p>For more information about how we handle your personal data, please read our <a href="privacy.html">Privacy Policy</a>.</p>
+      <h3 class="h-item">6.2 Browser Settings</h3>
+      <p class="muted">Most web browsers allow you to control cookies through their settings. You can configure your browser to:</p>
+      <ul style="padding-left:1.4em; color:var(--ink-2)">
+        <li>Block all cookies</li>
+        <li>Delete cookies when you close your browser</li>
+        <li>Alert you when a cookie is placed on your device</li>
+      </ul>
+      <p class="muted">Please note that restricting cookies may impact your experience on our website. For guidance on managing cookies in popular browsers:</p>
+      <ul style="padding-left:1.4em; color:var(--ink-2)">
+        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+        <li><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+        <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
+        <li><a href="https://support.microsoft.com/en-us/windows/manage-cookies-in-microsoft-edge-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener">Microsoft Edge</a></li>
+      </ul>
 
-    <div style="margin-top:3rem;padding:24px 28px;background:#F8F8FA;border-radius:16px;border:1px solid #E5E7EB">
-      <p style="font-size:0.875rem;color:#6B7280;margin:0">This Cookie Policy was last reviewed on <strong>June 12, 2026</strong>. It applies to the website at <strong>toeshee.com</strong> operated by TOESHEE.</p>
+      <h3 class="h-item">6.3 Opt Out of Analytics</h3>
+      <p class="muted">To opt out of Google Analytics tracking across all websites, you can install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
+
+      <hr class="rule" style="margin-block:2.4em">
+
+      <h2 class="h-block" id="c7">7. Local Storage</h2>
+      <p class="muted">In addition to cookies, we use the browser's <strong>localStorage</strong> API to store your consent preferences (<code>toeshee_cookie_consent</code>) and language preference (<code>toeshee_lang</code>). Unlike cookies, localStorage data is not transmitted to our servers; it remains on your device. You can clear this data through your browser's developer tools or by clearing your site data.</p>
+
+      <hr class="rule" style="margin-block:2.4em">
+
+      <h2 class="h-block" id="c8">8. Do Not Track</h2>
+      <p class="muted">Some browsers include a "Do Not Track" (DNT) feature that signals to websites that you do not want your online activity tracked. As there is currently no industry-wide standard for DNT, our website does not respond differently to DNT signals. We encourage you to use the cookie controls described above to manage your preferences.</p>
+
+      <hr class="rule" style="margin-block:2.4em">
+
+      <h2 class="h-block" id="c9">9. Changes to This Cookie Policy</h2>
+      <p class="muted">We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our data practices. The "Last updated" date at the top of this page will be revised accordingly. We encourage you to review this policy periodically.</p>
+      <p class="muted">If we make significant changes that affect your rights, we will notify you through a prominent notice on our website or, where we have your contact details, by email.</p>
+
+      <hr class="rule" style="margin-block:2.4em">
+
+      <h2 class="h-block" id="c10">10. Contact Us</h2>
+      <p class="muted">If you have any questions about our use of cookies, please contact us:</p>
+      <ul style="padding-left:1.4em; color:var(--ink-2)">
+        <li><strong>Email:</strong> <a href="mailto:compliance@center-source.com">compliance@center-source.com</a></li>
+        <li><strong>General enquiries:</strong> <a href="mailto:sales@toeshee.com">sales@toeshee.com</a></li>
+      </ul>
+      <p class="muted">For more information about how we handle your personal data, please read our <a href="privacy.html">Privacy Policy</a>.</p>
+
+      <hr class="rule" style="margin-block:2.4em">
+
+      <div class="spec spec--dim">
+        <p class="muted" style="font-size:0.875rem">This Cookie Policy was last reviewed on <strong>June 12, 2026</strong>. It applies to the website at <strong>toeshee.com</strong> operated by TOESHEE.</p>
+      </div>
+
     </div>
-
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
-<footer style="background:#0A0A0F;padding:64px 24px 32px">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
-      <div class="col-span-2 md:col-span-1">
-        <div class="flex items-center mb-5">
-          <img src="assets/images/Logo%20update.png" alt="Toeshee" style="height:64px;width:64px;object-fit:contain">
-        </div>
-        <p style="font-size:0.875rem;color:rgba(255,255,255,0.45);line-height:1.7">The first outsourcing provider built for the decentralized economy.</p>
-      </div>
-      <div>
-        <p style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px">Solutions</p>
-        <div class="flex flex-col gap-2.5">
-          <a href="solution-crypto-support.html" style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Crypto Support</a>
-          <a href="solution-technical-support.html" style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Technical Support</a>
-          <a href="solution-trust-safety.html" style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Trust &amp; Safety</a>
-          <a href="solution-risk-fraud.html" style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Risk &amp; Fraud</a>
-          <a href="solution-security-compliance.html" style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Security &amp; Compliance</a>
-        </div>
-      </div>
-      <div>
-        <p style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px">Company</p>
-        <div class="flex flex-col gap-2.5">
-          <a href="company.html"      style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">About</a>
-          <a href="careers.html"      style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Careers</a>
-          <a href="case-studies.html" style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Case Studies</a>
-          <a href="insights.html"     style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Insights</a>
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <a href="index.html" class="nav__brand" aria-label="Toeshee home">
+          <img src="assets/images/Logo%20update.png" alt="" width="38" height="38">
+          <span class="nav__wordmark">TOESHEE</span>
+        </a>
+        <p class="footer__about">The first outsourcing provider built for the decentralized economy. Crypto-native customer support infrastructure.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/toeshee.co/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/toesheecorp" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
         </div>
       </div>
-      <div>
-        <p style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px">Legal</p>
-        <div class="flex flex-col gap-2.5">
-          <a href="privacy.html"       style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Privacy Policy</a>
-          <a href="terms.html"         style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Terms of Use</a>
-          <a href="cookie-policy.html" style="font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Cookie Policy</a>
-        </div>
+      <div class="footer__col">
+        <span class="mono">SOLUTIONS</span>
+        <ul>
+          <li><a href="solution-crypto-support.html">Crypto Customer Support</a></li>
+          <li><a href="solution-technical-support.html">Technical Support</a></li>
+          <li><a href="solution-trust-safety.html">Trust &amp; Safety</a></li>
+          <li><a href="solution-risk-fraud.html">Risk &amp; Fraud</a></li>
+          <li><a href="solution-security-compliance.html">Compliance</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <span class="mono">INDUSTRIES</span>
+        <ul>
+          <li><a href="industry-fintech.html">Fintech</a></li>
+          <li><a href="industry-igaming.html">iGaming</a></li>
+          <li><a href="industry-exchanges.html">Crypto Exchanges</a></li>
+          <li><a href="industry-defi.html">DeFi</a></li>
+          <li><a href="industry-crypto-payments.html">Crypto Payments</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <span class="mono">COMPANY</span>
+        <ul>
+          <li><a href="company.html">About</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
       </div>
     </div>
-    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px">
-      <p style="font-size:13px;color:rgba(255,255,255,0.3)">© 2026 TOESHEE. All rights reserved.</p>
-      <div style="display:flex;gap:16px">
-        <a href="privacy.html"       style="font-size:13px;color:rgba(255,255,255,0.3);text-decoration:none" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Privacy</a>
-        <a href="terms.html"         style="font-size:13px;color:rgba(255,255,255,0.3);text-decoration:none" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Terms</a>
-        <a href="cookie-policy.html" style="font-size:13px;color:rgba(255,255,255,0.3);text-decoration:none" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Cookies</a>
+    <div class="footer__base">
+      <span class="mono">© 2026 TOESHEE — ALL RIGHTS RESERVED</span>
+      <div class="footer__legal">
+        <a href="terms.html">Terms and conditions</a>
+        <a href="privacy.html">Privacy policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
       </div>
     </div>
   </div>
 </footer>
 
 <script src="assets/motion.js"></script>
+<script src="assets/js/toeshee.js"></script>
 <script src="assets/js/cookie-banner.js"></script>
 <script src="assets/js/i18n.js"></script>
-<script>
-  // Burger
-  var burger = document.getElementById('burger');
-  var mobileMenu = document.getElementById('mobile-menu');
-  if (burger && mobileMenu) {
-    burger.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-  // Nav scroll
-  var navbar = document.getElementById('navbar');
-  var lastY = 0;
-  window.addEventListener('scroll', function() {
-    var y = window.scrollY;
-    if (y > 60) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
-    lastY = y;
-  });
-</script>
+
 </body>
 </html>
