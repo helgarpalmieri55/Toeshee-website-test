@@ -239,11 +239,19 @@ p { max-width: 68ch; text-wrap: pretty; }
   inset-inline: 0;
   top: 0;
   z-index: var(--z-nav);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s;
+}
+/* Blur lives on a pseudo-element: backdrop-filter on .nav itself
+   would make it the containing block for the fixed mobile menu. */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.25s, background-color 0.25s;
 }
 .nav.is-scrolled { border-bottom-color: var(--line); }
 

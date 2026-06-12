@@ -109,6 +109,11 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var valid = true;
+      var consent = form.querySelector('input[type="checkbox"][required]');
+      if (consent && !consent.checked) {
+        valid = false;
+        consent.focus();
+      }
       form.querySelectorAll('.field input[required], .field textarea[required]').forEach(function (input) {
         var field = input.closest('.field');
         var bad = !input.value.trim() ||
