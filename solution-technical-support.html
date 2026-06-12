@@ -18,7 +18,7 @@
   #navbar{transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s;}
   #navbar.scrolled{background:rgba(255,255,255,0.96)!important;backdrop-filter:blur(20px);box-shadow:0 1px 0 #E5E7EB,0 4px 20px rgba(0,0,0,0.06);padding-top:10px!important;padding-bottom:10px!important;}
   #navbar.hidden-nav{transform:translateY(-100%);}
-  .dropdown-menu{opacity:0;visibility:hidden;transform:translateY(6px);transition:all 0.2s cubic-bezier(0.16,1,0.3,1);}
+  .dropdown-menu{opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity 0.2s cubic-bezier(0.16,1,0.3,1),visibility 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s cubic-bezier(0.16,1,0.3,1);z-index:200;}
   .dropdown:hover .dropdown-menu,.dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
   .badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.2);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:100px;}
   .badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;}
