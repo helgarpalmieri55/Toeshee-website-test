@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,370 +7,314 @@
   <meta name="description" content="Toeshee delivers fast-response support operations for DeFi protocols where early detection, smart contract issues, and user trust are mission-critical.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-  :root{--accent:#FF3A10;--accent-light:rgba(255,58,16,0.08);--text-primary:#0A0A0F;--text-secondary:#4B5563;--bg-white:#FFFFFF;--bg-off:#F8F8FA;--border:#E5E7EB;}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg-white);color:var(--text-primary);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-  h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;}
-  #navbar{transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s;}
-  #navbar.scrolled{background:rgba(255,255,255,0.96)!important;backdrop-filter:blur(20px);box-shadow:0 1px 0 #E5E7EB,0 4px 20px rgba(0,0,0,0.06);padding-top:10px!important;padding-bottom:10px!important;}
-  #navbar.hidden-nav{transform:translateY(-100%);}
-  .dropdown-menu{opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity 0.2s cubic-bezier(0.16,1,0.3,1),visibility 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s cubic-bezier(0.16,1,0.3,1);z-index:200;}
-  .dropdown:hover .dropdown-menu,.dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
-  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,58,16,0.12);border:1px solid rgba(255,58,16,0.25);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:100px;}
-  .badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;}
-  @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
-  .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:13px 26px;border-radius:10px;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 4px 14px rgba(255,58,16,0.3);text-decoration:none;}
-  .btn-primary:hover{background:#E5330E;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,58,16,0.38);}
-  .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--text-primary);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:13px 26px;border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:border-color .2s,transform .2s;text-decoration:none;}
-  .btn-secondary:hover{border-color:#aaa;transform:translateY(-2px);}
-  .section-tag{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
-  #mobile-menu{display:none;}
-  #mobile-menu.open{display:block;}
-  .cap-card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;transition:all 0.28s cubic-bezier(0.16,1,0.3,1);}
-  .cap-card:hover{border-color:rgba(255,58,16,0.25);box-shadow:0 14px 40px rgba(255,58,16,0.08),0 4px 12px rgba(0,0,0,0.04);transform:translateY(-4px);}
-  .phase-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px;transition:border-color .3s;}
-  .phase-card:hover{border-color:rgba(255,58,16,0.35);}
-  .stat-box{text-align:center;padding:28px 20px;}
-  .bullet-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;}
-  .bullet-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px;}
-</style>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..800&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/toeshee.css">
 </head>
 <body>
-<div id="scroll-bar" style="position:fixed;top:0;left:0;right:0;height:3px;background:var(--accent);transform-origin:left;transform:scaleX(0);z-index:100;transition:transform 0.1s linear"></div>
 
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 py-4 bg-white" style="transition:background .35s,box-shadow .35s,padding .35s;box-shadow:0 1px 0 #E5E7EB">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <a href="index.html" class="flex items-center flex-shrink-0">
-      <img src="assets/images/Logo%20update.png" id="nav-logo-img" alt="Toeshee" style="height:90px;width:90px;object-fit:contain;transition:height 0.3s ease">
+<!-- ═══════════════ NAV ═══════════════ -->
+<header class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand" aria-label="Toeshee home">
+      <img src="assets/images/Logo%20update.png" alt="" width="38" height="38">
+      <span class="nav__wordmark">TOESHEE</span>
     </a>
-    <div class="hidden lg:flex items-center gap-0.5">
-      <div class="dropdown relative">
-        <button class="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Solutions<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-        <div class="dropdown-menu absolute top-full left-0 mt-2 w-72 rounded-2xl border border-gray-100 bg-white p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)">
-          <a href="solution-crypto-support.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Crypto Customer Support</div><div class="text-xs text-gray-400 mt-0.5">Critical layer of crypto security</div></a>
-          <a href="solution-technical-support.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Technical Support &amp; Incident Handling</div><div class="text-xs text-gray-400 mt-0.5">L1–L3 escalation models</div></a>
-          <a href="solution-trust-safety.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Trust &amp; Safety Operations</div><div class="text-xs text-gray-400 mt-0.5">Platform integrity at scale</div></a>
-          <a href="solution-risk-fraud.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Risk Operations &amp; Fraud Response</div><div class="text-xs text-gray-400 mt-0.5">Chain analysis signals</div></a>
-          <a href="solution-security-compliance.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 group"><div class="text-sm font-semibold text-gray-900 group-hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif">Security &amp; Compliance Support</div><div class="text-xs text-gray-400 mt-0.5">KYC/AML, GDPR, MiCA, PCI-DSS</div></a>
-        </div>
-      </div>
-      <div class="dropdown relative">
-        <button class="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Industries<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-        <div class="dropdown-menu absolute top-full left-0 mt-2 w-56 rounded-2xl border border-gray-100 bg-white p-2" style="box-shadow:0 20px 60px rgba(0,0,0,.1)">
-          <a href="industry-fintech.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Fintech</a>
-          <a href="industry-igaming.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">iGaming</a>
-          <a href="industry-exchanges.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Exchanges</a>
-          <a href="industry-defi.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">DeFi</a>
-          <a href="industry-crypto-payments.html" class="block px-3 py-2.5 rounded-xl hover:bg-orange-50 text-sm text-gray-700 hover:text-[#FF3A10]" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Crypto Payment Processors</a>
-        </div>
-      </div>
-      <a href="case-studies.html" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Case Studies</a>
-      <a href="insights.html" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Insights</a>
-      <a href="company.html" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Company</a>
-      <a href="careers.html" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors" style="font-family:'Space Grotesk',sans-serif;font-weight:500">Careers</a>
-    </div>
-    <div class="hidden lg:flex items-center gap-3">
-      <a href="tel:+18667157327" class="text-sm text-gray-500 hover:text-gray-800 transition-colors" style="font-family:'Space Grotesk',sans-serif">+1 (866) 715-7327</a>
-      <a href="contact.html" class="btn-primary text-sm" style="padding:10px 20px;border-radius:8px">Request Evaluation</a>
-    </div>
-    <button id="burger" class="lg:hidden p-2" aria-label="Open menu"><div class="flex flex-col gap-1.5"><span id="b1" class="block w-6 h-0.5 bg-gray-800 transition-all origin-center"></span><span id="b2" class="block w-6 h-0.5 bg-gray-800 transition-all"></span><span id="b3" class="block w-6 h-0.5 bg-gray-800 transition-all origin-center"></span></div></button>
-  </div>
-  <div id="mobile-menu" class="lg:hidden border-t border-gray-100 mt-3 pt-3 pb-4 px-2">
-    <div class="flex flex-col gap-1">
-      <a href="solutions.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50">Solutions</a>
-      <a href="industries.html" class="px-3 py-2.5 rounded-xl text-sm text-[#FF3A10] bg-orange-50">Industries</a>
-      <a href="case-studies.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50">Case Studies</a>
-      <a href="insights.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50">Insights</a>
-      <a href="company.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50">Company</a>
-      <a href="careers.html" class="px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50">Careers</a>
-      <a href="contact.html" class="btn-primary mt-3 text-center text-sm" style="border-radius:10px;padding:12px">Request Evaluation</a>
-    </div>
-  </div>
-</nav>
 
-<!-- HERO -->
-<section style="background:linear-gradient(135deg,#0A0A0F 0%,#141420 50%,#1a1015 100%);padding:144px 0 0;overflow:hidden">
-  <div class="max-w-7xl mx-auto px-6" style="display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center">
-  <div id="hero-content" style="padding-right:40px;padding-bottom:64px">
-    <div style="margin-bottom:16px">
-      <a href="industries.html" style="color:rgba(255,255,255,0.4);font-size:13px;text-decoration:none;font-family:'Space Grotesk',sans-serif">Industries</a>
-      <span style="color:rgba(255,255,255,0.2);margin:0 8px">/</span>
-      <span style="color:rgba(255,255,255,0.65);font-size:13px;font-family:'Space Grotesk',sans-serif">DeFi</span>
-    </div>
-    <div style="margin-bottom:20px">
-      <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,58,16,0.7)">DEFI</span>
-    </div>
-    <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,5.5vw,64px);font-weight:800;color:white;line-height:1.08;margin-bottom:28px">Supporting DeFi protocols<span style="color:var(--accent)">where early detection</span><span style="color:rgba(255,255,255,0.7)">, fast response, and</span><span style="color:var(--accent)">user trust are mission-critical</span></h1>
-    <p style="font-size:18px;line-height:1.7;color:rgba(255,255,255,0.6);max-width:640px;margin-bottom:40px">DeFi operations require early detection, fast containment, and clear escalation paths. Support must respond before minor user issues become critical operational events that damage protocol trust.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:14px;padding-bottom:64px">
-      <a href="contact.html" class="btn-primary">Let's Talk</a>
-      <a href="case-studies.html" class="btn-secondary" style="background:transparent;border-color:rgba(255,255,255,0.18);color:white">View Case Studies</a>
-    </div>
-  </div>
-  <!-- Hero image -->
-  <div style="height:100%;min-height:500px;position:relative;overflow:hidden;border-radius:24px 0 0 0;align-self:stretch">
-    <img src="assets/images/industry-defi.jpg" alt="DeFi" style="width:100%;height:100%;object-fit:cover;min-height:520px;display:block">
-    <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,15,0.5) 0%,transparent 50%)"></div>
-  </div>
-  </div>
-  <!-- Stats bar -->
-  <div style="border-top:1px solid rgba(255,255,255,0.07)">
-    <div class="max-w-5xl mx-auto" style="display:grid;grid-template-columns:repeat(3,1fr);divide-x divide-white/10">
-      
-      <div class="stat-box anim-fade">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;margin-bottom:6px">< 5 min</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.45);letter-spacing:.06em;text-transform:uppercase;font-family:'Space Grotesk',sans-serif">Incident Response</div>
+    <nav class="nav__links" aria-label="Primary">
+      <div class="dropdown">
+        <button class="nav__link" aria-haspopup="true">
+          Solutions
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown__menu">
+          <a class="dropdown__item" href="solution-crypto-support.html"><strong>Crypto Customer Support</strong><span>Critical layer of crypto security</span></a>
+          <a class="dropdown__item" href="solution-technical-support.html"><strong>Technical Support &amp; Incident Handling</strong><span>L1–L3 escalation models</span></a>
+          <a class="dropdown__item" href="solution-trust-safety.html"><strong>Trust &amp; Safety Operations</strong><span>Platform integrity at scale</span></a>
+          <a class="dropdown__item" href="solution-risk-fraud.html"><strong>Risk Operations &amp; Fraud Response</strong><span>Chain analysis signals</span></a>
+          <a class="dropdown__item" href="solution-security-compliance.html"><strong>Security &amp; Compliance Support</strong><span>KYC/AML, GDPR, MiCA, PCI-DSS</span></a>
+        </div>
       </div>
-      <div class="stat-box anim-fade">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;margin-bottom:6px">24/7</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.45);letter-spacing:.06em;text-transform:uppercase;font-family:'Space Grotesk',sans-serif">Coverage</div>
+      <div class="dropdown">
+        <button class="nav__link" aria-haspopup="true" aria-current="page">
+          Industries
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown__menu">
+          <a class="dropdown__item" href="industry-fintech.html"><strong>Fintech</strong></a>
+          <a class="dropdown__item" href="industry-igaming.html"><strong>iGaming</strong></a>
+          <a class="dropdown__item" href="industry-exchanges.html"><strong>Crypto Exchanges</strong></a>
+          <a class="dropdown__item" href="industry-defi.html"><strong>DeFi</strong></a>
+          <a class="dropdown__item" href="industry-crypto-payments.html"><strong>Crypto Payment Processors</strong></a>
+        </div>
       </div>
-      <div class="stat-box anim-fade">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;margin-bottom:6px">99.9%</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.45);letter-spacing:.06em;text-transform:uppercase;font-family:'Space Grotesk',sans-serif">Uptime SLA</div>
+      <a class="nav__link" href="case-studies.html">Case Studies</a>
+      <a class="nav__link" href="insights.html">Insights</a>
+      <a class="nav__link" href="company.html">Company</a>
+      <a class="nav__link" href="careers.html">Careers</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="nav__phone" href="tel:+18667157327">+1 866 715 7327</a>
+      <a class="btn btn--primary btn--small" href="index.html#contact">Request Evaluation</a>
+      <button class="nav__burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu__group">SOLUTIONS</div>
+    <a href="solution-crypto-support.html">Crypto Customer Support</a>
+    <a href="solution-technical-support.html">Technical Support &amp; Incident Handling</a>
+    <a href="solution-trust-safety.html">Trust &amp; Safety Operations</a>
+    <a href="solution-risk-fraud.html">Risk Operations &amp; Fraud Response</a>
+    <a href="solution-security-compliance.html">Security &amp; Compliance Support</a>
+    <div class="mobile-menu__group">INDUSTRIES</div>
+    <a href="industry-fintech.html">Fintech</a>
+    <a href="industry-igaming.html">iGaming</a>
+    <a href="industry-exchanges.html">Crypto Exchanges</a>
+    <a href="industry-defi.html">DeFi</a>
+    <a href="industry-crypto-payments.html">Crypto Payment Processors</a>
+    <div class="mobile-menu__group">COMPANY</div>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="insights.html">Insights</a>
+    <a href="company.html">Company</a>
+    <a href="careers.html">Careers</a>
+    <a class="btn btn--primary" href="index.html#contact">Request Evaluation</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════ PAGE HEAD ═══════════════ -->
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumb mono" data-reveal="0" data-hero><a href="index.html">TOESHEE</a> <span aria-hidden="true">/</span> <a href="industries.html">INDUSTRIES</a> <span aria-hidden="true">/</span> <span class="mono--accent">DEFI</span></p>
+    <h1 class="display" data-reveal="0.1" data-hero style="max-width:14em">Supporting DeFi protocols where early detection, fast response, and user trust are mission-critical.</h1>
+    <p class="lead" data-reveal="0.22" data-hero>
+      DeFi operations require early detection, fast containment, and clear escalation paths. Support must respond before minor user issues become critical operational events that damage protocol trust.
+    </p>
+  </div>
+  <div class="hero__line" data-reveal-line style="margin-top:clamp(40px,6vw,72px)">
+    <div class="signal">
+      <span class="signal-node" style="left:24%"></span>
+      <span class="signal-node" style="left:71%"></span>
+    </div>
+    <div class="wrap hero__line-meta">
+      <span class="mono">04 — DEFI</span>
+      <span class="mono mono--accent">24/7 COVERAGE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ APPROACH ═══════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:center">
+      <div class="photo" style="aspect-ratio:4/3" data-reveal="0">
+        <img src="assets/images/industry-defi.jpg" alt="DeFi protocol interfaces" loading="lazy">
+        <span class="photo__tag">04 — DEFI</span>
+      </div>
+      <div class="flow">
+        <h2 class="h-section" data-reveal="0">Deep expertise in DeFi operations.</h2>
+        <p class="muted" data-reveal="0.06">
+          DeFi protocols face a unique operational challenge: users are sophisticated, incidents can be protocol-level, and the absence of central custodians means support must translate complex technical reality into clear, trustworthy communication — at speed.
+        </p>
+        <p class="muted" data-reveal="0.12">
+          Toeshee supports DeFi operations with teams trained on smart contract interactions, wallet mechanics, bridge failures, liquidity events, and governance processes. We help your community and support function remain responsive, credible, and operationally sound.
+        </p>
+        <ul style="list-style:none; display:grid; gap:10px" data-reveal="0.18">
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Smart Contract Support</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Wallet &amp; Transaction Issues</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Incident Communication</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Community Operations</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- APPROACH -->
-<section style="padding:96px 24px;background:white">
-  <div class="max-w-6xl mx-auto">
-    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start" class="lg:grid-cols-2">
-      <div class="anim-fade-left">
-        <span class="section-tag" style="display:block;margin-bottom:16px">OUR APPROACH</span>
-        <h2 style="font-size:clamp(26px,3.5vw,38px);font-weight:800;color:var(--text-primary);margin-bottom:24px;line-height:1.2">Deep expertise in DeFi Operations</h2>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
-          <span style="display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.18);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;white-space:nowrap">Smart Contract Support</span><span style="display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.18);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;white-space:nowrap">Wallet & Transaction Issues</span><span style="display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.18);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;white-space:nowrap">Incident Communication</span><span style="display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.18);color:#CC2D0A;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;white-space:nowrap">Community Operations</span>
-        </div>
+<!-- ═══════════════ OPERATING FIGURES ═══════════════ -->
+<section class="section section--dim" aria-label="Operating figures">
+  <div class="wrap">
+    <div class="grid-3">
+      <div class="stat" data-reveal="0">
+        <div class="figure figure--accent"><span data-count="5" data-prefix="&lt;" data-suffix=" min">&lt;5 min</span></div>
+        <span class="mono">INCIDENT RESPONSE</span>
       </div>
-      <div class="anim-fade-right">
-        <p style="font-size:16px;line-height:1.8;color:#6B7280;margin-bottom:20px">DeFi protocols face a unique operational challenge: users are sophisticated, incidents can be protocol-level, and the absence of central custodians means support must translate complex technical reality into clear, trustworthy communication — at speed.</p>
-        <p style="font-size:16px;line-height:1.8;color:#6B7280">Toeshee supports DeFi operations with teams trained on smart contract interactions, wallet mechanics, bridge failures, liquidity events, and governance processes. We help your community and support function remain responsive, credible, and operationally sound.</p>
+      <div class="stat" data-reveal="0.08">
+        <div class="figure">24/7</div>
+        <span class="mono">COVERAGE</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- CAPABILITIES -->
-<section style="padding:80px 24px 96px;background:#F8F8FA;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB">
-  <div class="max-w-6xl mx-auto">
-    <div class="anim-fade" style="margin-bottom:52px">
-      <span class="section-tag" style="display:block;margin-bottom:12px">SERVICE CAPABILITIES</span>
-      <h2 style="font-size:clamp(26px,3.5vw,36px);font-weight:800;color:var(--text-primary)">What we deliver for DeFi</h2>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px">
-      
-      <div class="cap-card anim-fade">
-        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">📝</div>
-        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">Smart Contract Support</h3>
-        <p style="font-size:14px;line-height:1.7;color:#6B7280">Operational support for failed contract interactions, reverted transactions, ABI mismatches, and gas estimation issues across EVM-compatible chains.</p>
-      </div>
-      <div class="cap-card anim-fade">
-        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">💼</div>
-        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">Wallet & Transaction Issues</h3>
-        <p style="font-size:14px;line-height:1.7;color:#6B7280">Guided resolution for wallet connection failures, bridging issues, stuck transactions, and token visibility problems across multi-chain DeFi environments.</p>
-      </div>
-      <div class="cap-card anim-fade">
-        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">📣</div>
-        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">Incident Communication</h3>
-        <p style="font-size:14px;line-height:1.7;color:#6B7280">Structured user communication protocols for protocol incidents, liquidity events, and emergency governance actions — keeping users informed without amplifying panic.</p>
-      </div>
-      <div class="cap-card anim-fade">
-        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">💬</div>
-        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">Community Operations</h3>
-        <p style="font-size:14px;line-height:1.7;color:#6B7280">Moderation and operational support for Discord, Telegram, and forum channels. Structured handling of community escalations, FUD management, and governance queries.</p>
-      </div>
-      <div class="cap-card anim-fade">
-        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">🚨</div>
-        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">Fraud & Exploit Response</h3>
-        <p style="font-size:14px;line-height:1.7;color:#6B7280">Rapid-response workflows for suspected exploits, phishing attacks targeting users, and social engineering incidents. Coordinated response between community, security, and engineering teams.</p>
-      </div>
-      <div class="cap-card anim-fade">
-        <div style="width:48px;height:48px;border-radius:14px;background:var(--accent-light);border:1px solid rgba(255,58,16,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">🗳️</div>
-        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px">Governance & Proposal Support</h3>
-        <p style="font-size:14px;line-height:1.7;color:#6B7280">User support for governance participation, voting mechanics, proposal processes, and delegation workflows. We help users engage correctly with governance systems.</p>
+      <div class="stat" data-reveal="0.16">
+        <div class="figure"><span data-count="99.9" data-decimals="1" data-suffix="%">99.9%</span></div>
+        <span class="mono">UPTIME SLA</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW WE WORK -->
-<section style="padding:96px 24px;background:#0A0A0F">
-  <div class="max-w-6xl mx-auto">
-    <div class="anim-fade" style="margin-bottom:56px">
-      <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,58,16,0.7);display:block;margin-bottom:14px">HOW WE WORK</span>
-      <h2 style="font-size:clamp(26px,4vw,40px);font-weight:800;color:white;max-width:600px;line-height:1.2">From day one to long-term<br><span style="color:var(--accent)">operational excellence</span></h2>
-      <p style="font-size:16px;color:rgba(255,255,255,0.5);margin-top:16px;max-width:520px;line-height:1.7">Our three-phase model — onboarding, operations, and reporting — helps teams launch quickly, stay controlled, and continuously improve.</p>
+<!-- ═══════════════ CAPABILITIES ═══════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="rule-row" style="margin-bottom:clamp(28px,4vw,44px)" data-reveal="0">
+      <span class="mono">SERVICE CAPABILITIES</span>
+      <span class="mono mono--accent">SMART CONTRACTS · WALLETS · GOVERNANCE</span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px">
-      
-      <div class="phase-card anim-fade">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,58,16,0.7);margin-bottom:8px">Onboarding</div>
-        <h3 style="font-size:18px;font-weight:700;color:white;margin-bottom:12px">Protocol Immersion & Team Setup</h3>
-        <p style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px">We start with a deep-dive into your protocol: smart contract architecture, common user failure points, governance processes, community norms, and incident response playbooks.</p>
-        <div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Full audit of community channels and support workflows</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Agent training on DeFi-native technical and community processes</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Integration with Discord bots, ticketing, and monitoring tools</span></div>
+    <h2 class="h-section" style="margin-bottom:clamp(34px,5vw,56px)" data-reveal="0">What we deliver for DeFi.</h2>
+    <div class="grid-3">
+      <div class="stat" data-reveal="0">
+        <h3 class="h-item" style="margin-bottom:8px">Smart Contract Support</h3>
+        <p style="font-size:0.9rem; color:var(--ink-2)">Operational support for failed contract interactions, reverted transactions, ABI mismatches, and gas estimation issues across EVM-compatible chains.</p>
       </div>
-      <div class="phase-card anim-fade">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,58,16,0.7);margin-bottom:8px">Operations</div>
-        <h3 style="font-size:18px;font-weight:700;color:white;margin-bottom:12px">24/7 Embedded Support Operations</h3>
-        <p style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px">Our team operates as an embedded extension of your protocol community, managing user issues, incident communication, governance queries, and escalations in real time.</p>
-        <div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Real-time community monitoring and triage</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Protocol incident response with pre-defined communication playbooks</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Cross-chain and bridge issue handling</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Weekly CSAT tracking and community health reviews</span></div>
+      <div class="stat" data-reveal="0.06">
+        <h3 class="h-item" style="margin-bottom:8px">Wallet &amp; Transaction Issues</h3>
+        <p style="font-size:0.9rem; color:var(--ink-2)">Guided resolution for wallet connection failures, bridging issues, stuck transactions, and token visibility problems across multi-chain DeFi environments.</p>
       </div>
-      <div class="phase-card anim-fade">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,58,16,0.7);margin-bottom:8px">Reporting</div>
-        <h3 style="font-size:18px;font-weight:700;color:white;margin-bottom:12px">Performance Visibility & Continuous Improvement</h3>
-        <p style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px">You get operational reporting that surfaces user pain points, community friction, and protocol-level issues that operations are surfacing — before they become governance problems.</p>
-        <div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Community health dashboards with engagement and escalation metrics</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Monthly QA reports with response quality scoring</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Incident trend analysis by chain and interaction type</span></div><div class="bullet-item"><div class="bullet-dot"></div><span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6">Proactive recommendations based on user feedback patterns</span></div>
+      <div class="stat" data-reveal="0.12">
+        <h3 class="h-item" style="margin-bottom:8px">Incident Communication</h3>
+        <p style="font-size:0.9rem; color:var(--ink-2)">Structured user communication protocols for protocol incidents, liquidity events, and emergency governance actions — keeping users informed without amplifying panic.</p>
+      </div>
+      <div class="stat" data-reveal="0">
+        <h3 class="h-item" style="margin-bottom:8px">Community Operations</h3>
+        <p style="font-size:0.9rem; color:var(--ink-2)">Moderation and operational support for Discord, Telegram, and forum channels. Structured handling of community escalations, FUD management, and governance queries.</p>
+      </div>
+      <div class="stat" data-reveal="0.06">
+        <h3 class="h-item" style="margin-bottom:8px">Fraud &amp; Exploit Response</h3>
+        <p style="font-size:0.9rem; color:var(--ink-2)">Rapid-response workflows for suspected exploits, phishing attacks targeting users, and social engineering incidents. Coordinated response between community, security, and engineering teams.</p>
+      </div>
+      <div class="stat" data-reveal="0.12">
+        <h3 class="h-item" style="margin-bottom:8px">Governance &amp; Proposal Support</h3>
+        <p style="font-size:0.9rem; color:var(--ink-2)">User support for governance participation, voting mechanics, proposal processes, and delegation workflows. We help users engage correctly with governance systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ HOW WE WORK ═══════════════ -->
+<section class="section section--dim">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:end; margin-bottom:clamp(34px,5vw,56px)">
+      <h2 class="h-section" data-reveal="0">From day one to long-term operational excellence.</h2>
+      <p class="muted" data-reveal="0.08">Our three-phase model — onboarding, operations, and reporting — helps teams launch quickly, stay controlled, and continuously improve.</p>
+    </div>
+    <div class="grid-3">
+      <div class="stat" data-reveal="0">
+        <span class="mono mono--accent">PHASE 1 — ONBOARDING</span>
+        <h3 class="h-item" style="margin:12px 0 8px">Protocol Immersion &amp; Team Setup</h3>
+        <p style="font-size:0.9rem; color:var(--ink-2); margin-bottom:16px">We start with a deep-dive into your protocol: smart contract architecture, common user failure points, governance processes, community norms, and incident response playbooks.</p>
+        <ul style="list-style:none; display:grid; gap:10px">
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Full audit of community channels and support workflows</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Agent training on DeFi-native technical and community processes</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Integration with Discord bots, ticketing, and monitoring tools</li>
+        </ul>
+      </div>
+      <div class="stat" data-reveal="0.06">
+        <span class="mono mono--accent">PHASE 2 — OPERATIONS</span>
+        <h3 class="h-item" style="margin:12px 0 8px">24/7 Embedded Support Operations</h3>
+        <p style="font-size:0.9rem; color:var(--ink-2); margin-bottom:16px">Our team operates as an embedded extension of your protocol community, managing user issues, incident communication, governance queries, and escalations in real time.</p>
+        <ul style="list-style:none; display:grid; gap:10px">
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Real-time community monitoring and triage</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Protocol incident response with pre-defined communication playbooks</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Cross-chain and bridge issue handling</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Weekly CSAT tracking and community health reviews</li>
+        </ul>
+      </div>
+      <div class="stat" data-reveal="0.12">
+        <span class="mono mono--accent">PHASE 3 — REPORTING</span>
+        <h3 class="h-item" style="margin:12px 0 8px">Performance Visibility &amp; Continuous Improvement</h3>
+        <p style="font-size:0.9rem; color:var(--ink-2); margin-bottom:16px">You get operational reporting that surfaces user pain points, community friction, and protocol-level issues that operations are surfacing — before they become governance problems.</p>
+        <ul style="list-style:none; display:grid; gap:10px">
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Community health dashboards with engagement and escalation metrics</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Monthly QA reports with response quality scoring</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Incident trend analysis by chain and interaction type</li>
+          <li class="check-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Proactive recommendations based on user feedback patterns</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section style="padding:96px 24px;background:white">
-  <div class="max-w-3xl mx-auto text-center anim-fade">
-    <div style="margin-bottom:20px"><span class="badge"><span class="badge-dot"></span>Get Started</span></div>
-    <h2 style="font-size:clamp(28px,5vw,44px);font-weight:800;color:var(--text-primary);margin-bottom:20px">Ready to Scale Your DeFi Operations?</h2>
-    <p style="font-size:17px;color:#6B7280;margin-bottom:36px;line-height:1.7">Let's connect and define the right operational model for your platform. Implementation begins within days.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
-      <a href="contact.html" class="btn-primary">Request Evaluation</a>
-      <a href="industries.html" class="btn-secondary">View All Industries</a>
+<!-- ═══════════════ CTA BAND ═══════════════ -->
+<section class="band section">
+  <div class="wrap">
+    <p class="mono" style="margin-bottom:26px" data-reveal="0">GET STARTED</p>
+    <h2 class="h-section" style="max-width:16em" data-reveal="0.08">Ready to scale your DeFi operations?</h2>
+    <p class="band__sub" style="margin-top:22px" data-reveal="0.16">Let's connect and define the right operational model for your platform. Implementation begins within days.</p>
+    <div class="cluster" style="margin-top:34px" data-reveal="0.24">
+      <a class="btn btn--reverse" href="index.html#contact">Request Evaluation</a>
+      <a href="industries.html">View All Industries</a>
     </div>
   </div>
 </section>
 
-<footer style="background:#0A0A0F;color:white;padding:64px 24px 32px">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-      <div>
-        <img src="assets/images/Logo%20update.png" alt="Toeshee" style="height:60px;width:60px;object-fit:contain;margin-bottom:16px">
-        <p style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.7">Expert operations for regulated digital environments.</p>
-      </div>
-      <div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px">Industries</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <a href="industry-fintech.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Fintech</a>
-          <a href="industry-igaming.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">iGaming</a>
-          <a href="industry-exchanges.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Crypto Exchanges</a>
-          <a href="industry-defi.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">DeFi</a>
-          <a href="industry-crypto-payments.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Crypto Payment Processors</a>
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <a href="index.html" class="nav__brand" aria-label="Toeshee home">
+          <img src="assets/images/Logo%20update.png" alt="" width="38" height="38">
+          <span class="nav__wordmark">TOESHEE</span>
+        </a>
+        <p class="footer__about">The first outsourcing provider built for the decentralized economy. Crypto-native customer support infrastructure.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/toeshee.co/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/toesheecorp" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
         </div>
       </div>
-      <div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px">Solutions</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <a href="solution-crypto-support.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Crypto Customer Support</a>
-          <a href="solution-technical-support.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Technical Support</a>
-          <a href="solution-trust-safety.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Trust &amp; Safety</a>
-          <a href="solution-risk-fraud.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Risk &amp; Fraud</a>
-          <a href="solution-security-compliance.html" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none" onmouseover="this.style.color='#FF3A10'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Compliance</a>
-        </div>
+      <div class="footer__col">
+        <span class="mono">SOLUTIONS</span>
+        <ul>
+          <li><a href="solution-crypto-support.html">Crypto Customer Support</a></li>
+          <li><a href="solution-technical-support.html">Technical Support</a></li>
+          <li><a href="solution-trust-safety.html">Trust &amp; Safety</a></li>
+          <li><a href="solution-risk-fraud.html">Risk &amp; Fraud</a></li>
+          <li><a href="solution-security-compliance.html">Compliance</a></li>
+        </ul>
       </div>
-      <div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px">Contact</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <a href="tel:+18667157327" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none">+1 (866) 715-7327</a>
-          <a href="mailto:hello@toeshee.io" style="color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none">hello@toeshee.io</a>
-        </div>
+      <div class="footer__col">
+        <span class="mono">INDUSTRIES</span>
+        <ul>
+          <li><a href="industry-fintech.html">Fintech</a></li>
+          <li><a href="industry-igaming.html">iGaming</a></li>
+          <li><a href="industry-exchanges.html">Crypto Exchanges</a></li>
+          <li><a href="industry-defi.html">DeFi</a></li>
+          <li><a href="industry-crypto-payments.html">Crypto Payments</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <span class="mono">COMPANY</span>
+        <ul>
+          <li><a href="company.html">About</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
       </div>
     </div>
-    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
-      <p style="color:rgba(255,255,255,0.35);font-size:13px">&copy; 2026 Toeshee. All rights reserved.</p>
-      <div style="display:flex;gap:20px">
-        <a href="privacy.html" style="color:rgba(255,255,255,0.35);font-size:13px;text-decoration:none">Privacy Policy</a>
-        <a href="terms.html" style="color:rgba(255,255,255,0.35);font-size:13px;text-decoration:none">Terms &amp; Conditions</a>
-        <a href="cookie-policy.html" style="color:rgba(255,255,255,0.35);font-size:13px;text-decoration:none">Cookie Policy</a>
+    <div class="footer__base">
+      <span class="mono">© 2026 TOESHEE — ALL RIGHTS RESERVED</span>
+      <div class="footer__legal">
+        <a href="terms.html">Terms and conditions</a>
+        <a href="privacy.html">Privacy policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
       </div>
     </div>
   </div>
 </footer>
+
 <script src="assets/motion.js"></script>
-<script>
-  (function() {
-    var animate = window.Motion && window.Motion.animate;
-    var inView = window.Motion && window.Motion.inView;
-    var scroll = window.Motion && window.Motion.scroll;
-
-    function showAll() {
-      document.querySelectorAll('.anim-fade,.anim-fade-left,.anim-fade-right').forEach(function(el) {
-        el.style.opacity = '1'; el.style.transform = 'none';
-      });
-      var h = document.getElementById('hero-content');
-      if (h) { h.style.opacity = '1'; h.style.transform = 'none'; }
-    }
-
-    if (!animate || !inView) { showAll(); return; }
-
-    try {
-      var heroEl = document.getElementById('hero-content');
-      if (heroEl) animate(heroEl, { opacity: [0, 1], y: [28, 0] }, { duration: 0.85, easing: [0.16, 1, 0.3, 1] });
-
-      document.querySelectorAll('.anim-fade').forEach(function(el, i) {
-        inView(el, function() {
-          animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, delay: (i % 3) * 0.1, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-8% 0px' });
-      });
-      document.querySelectorAll('.anim-fade-left').forEach(function(el) {
-        inView(el, function() {
-          animate(el, { opacity: [0, 1], x: [-40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-8% 0px' });
-      });
-      document.querySelectorAll('.anim-fade-right').forEach(function(el) {
-        inView(el, function() {
-          animate(el, { opacity: [0, 1], x: [40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-8% 0px' });
-      });
-
-      if (scroll) {
-        scroll(function(info) {
-          var bar = document.getElementById('scroll-bar');
-          if (bar) bar.style.transform = 'scaleX(' + info.y.progress + ')';
-        });
-      }
-
-      var lastScrollY = 0;
-      var nav = document.getElementById('navbar');
-      window.addEventListener('scroll', function() {
-        var y = window.scrollY;
-        if (nav) {
-          if (y > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
-          if (y > lastScrollY + 10 && y > 300) nav.classList.add('hidden-nav');
-          else if (y < lastScrollY - 10) nav.classList.remove('hidden-nav');
-        }
-        lastScrollY = y;
-        var logo = document.getElementById('nav-logo-img');
-        if (logo) { logo.style.height = y > 60 ? '52px' : '90px'; logo.style.width = y > 60 ? '52px' : '90px'; }
-      }, { passive: true });
-
-      var burger = document.getElementById('burger');
-      if (burger) {
-        burger.addEventListener('click', function() {
-          var m = document.getElementById('mobile-menu');
-          var b1 = document.getElementById('b1'), b2 = document.getElementById('b2'), b3 = document.getElementById('b3');
-          if (m) m.classList.toggle('open');
-          if (m && m.classList.contains('open')) {
-            if (b1) b1.style.transform = 'rotate(45deg) translate(5px,5px)';
-            if (b2) b2.style.opacity = '0';
-            if (b3) b3.style.transform = 'rotate(-45deg) translate(5px,-5px)';
-          } else {
-            if (b1) b1.style.transform = '';
-            if (b2) b2.style.opacity = '';
-            if (b3) b3.style.transform = '';
-          }
-        });
-      }
-    } catch(e) {
-      console.warn('Motion error:', e);
-      showAll();
-    }
-  })();
-</script>
+<script src="assets/js/toeshee.js"></script>
 <script src="assets/js/cookie-banner.js"></script>
 <script src="assets/js/i18n.js"></script>
+
 </body>
 </html>
