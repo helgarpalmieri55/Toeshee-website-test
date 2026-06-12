@@ -216,17 +216,6 @@
     .form-input::placeholder { color: var(--text-muted); }
     .form-input:focus { border-color: var(--accent); background: white; box-shadow: 0 0 0 3px rgba(255,58,16,0.1); }
 
-    /* ── MARQUEE ── */
-    .marquee-track { display: flex; gap: 20px; animation: marquee 32s linear infinite; }
-    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-    .trust-chip {
-      background: white; border: 1px solid var(--border); border-radius: 8px;
-      padding: 10px 22px; font-family:'Space Grotesk',sans-serif;
-      font-size: 13px; font-weight: 600; color: #6B7280;
-      letter-spacing: .04em; white-space: nowrap;
-      box-shadow: var(--shadow-sm);
-    }
-
     /* ── VIDEO section ── */
     .video-section {
       position: relative; overflow: hidden; background: #0A0A0F;
@@ -278,7 +267,7 @@
     /* ── REDUCED MOTION ── */
     @media (prefers-reduced-motion: reduce) {
       .reveal, .reveal-left, .reveal-right { opacity:1; transform:none; transition:none; }
-      .marquee-track, .float-card, .badge-dot, .scroll-dot, .orb-orange, .orb-blue { animation:none; }
+      .float-card, .badge-dot, .scroll-dot, .orb-orange, .orb-blue { animation:none; }
     }
   </style>
 </head>
@@ -447,39 +436,6 @@
       <div class="scroll-ind" style="border-color:rgba(255,255,255,.3)"><div class="scroll-dot"></div></div>
     </div>
 
-  </div>
-</section>
-
-<!-- ═══════════════════════════ TRUST BAR ═══════════════════════════ -->
-<section class="py-14 border-y border-gray-100 bg-gray-50 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 mb-8 text-center">
-    <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold" style="font-family:'Space Grotesk',sans-serif">Trusted by Forward-Thinking Platforms</p>
-  </div>
-  <div class="overflow-hidden">
-    <div class="flex" style="gap:20px">
-      <div class="marquee-track">
-        <div class="trust-chip">BitPay</div>
-        <div class="trust-chip">Chainlink</div>
-        <div class="trust-chip">Uniswap</div>
-        <div class="trust-chip">Kraken</div>
-        <div class="trust-chip">1inch</div>
-        <div class="trust-chip">Avalanche</div>
-        <div class="trust-chip">Polygon</div>
-        <div class="trust-chip">Compound</div>
-        <div class="trust-chip">Aave</div>
-        <div class="trust-chip">OpenSea</div>
-        <div class="trust-chip">BitPay</div>
-        <div class="trust-chip">Chainlink</div>
-        <div class="trust-chip">Uniswap</div>
-        <div class="trust-chip">Kraken</div>
-        <div class="trust-chip">1inch</div>
-        <div class="trust-chip">Avalanche</div>
-        <div class="trust-chip">Polygon</div>
-        <div class="trust-chip">Compound</div>
-        <div class="trust-chip">Aave</div>
-        <div class="trust-chip">OpenSea</div>
-      </div>
-    </div>
   </div>
 </section>
 
