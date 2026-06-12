@@ -141,7 +141,7 @@
             <div class="flex flex-wrap gap-2">
               <span class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600" style="font-family:'Space Grotesk',sans-serif">Global</span>
               <span class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600" style="font-family:'Space Grotesk',sans-serif">Full-time</span>
-              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background:var(--accent-light);color:var(--accent);font-family:'Space Grotesk',sans-serif">100% Remote</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background:var(--accent-light);color:var(--accent);font-family:'Space Grotesk',sans-serif">100% On-Site</span>
             </div>
           </div>
           <button onclick="openApplyModal('Crypto Customer Support Agent')" class="btn-primary flex-shrink-0">Apply Now</button>
@@ -298,6 +298,16 @@
         <textarea name="message" id="field-message" required rows="4" placeholder="Briefly describe your background and why you'd be a great fit..." style="width:100%;padding:10px 14px;border:1.5px solid #E5E7EB;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0A0A0F;outline:none;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='#FF3A10'" onblur="this.style.borderColor='#E5E7EB'"></textarea>
       </div>
 
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:#374151;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Attach CV / Résumé</label>
+        <label id="cv-dropzone" for="field-cv" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1.5px dashed #D1D5DB;border-radius:10px;padding:22px 16px;cursor:pointer;transition:border-color .2s,background .2s;background:#FAFAFA">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span id="cv-label" style="font-size:13px;color:#6B7280;font-family:'Inter',sans-serif;text-align:center">Click to upload or drag &amp; drop<br><span style="font-size:11px;color:#9CA3AF">PDF, DOC, DOCX — max 5 MB</span></span>
+        </label>
+        <input type="file" id="field-cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none">
+        <p id="cv-error" style="display:none;color:#DC2626;font-size:12px;margin-top:6px">File too large (max 5 MB) or unsupported format.</p>
+      </div>
+
       <!-- Status messages -->
       <div id="form-success" style="display:none;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:10px;padding:14px 16px;margin-bottom:16px;text-align:center">
         <p style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#065F46;margin:0">Application sent! ✓</p>
@@ -353,11 +363,69 @@
     }
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
+    // Reset CV dropzone
+    document.getElementById('field-cv').value = '';
+    document.getElementById('cv-label').innerHTML = 'Click to upload or drag &amp; drop<br><span style="font-size:11px;color:#9CA3AF">PDF, DOC, DOCX — max 5 MB</span>';
+    document.getElementById('cv-dropzone').style.borderColor = '#D1D5DB';
+    document.getElementById('cv-dropzone').style.background = '#FAFAFA';
+    document.getElementById('cv-error').style.display = 'none';
   }
 
   function closeApplyModal() {
     document.getElementById('apply-modal').style.display = 'none';
     document.body.style.overflow = '';
+  }
+
+  // ── CV file dropzone UX ──────────────────────────────────────────────────
+  var cvFileInput = document.getElementById('field-cv');
+  var cvDropzone  = document.getElementById('cv-dropzone');
+
+  cvFileInput.addEventListener('change', function () { updateCvLabel(this.files[0]); });
+
+  cvDropzone.addEventListener('dragover', function (e) {
+    e.preventDefault();
+    this.style.borderColor = '#FF3A10';
+    this.style.background = 'rgba(255,58,16,0.04)';
+  });
+  cvDropzone.addEventListener('dragleave', function () {
+    this.style.borderColor = '#D1D5DB';
+    this.style.background = '#FAFAFA';
+  });
+  cvDropzone.addEventListener('drop', function (e) {
+    e.preventDefault();
+    this.style.borderColor = '#D1D5DB';
+    this.style.background = '#FAFAFA';
+    var file = e.dataTransfer.files[0];
+    if (file) { cvFileInput.files = e.dataTransfer.files; updateCvLabel(file); }
+  });
+
+  function updateCvLabel(file) {
+    var errEl = document.getElementById('cv-error');
+    if (!file) return;
+    var allowed = ['application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    if (file.size > 5 * 1024 * 1024 || allowed.indexOf(file.type) === -1) {
+      errEl.style.display = 'block';
+      cvFileInput.value = '';
+      document.getElementById('cv-label').innerHTML = 'Click to upload or drag &amp; drop<br><span style="font-size:11px;color:#9CA3AF">PDF, DOC, DOCX — max 5 MB</span>';
+      cvDropzone.style.borderColor = '#DC2626';
+      return;
+    }
+    errEl.style.display = 'none';
+    cvDropzone.style.borderColor = '#34D399';
+    cvDropzone.style.background = 'rgba(52,211,153,0.05)';
+    document.getElementById('cv-label').innerHTML =
+      '<span style="color:#065F46;font-weight:600">' + file.name + '</span><br>' +
+      '<span style="font-size:11px;color:#9CA3AF">' + (file.size / 1024).toFixed(0) + ' KB — click to change</span>';
+  }
+
+  function readFileAsBase64(file) {
+    return new Promise(function (resolve) {
+      if (!file) { resolve(null); return; }
+      var reader = new FileReader();
+      reader.onload = function (e) { resolve(e.target.result); };
+      reader.onerror = function () { resolve(null); };
+      reader.readAsDataURL(file);
+    });
   }
 
   // Close on backdrop click
@@ -389,6 +457,8 @@
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
+    var cvFile = cvFileInput.files[0] || null;
+
     if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
       // Demo mode — show success after short delay
       setTimeout(function () {
@@ -396,32 +466,43 @@
         btn.textContent = 'Send Application';
         btn.disabled = false;
         form.reset();
+        cvFileInput.value = '';
+        document.getElementById('cv-label').innerHTML = 'Click to upload or drag &amp; drop<br><span style="font-size:11px;color:#9CA3AF">PDF, DOC, DOCX — max 5 MB</span>';
+        cvDropzone.style.borderColor = '#D1D5DB';
+        cvDropzone.style.background = '#FAFAFA';
       }, 900);
       return;
     }
 
-    var params = {
-      from_name:    name,
-      reply_to:     email,
-      position:     document.getElementById('form-position').value,
-      linkedin:     document.getElementById('field-linkedin').value,
-      availability: form.querySelector('[name="availability"]').value,
-      message:      msg,
-      to_email:     'awesome.jobs@toeshee.com'
-    };
+    readFileAsBase64(cvFile).then(function (b64) {
+      var params = {
+        from_name:    name,
+        reply_to:     email,
+        position:     document.getElementById('form-position').value,
+        linkedin:     document.getElementById('field-linkedin').value,
+        availability: form.querySelector('[name="availability"]').value,
+        message:      msg,
+        to_email:     'awesome.jobs@toeshee.com',
+        cv_name:      cvFile ? cvFile.name : 'No CV attached',
+        cv_data:      b64 || ''
+      };
 
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
-      .then(function () {
-        document.getElementById('form-success').style.display = 'block';
-        btn.textContent = 'Send Application';
-        btn.disabled = false;
-        form.reset();
-      })
-      .catch(function () {
-        document.getElementById('form-error').style.display = 'block';
-        btn.textContent = 'Send Application';
-        btn.disabled = false;
-      });
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
+        .then(function () {
+          document.getElementById('form-success').style.display = 'block';
+          btn.textContent = 'Send Application';
+          btn.disabled = false;
+          form.reset();
+          cvFileInput.value = '';
+          document.getElementById('cv-label').innerHTML = 'Click to upload or drag &amp; drop<br><span style="font-size:11px;color:#9CA3AF">PDF, DOC, DOCX — max 5 MB</span>';
+          cvDropzone.style.borderColor = '#D1D5DB';
+          cvDropzone.style.background = '#FAFAFA';
+        })
+        .catch(function () {
+          document.getElementById('form-error').style.display = 'block';
+          btn.textContent = 'Send Application';
+          btn.disabled = false;
+        });
   });
 </script>
 
