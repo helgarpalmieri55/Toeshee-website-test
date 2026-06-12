@@ -81,7 +81,7 @@
       <a href="#culture" class="btn-ghost-white">Our Culture</a>
     </div>
     <!-- Stats -->
-    <div class="flex flex-wrap justify-center gap-4" id="hero-stats">
+    <div class="flex flex-wrap justify-center gap-4 anim-fade" id="hero-stats">
       <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3"><div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">100+</div><div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Team Members</div></div>
       <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3"><div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">3</div><div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Countries</div></div>
       <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3"><div class="text-2xl font-bold" style="color:var(--accent);font-family:'Space Grotesk',sans-serif">6+</div><div class="text-xs font-semibold text-white" style="font-family:'Space Grotesk',sans-serif">Open Roles</div></div>
@@ -141,7 +141,7 @@
         </div>
       </div>
     </div>
-    <div class="text-center mt-12" id="open-cv">
+    <div class="text-center mt-12 anim-fade" id="open-cv">
       <p class="text-gray-500 mb-4">Don't see your role? We're always open to exceptional candidates.</p>
       <a href="contact.html" class="btn-secondary">Send us your CV anyway</a>
     </div>
@@ -161,23 +161,6 @@
   </div>
 </footer>
 
-<script>
-  const navbar=document.getElementById('navbar');const navLogoImg=document.getElementById('nav-logo-img');let lastY=0;
-  function updateNav(y){
-    const scrolled=y>80;
-    navbar.classList.toggle('scrolled',scrolled);
-    navbar.classList.toggle('hidden-nav',y>lastY&&y>300);
-    if(navLogoImg) navLogoImg.style.filter=scrolled?'none':'brightness(0) invert(1)';
-    navbar.querySelectorAll('.hidden.lg\\:flex button,.hidden.lg\\:flex a:not(.btn-primary)').forEach(el=>{
-      el.style.color=scrolled?'':undefined;
-    });
-    lastY=y<0?0:y;
-  }
-  window.addEventListener('scroll',()=>updateNav(window.scrollY),{passive:true});
-  updateNav(0);
-  const burger=document.getElementById('burger');const mobileMenu=document.getElementById('mobile-menu');let open=false;
-  burger.addEventListener('click',()=>{open=!open;mobileMenu.classList.toggle('open',open);document.getElementById('b1').style.transform=open?'rotate(45deg) translate(5px,5px)':'';document.getElementById('b2').style.opacity=open?'0':'1';document.getElementById('b3').style.transform=open?'rotate(-45deg) translate(5px,-5px)':'';});
-</script>
 <script src="assets/motion.js"></script>
 <script>
   (function() {

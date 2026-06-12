@@ -64,9 +64,9 @@
 <!-- HERO -->
 <section class="pt-36 pb-20 px-4 sm:px-6" style="background:linear-gradient(135deg,#0A0A0F 0%,#0c1218 100%)">
   <div class="max-w-5xl mx-auto text-center" id="hero-content">
-    <div class="mb-6"><span class="badge" style="background:rgba(255,58,16,0.15);border-color:rgba(255,58,16,0.3);color:#FF8060"><span class="badge-dot"></span>Insights</span></div>
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">Operational Insights for <span style="color:var(--accent)">Web3, DeFi</span> and <span style="color:var(--accent)">iGaming</span> Teams</h1>
-    <p class="text-lg text-white/65 leading-relaxed max-w-3xl mx-auto">Technical perspectives on customer operations, fraud, compliance, and risk management across Web3, DeFi, Fintech, and iGaming environments based on real operational experience.</p>
+    <div class="mb-6 anim-fade"><span class="badge" style="background:rgba(255,58,16,0.15);border-color:rgba(255,58,16,0.3);color:#FF8060"><span class="badge-dot"></span>Insights</span></div>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 anim-fade">Operational Insights for <span style="color:var(--accent)">Web3, DeFi</span> and <span style="color:var(--accent)">iGaming</span> Teams</h1>
+    <p class="text-lg text-white/65 leading-relaxed max-w-3xl mx-auto anim-fade">Technical perspectives on customer operations, fraud, compliance, and risk management across Web3, DeFi, Fintech, and iGaming environments based on real operational experience.</p>
   </div>
 </section>
 
@@ -157,8 +157,8 @@
 <!-- CTA -->
 <section class="py-20 px-4 sm:px-6" style="background:#0A0A0F">
   <div class="max-w-3xl mx-auto text-center" id="cta-section">
-    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-5">Let's Talk Operations</h2>
-    <p class="text-white/60 text-lg mb-8">Looking to strengthen customer or risk operations in a regulated environment? Our team can help you design a scalable, compliance-aware operating model.</p>
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-5 anim-fade">Let's Talk Operations</h2>
+    <p class="text-white/60 text-lg mb-8 anim-fade">Looking to strengthen customer or risk operations in a regulated environment? Our team can help you design a scalable, compliance-aware operating model.</p>
     <a href="contact.html" class="btn-primary text-base">Request a Technical Evaluation</a>
   </div>
 </section>
@@ -176,13 +176,7 @@
   </div>
 </footer>
 
-<script>
-  const navbar=document.getElementById('navbar');let lastY=0;
-  function updateNav(y){const s=y>80;navbar.classList.toggle('scrolled',s);navbar.classList.toggle('hidden-nav',y>lastY&&y>300);lastY=y<0?0:y;const logo=document.getElementById('nav-logo-img');}
-  window.addEventListener('scroll',()=>updateNav(window.scrollY),{passive:true});
-  const burger=document.getElementById('burger');const mobileMenu=document.getElementById('mobile-menu');let open=false;
-  burger.addEventListener('click',()=>{open=!open;mobileMenu.classList.toggle('open',open);document.getElementById('b1').style.transform=open?'rotate(45deg) translate(5px,5px)':'';document.getElementById('b2').style.opacity=open?'0':'1';document.getElementById('b3').style.transform=open?'rotate(-45deg) translate(5px,-5px)':'';});
-</script>
+
 <script src="assets/motion.js"></script>
 <script>
   (function() {

@@ -158,7 +158,7 @@
     .card:hover { border-color: rgba(255,58,16,0.25); box-shadow: 0 12px 40px rgba(255,58,16,0.08), 0 4px 12px rgba(0,0,0,0.05); transform: translateY(-4px); }
 
     .industry-card {
-      background: white; border: 1px solid var(--border);
+      background: white; cursor: pointer; border: 1px solid var(--border);
       border-radius: 16px; cursor: pointer;
       transition: all 0.28s cubic-bezier(0.16,1,0.3,1);
     }
@@ -1175,20 +1175,21 @@
       var heroEl = document.getElementById('hero-content');
       if (heroEl) animate(heroEl, { opacity: [0, 1], y: [28, 0] }, { duration: 0.85, easing: [0.16, 1, 0.3, 1] });
 
-      document.querySelectorAll('.anim-fade').forEach(function(el, i) {
+      // Animate both class naming schemes (.anim-fade and .reveal)
+      document.querySelectorAll('.anim-fade, .reveal').forEach(function(el, i) {
         inView(el, function() {
-          animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, delay: (i % 3) * 0.1, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-8% 0px' });
+          animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, delay: (i % 4) * 0.08, easing: [0.16, 1, 0.3, 1] });
+        }, { margin: '-6% 0px' });
       });
-      document.querySelectorAll('.anim-fade-left').forEach(function(el) {
+      document.querySelectorAll('.anim-fade-left, .reveal-left').forEach(function(el) {
         inView(el, function() {
           animate(el, { opacity: [0, 1], x: [-40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-8% 0px' });
+        }, { margin: '-6% 0px' });
       });
-      document.querySelectorAll('.anim-fade-right').forEach(function(el) {
+      document.querySelectorAll('.anim-fade-right, .reveal-right').forEach(function(el) {
         inView(el, function() {
           animate(el, { opacity: [0, 1], x: [40, 0] }, { duration: 0.65, easing: [0.16, 1, 0.3, 1] });
-        }, { margin: '-8% 0px' });
+        }, { margin: '-6% 0px' });
       });
 
       if (scroll) {

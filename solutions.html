@@ -95,9 +95,9 @@
 <!-- HERO -->
 <section class="pt-36 pb-24 px-4 sm:px-6" style="background:linear-gradient(135deg,#0A0A0F 0%,#1a1020 100%)">
   <div class="max-w-5xl mx-auto text-center" id="hero-content">
-    <div class="mb-6"><span class="badge" style="background:rgba(255,58,16,0.15);border-color:rgba(255,58,16,0.3);color:#FF8060"><span class="badge-dot"></span>Solutions</span></div>
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">Support Operations Built for<br><span style="color:var(--accent)">Regulated Digital Environments</span></h1>
-    <p class="text-lg sm:text-xl text-white/65 leading-relaxed max-w-3xl mx-auto">Five specialized solutions designed for crypto, DeFi, fintech, and iGaming platforms where compliance, speed, and operational control are non-negotiable.</p>
+    <div class="mb-6 anim-fade"><span class="badge" style="background:rgba(255,58,16,0.15);border-color:rgba(255,58,16,0.3);color:#FF8060"><span class="badge-dot"></span>Solutions</span></div>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 anim-fade">Support Operations Built for<br><span style="color:var(--accent)">Regulated Digital Environments</span></h1>
+    <p class="text-lg sm:text-xl text-white/65 leading-relaxed max-w-3xl mx-auto anim-fade">Five specialized solutions designed for crypto, DeFi, fintech, and iGaming platforms where compliance, speed, and operational control are non-negotiable.</p>
   </div>
 </section>
 
@@ -238,8 +238,8 @@
 <!-- CTA -->
 <section class="py-20 px-4 sm:px-6" style="background:#0A0A0F">
   <div class="max-w-3xl mx-auto text-center" id="cta-section">
-    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">Ready to scope your solution?</h2>
-    <p class="text-white/60 text-lg mb-8">Let's discuss your operational requirements and design a solution that fits your regulatory environment.</p>
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6 anim-fade">Ready to scope your solution?</h2>
+    <p class="text-white/60 text-lg mb-8 anim-fade">Let's discuss your operational requirements and design a solution that fits your regulatory environment.</p>
     <a href="contact.html" class="btn-primary text-base">Let's Talk</a>
   </div>
 </section>
@@ -267,14 +267,6 @@
   </div>
 </footer>
 
-<script>
-  const navbar=document.getElementById('navbar');let lastY=0;
-  function updateNav(y){const s=y>80;navbar.classList.toggle('scrolled',s);navbar.classList.toggle('hidden-nav',y>lastY&&y>300);lastY=y<0?0:y;const logo=document.getElementById('nav-logo-img');}
-  window.addEventListener('scroll',()=>updateNav(window.scrollY),{passive:true});
-  const burger=document.getElementById('burger');const mobileMenu=document.getElementById('mobile-menu');let open=false;
-  burger.addEventListener('click',()=>{open=!open;mobileMenu.classList.toggle('open',open);document.getElementById('b1').style.transform=open?'rotate(45deg) translate(5px,5px)':'';document.getElementById('b2').style.opacity=open?'0':'1';document.getElementById('b3').style.transform=open?'rotate(-45deg) translate(5px,-5px)':'';});
-  function closeMobile(){open=false;mobileMenu.classList.remove('open');document.getElementById('b1').style.transform='';document.getElementById('b2').style.opacity='1';document.getElementById('b3').style.transform='';}
-</script>
 <script src="assets/motion.js"></script>
 <script>
   (function() {
