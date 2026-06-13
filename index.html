@@ -64,11 +64,11 @@ button{font-family:var(--fb);cursor:pointer}
 .btn-dk:hover{background:oklch(8% 0.015 280);transform:translateY(-2px)}
 
 /* Nav */
-#nav{position:fixed;top:0;left:0;right:0;z-index:var(--znav);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4.5vw,60px);height:76px;transition:background .35s var(--ease),border-color .35s,transform .45s var(--ease);border-bottom:1px solid transparent}
+#nav{position:fixed;top:0;left:0;right:0;z-index:var(--znav);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4.5vw,60px);height:92px;transition:background .35s var(--ease),border-color .35s,transform .45s var(--ease);border-bottom:1px solid transparent}
 #nav.scrolled{background:oklch(100% 0 0/.94);backdrop-filter:blur(16px);border-color:var(--line)}
 #nav.hidden{transform:translateY(-100%)}
 .nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo img{height:52px;width:auto;object-fit:contain}
+.nav-logo img{height:72px;width:auto;object-fit:contain}
 .nav-brand{font-family:var(--fd);font-variation-settings:'wdth' 88,'wght' 800;text-transform:uppercase;font-size:1.08rem;letter-spacing:0.01em;color:var(--hi);transition:color .3s}
 #nav.scrolled .nav-brand{color:var(--ink)}
 .nav-links{display:flex;align-items:center;gap:4px}
@@ -78,6 +78,8 @@ button{font-family:var(--fb);cursor:pointer}
 #nav.scrolled .nav-links>a:hover,#nav.scrolled .nav-links .drop-trigger:hover{color:var(--ink)!important;background:var(--bg2)}
 /* Dropdown */
 .drop{position:relative}
+.drop::after{content:'';position:absolute;top:100%;left:0;right:0;height:18px;display:none}
+.drop:hover::after{display:block}
 .drop-trigger{display:flex;align-items:center;gap:6px;cursor:default;user-select:none;background:none;border:0;font-family:var(--fb)}
 .drop-trigger svg{width:12px;height:12px;transition:transform .25s var(--ease);flex-shrink:0;opacity:.7}
 .drop:hover .drop-trigger svg,.drop.open .drop-trigger svg{transform:rotate(180deg)}
@@ -102,7 +104,7 @@ button{font-family:var(--fb);cursor:pointer}
 #mmenu a:hover{color:var(--a)}
 
 /* Hero */
-#hero{background:var(--dark);min-height:100svh;display:grid;grid-template-rows:1fr auto;padding-top:76px;overflow:hidden}
+#hero{background:var(--dark);min-height:100svh;display:grid;grid-template-rows:1fr auto;padding-top:92px;overflow:hidden}
 .hero-main{display:grid;grid-template-columns:1fr 360px;gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(48px,8vh,100px) clamp(20px,4.5vw,60px);max-width:1300px;margin:0 auto;width:100%;box-sizing:border-box}
 @media(max-width:940px){.hero-main{grid-template-columns:1fr}}
 .hero-status{display:flex;align-items:center;gap:9px;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--hi3);margin-bottom:28px}

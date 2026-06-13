@@ -55,17 +55,19 @@ button{font-family:var(--fb);cursor:pointer}
 .btn-hiout:hover{border-color:var(--hi);background:var(--hi);color:var(--dark);transform:translateY(-2px)}
 
 /* Nav */
-#nav{position:fixed;top:0;left:0;right:0;z-index:var(--znav);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4.5vw,60px);height:76px;transition:background .35s var(--ease),border-color .35s,transform .45s var(--ease);border-bottom:1px solid transparent}
+#nav{position:fixed;top:0;left:0;right:0;z-index:var(--znav);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4.5vw,60px);height:92px;transition:background .35s var(--ease),border-color .35s,transform .45s var(--ease);border-bottom:1px solid transparent}
 #nav.scrolled{background:oklch(100% 0 0/.94);backdrop-filter:blur(16px);border-color:var(--line)}
 #nav.hidden{transform:translateY(-100%)}
 .nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo img{height:52px;width:auto;object-fit:contain}
+.nav-logo img{height:72px;width:auto;object-fit:contain}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav-links>a,.nav-links .drop-trigger{font-size:0.87rem;font-weight:600;padding:8px 14px;border-radius:8px;color:oklch(97% 0 0/.78);transition:color .2s,background .2s;white-space:nowrap}
 #nav.scrolled .nav-links>a,#nav.scrolled .nav-links .drop-trigger{color:var(--ink2)}
 .nav-links>a:hover,.nav-links .drop-trigger:hover{color:var(--hi)!important;background:oklch(97% 0 0/.1)}
 #nav.scrolled .nav-links>a:hover,#nav.scrolled .nav-links .drop-trigger:hover{color:var(--ink)!important;background:var(--bg2)}
 .drop{position:relative}
+.drop::after{content:'';position:absolute;top:100%;left:0;right:0;height:18px;display:none}
+.drop:hover::after{display:block}
 .drop-trigger{display:flex;align-items:center;gap:6px;cursor:default;user-select:none;background:none;border:0;font-family:var(--fb)}
 .drop-trigger svg{width:12px;height:12px;transition:transform .25s var(--ease);flex-shrink:0;opacity:.7}
 .drop:hover .drop-trigger svg,.drop.open .drop-trigger svg{transform:rotate(180deg)}
