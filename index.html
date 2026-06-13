@@ -64,18 +64,32 @@ button{font-family:var(--fb);cursor:pointer}
 .btn-dk:hover{background:oklch(8% 0.015 280);transform:translateY(-2px)}
 
 /* Nav */
-#nav{position:fixed;top:0;left:0;right:0;z-index:var(--znav);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4.5vw,60px);height:68px;transition:background .35s var(--ease),border-color .35s,transform .45s var(--ease);border-bottom:1px solid transparent}
+#nav{position:fixed;top:0;left:0;right:0;z-index:var(--znav);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4.5vw,60px);height:76px;transition:background .35s var(--ease),border-color .35s,transform .45s var(--ease);border-bottom:1px solid transparent}
 #nav.scrolled{background:oklch(100% 0 0/.94);backdrop-filter:blur(16px);border-color:var(--line)}
 #nav.hidden{transform:translateY(-100%)}
 .nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo img{height:36px;width:36px;object-fit:contain}
+.nav-logo img{height:52px;width:auto;object-fit:contain}
 .nav-brand{font-family:var(--fd);font-variation-settings:'wdth' 88,'wght' 800;text-transform:uppercase;font-size:1.08rem;letter-spacing:0.01em;color:var(--hi);transition:color .3s}
 #nav.scrolled .nav-brand{color:var(--ink)}
 .nav-links{display:flex;align-items:center;gap:4px}
-.nav-links a{font-size:0.87rem;font-weight:600;padding:8px 14px;border-radius:8px;color:oklch(97% 0 0/.78);transition:color .2s,background .2s}
-#nav.scrolled .nav-links a{color:var(--ink2)}
-.nav-links a:hover{color:var(--hi)!important;background:oklch(97% 0 0/.1)}
-#nav.scrolled .nav-links a:hover{color:var(--ink)!important;background:var(--bg2)}
+.nav-links>a,.nav-links .drop-trigger{font-size:0.87rem;font-weight:600;padding:8px 14px;border-radius:8px;color:oklch(97% 0 0/.78);transition:color .2s,background .2s;white-space:nowrap}
+#nav.scrolled .nav-links>a,#nav.scrolled .nav-links .drop-trigger{color:var(--ink2)}
+.nav-links>a:hover,.nav-links .drop-trigger:hover{color:var(--hi)!important;background:oklch(97% 0 0/.1)}
+#nav.scrolled .nav-links>a:hover,#nav.scrolled .nav-links .drop-trigger:hover{color:var(--ink)!important;background:var(--bg2)}
+/* Dropdown */
+.drop{position:relative}
+.drop-trigger{display:flex;align-items:center;gap:6px;cursor:default;user-select:none;background:none;border:0;font-family:var(--fb)}
+.drop-trigger svg{width:12px;height:12px;transition:transform .25s var(--ease);flex-shrink:0;opacity:.7}
+.drop:hover .drop-trigger svg,.drop.open .drop-trigger svg{transform:rotate(180deg)}
+.drop-panel{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);background:oklch(14% 0.015 280);border:1px solid oklch(97% 0 0/.12);border-radius:16px;padding:10px;min-width:230px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s var(--ease),transform .22s var(--ease),visibility .22s}
+.drop:hover .drop-panel,.drop.open .drop-panel{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+#nav.scrolled .drop-panel{background:oklch(100% 0 0/.97);border-color:var(--line);box-shadow:0 16px 48px oklch(0% 0 0/.12)}
+.drop-panel a{display:block;padding:9px 14px;border-radius:10px;font-size:0.84rem;font-weight:600;color:var(--hi2);transition:background .18s,color .18s}
+.drop-panel a:hover{background:oklch(97% 0 0/.1);color:var(--hi)}
+#nav.scrolled .drop-panel a{color:var(--ink2)}
+#nav.scrolled .drop-panel a:hover{background:var(--bg2);color:var(--ink)}
+.drop-panel .dp-head{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:oklch(97% 0 0/.36);padding:10px 14px 4px;margin-top:4px}
+#nav.scrolled .drop-panel .dp-head{color:var(--ink3)}
 #burger{display:none;background:none;border:0;padding:8px;color:var(--hi);transition:color .3s}
 #nav.scrolled #burger{color:var(--ink)}
 .bline{transition:transform .3s var(--ease),opacity .3s;transform-origin:center}
@@ -88,7 +102,7 @@ button{font-family:var(--fb);cursor:pointer}
 #mmenu a:hover{color:var(--a)}
 
 /* Hero */
-#hero{background:var(--dark);min-height:100svh;display:grid;grid-template-rows:1fr auto;padding-top:68px;overflow:hidden}
+#hero{background:var(--dark);min-height:100svh;display:grid;grid-template-rows:1fr auto;padding-top:76px;overflow:hidden}
 .hero-main{display:grid;grid-template-columns:1fr 360px;gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(48px,8vh,100px) clamp(20px,4.5vw,60px);max-width:1300px;margin:0 auto;width:100%;box-sizing:border-box}
 @media(max-width:940px){.hero-main{grid-template-columns:1fr}}
 .hero-status{display:flex;align-items:center;gap:9px;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--hi3);margin-bottom:28px}
@@ -237,8 +251,10 @@ button{font-family:var(--fb);cursor:pointer}
 .car-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(36px,7vw,88px);align-items:center}
 @media(max-width:860px){.car-grid{grid-template-columns:1fr}}
 .car-text .lede{margin:20px 0 32px}
-.car-btns{display:flex;flex-wrap:wrap;gap:14px}
-.car-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.car-btns{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px}
+.car-imgw{border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:var(--bg2)}
+.car-imgw img{width:100%;height:100%;object-fit:cover}
+.car-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:clamp(28px,4vw,48px)}
 .cstat{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:24px 20px}
 .cstat .n{font-family:var(--fd);font-variation-settings:'wdth' 80,'wght' 800;font-size:2.2rem;line-height:1;color:var(--a);letter-spacing:-0.02em;margin-bottom:6px}
 .cstat .l{font-size:0.82rem;color:var(--ink3)}
@@ -288,6 +304,13 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 .foot-base a:hover{color:var(--hi2)}
 .foot-mega{font-family:var(--fd);font-variation-settings:'wdth' 86,'wght' 800;text-transform:uppercase;letter-spacing:-0.02em;font-size:clamp(4rem,14vw,12rem);line-height:0.88;color:oklch(97% 0.003 280/.055);text-align:center;overflow:hidden;margin-top:32px;padding:0 clamp(20px,4.5vw,60px) clamp(24px,4vw,48px);white-space:nowrap;user-select:none}
 
+/* Industry strip */
+.istrip{display:flex;height:clamp(140px,18vw,220px);overflow:hidden}
+.istrip-item{flex:1;overflow:hidden;position:relative}
+.istrip-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.istrip-item:hover img{transform:scale(1.06)}
+.istrip-item+.istrip-item{border-left:2px solid var(--bg)}
+
 /* JS reveal gating */
 .js [data-r]{opacity:0}
 .js [data-rl]{opacity:0}
@@ -317,9 +340,31 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
   </a>
   <nav class="nav-links" aria-label="Primary">
     <a href="#about">About</a>
-    <a href="#solutions">Solutions</a>
-    <a href="#industries">Industries</a>
-    <a href="#cases">Results</a>
+    <div class="drop">
+      <button class="drop-trigger" aria-haspopup="true" aria-expanded="false">Solutions<svg viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="drop-panel" role="menu">
+        <a href="solutions.html" role="menuitem">All Solutions</a>
+        <div class="dp-head">Disciplines</div>
+        <a href="solution-crypto-support.html" role="menuitem">Crypto Customer Support</a>
+        <a href="solution-technical-support.html" role="menuitem">Technical Support</a>
+        <a href="solution-trust-safety.html" role="menuitem">Trust &amp; Safety</a>
+        <a href="solution-risk-fraud.html" role="menuitem">Risk &amp; Fraud Response</a>
+        <a href="solution-security-compliance.html" role="menuitem">Security &amp; Compliance</a>
+      </div>
+    </div>
+    <div class="drop">
+      <button class="drop-trigger" aria-haspopup="true" aria-expanded="false">Industries<svg viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="drop-panel" role="menu">
+        <a href="industries.html" role="menuitem">All Industries</a>
+        <div class="dp-head">Verticals</div>
+        <a href="industry-fintech.html" role="menuitem">Fintech</a>
+        <a href="industry-igaming.html" role="menuitem">iGaming</a>
+        <a href="industry-exchanges.html" role="menuitem">Crypto Exchanges</a>
+        <a href="industry-defi.html" role="menuitem">DeFi</a>
+        <a href="industry-crypto-payments.html" role="menuitem">Crypto Payments</a>
+      </div>
+    </div>
+    <a href="#cases">Case Studies</a>
     <a href="#insights">Insights</a>
     <a href="#careers">Careers</a>
     <a href="#contact" class="btn btn-fill" style="margin-left:10px;padding:10px 18px;font-size:0.86rem">Talk to us</a>
@@ -335,9 +380,9 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 
 <nav id="mmenu" aria-label="Mobile navigation">
   <a href="#about">About</a>
-  <a href="#solutions">Solutions</a>
-  <a href="#industries">Industries</a>
-  <a href="#cases">Results</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="industries.html">Industries</a>
+  <a href="#cases">Case Studies</a>
   <a href="#insights">Insights</a>
   <a href="#careers">Careers</a>
   <a href="#contact" style="color:var(--a)">Talk to us</a>
@@ -440,6 +485,15 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
     </div>
   </div>
 </section>
+
+<!-- INDUSTRY PHOTO STRIP -->
+<div class="istrip" aria-hidden="true">
+  <div class="istrip-item"><img src="assets/images/industry-fintech.jpg" alt="Fintech regulated operations"></div>
+  <div class="istrip-item"><img src="assets/images/industry-igaming.jpg" alt="iGaming platform support"></div>
+  <div class="istrip-item"><img src="assets/images/industry-exchange.jpg" alt="Crypto exchange operations"></div>
+  <div class="istrip-item"><img src="assets/images/industry-defi.jpg" alt="DeFi protocol support"></div>
+  <div class="istrip-item"><img src="assets/images/industry-payments.jpg" alt="Crypto payment processing"></div>
+</div>
 
 <!-- SOLUTIONS -->
 <section class="s" id="solutions">
@@ -555,12 +609,15 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
         <h2 class="d dlg" data-r>Build your career on the digital frontier</h2>
         <p class="lede" data-r>Join a team at the intersection of Web3, DeFi, iGaming, and fintech. Sharp, motivated people making an impact on the world's most demanding digital platforms.</p>
         <div class="car-btns" data-r><a href="careers.html" class="btn btn-fill">See open positions</a><a href="company.html" class="btn btn-out">Our culture</a></div>
+        <div class="car-stats">
+          <div class="cstat" data-r><div class="n"><span class="ctr" data-t="100">0</span>+</div><div class="l">Team members</div></div>
+          <div class="cstat" data-r><div class="n">3</div><div class="l">Countries</div></div>
+          <div class="cstat" data-r><div class="n"><span class="ctr" data-t="6">0</span>+</div><div class="l">Open roles</div></div>
+          <div class="cstat" data-r><div class="n"><span class="ctr" data-t="95">0</span>%</div><div class="l">Retention rate</div></div>
+        </div>
       </div>
-      <div class="car-stats">
-        <div class="cstat" data-r><div class="n"><span class="ctr" data-t="100">0</span>+</div><div class="l">Team members</div></div>
-        <div class="cstat" data-r><div class="n">3</div><div class="l">Countries</div></div>
-        <div class="cstat" data-r><div class="n"><span class="ctr" data-t="6">0</span>+</div><div class="l">Open roles</div></div>
-        <div class="cstat" data-r><div class="n"><span class="ctr" data-t="95">0</span>%</div><div class="l">Retention rate</div></div>
+      <div class="car-imgw" data-rr>
+        <img src="assets/images/about-operations-team.jpg" alt="Toeshee operations team across three delivery centers">
       </div>
     </div>
   </div>
@@ -629,6 +686,17 @@ window.addEventListener('scroll',()=>{const y=window.scrollY;nav.classList.toggl
 const burger=document.getElementById('burger'),mmenu=document.getElementById('mmenu');
 burger.addEventListener('click',()=>{const o=mmenu.classList.toggle('open');burger.setAttribute('aria-expanded',o);document.getElementById('bl1').style.transform=o?'rotate(45deg) translate(0,6px)':'';document.getElementById('bl2').style.opacity=o?'0':'1';document.getElementById('bl3').style.transform=o?'rotate(-45deg) translate(0,-6px)':'';document.body.style.overflow=o?'hidden':'';});
 mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>burger.click()));
+
+// Dropdowns (keyboard + click fallback)
+document.querySelectorAll('.drop-trigger').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const drop=btn.closest('.drop');
+    const open=drop.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+    document.querySelectorAll('.drop').forEach(d=>{if(d!==drop){d.classList.remove('open');d.querySelector('.drop-trigger').setAttribute('aria-expanded','false');}});
+  });
+});
+document.addEventListener('click',e=>{if(!e.target.closest('.drop')){document.querySelectorAll('.drop').forEach(d=>{d.classList.remove('open');d.querySelector('.drop-trigger').setAttribute('aria-expanded','false');});}});
 
 // Accordion
 document.querySelectorAll('.sol-item').forEach(item=>{
