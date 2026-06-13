@@ -107,7 +107,7 @@ button{font-family:var(--fb);cursor:pointer}
 .sol-item{border-bottom:1px solid var(--line)}
 .sol-row{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(18px,3vw,44px);align-items:start;padding:clamp(28px,4vw,44px) 0}
 @media(max-width:760px){.sol-row{grid-template-columns:1fr}}
-.sol-no{font-family:var(--fd);font-variation-settings:'wdth' 80,'wght' 800;font-size:clamp(2rem,3.5vw,3rem);line-height:1;color:var(--a);letter-spacing:-0.02em;min-width:2.4ch}
+.sol-no{font-size:0;line-height:0;min-width:13px;padding-top:8px}.sol-no::before{content:'';display:block;width:13px;height:13px;background:var(--a)}
 .sol-row h2{font-family:var(--fd);font-variation-settings:'wdth' 82,'wght' 760;font-size:clamp(1.3rem,2.6vw,2rem);text-transform:uppercase;letter-spacing:-0.018em;line-height:1.05;margin-bottom:14px}
 .sol-row .desc{color:var(--ink2);max-width:62ch;text-wrap:pretty;margin-bottom:18px}
 .scov{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
@@ -245,7 +245,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
     <div class="sol-list">
       <article class="sol-item" data-r>
         <div class="sol-row">
-          <div class="sol-no">01</div>
+          <div class="sol-no"></div>
           <div>
             <h2>Crypto Customer Support Operations</h2>
             <p class="desc">Crypto-native support for complex user flows including KYC, wallet management, payments, and exchange operations. Blockchain-fluent teams with structured escalation paths.</p>
@@ -256,7 +256,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
       </article>
       <article class="sol-item" data-r>
         <div class="sol-row">
-          <div class="sol-no">02</div>
+          <div class="sol-no"></div>
           <div>
             <h2>Technical Support &amp; Incident Handling</h2>
             <p class="desc">Operational support for technical incidents including platform errors, transaction failures, and smart contract interaction issues. L1–L3 escalation models aligned with internal engineering teams.</p>
@@ -267,7 +267,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
       </article>
       <article class="sol-item" data-r>
         <div class="sol-row">
-          <div class="sol-no">03</div>
+          <div class="sol-no"></div>
           <div>
             <h2>Trust &amp; Safety Operations</h2>
             <p class="desc">Operational support for abuse prevention, content moderation, and behavior monitoring across crypto and iGaming environments. Audit-ready workflows aligned with regulatory standards.</p>
@@ -278,7 +278,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
       </article>
       <article class="sol-item" data-r>
         <div class="sol-row">
-          <div class="sol-no">04</div>
+          <div class="sol-no"></div>
           <div>
             <h2>Risk Operations &amp; Fraud Response</h2>
             <p class="desc">Detecting and responding to fraud, transactional anomalies, and operational risks. Context-driven threat identification through monitoring, pattern detection, and chain analysis signals.</p>
@@ -289,7 +289,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
       </article>
       <article class="sol-item" data-r>
         <div class="sol-row">
-          <div class="sol-no">05</div>
+          <div class="sol-no"></div>
           <div>
             <h2>Security &amp; Compliance Support</h2>
             <p class="desc">Operational support aligned with regulatory frameworks including KYC/AML, GDPR, MiCA, and PCI-DSS. Compliance-aware daily operations with governance and audit readiness.</p>

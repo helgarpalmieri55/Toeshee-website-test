@@ -172,7 +172,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 @media(max-width:900px){.caps{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.caps{grid-template-columns:1fr}}
 .cap{background:var(--bg);padding:clamp(24px,3vw,36px)}
-.cap .cn{font-family:var(--fd);font-variation-settings:'wdth' 80,'wght' 800;font-size:1.5rem;line-height:1;color:var(--a);margin-bottom:16px}
+.cap .cn{font-size:0;line-height:0;margin-bottom:18px}.cn::before{content:'';display:block;width:11px;height:11px;background:var(--a)}
 .cap h3{font-family:var(--fd);font-variation-settings:'wdth' 84,'wght' 720;text-transform:uppercase;font-size:1.02rem;letter-spacing:-0.01em;margin-bottom:10px}
 .cap p{font-size:0.9rem;color:var(--ink2);line-height:1.6}
 /* Phases (dark) */
@@ -289,7 +289,6 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
   <div class="w">
     <div class="split">
       <div data-r>
-        <div class="kick">Our approach</div>
         <h2 class="d dlg">Deep expertise in crypto payment operations</h2>
       </div>
       <div class="body" data-r>
@@ -309,15 +308,14 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 <!-- CAPABILITIES -->
 <section class="s caps-sec">
   <div class="w">
-    <div class="kick" data-r>Service capabilities</div>
     <h2 class="d dlg" data-r>What we deliver for payment processors</h2>
     <div class="caps">
-      <div class="cap" data-r><div class="cn">01</div><h3>Transaction Support</h3><p>Operational handling for failed payments, delayed settlements, incorrect amounts, and multi-currency transaction queries. We manage high-volume payment cases with structured escalation paths.</p></div>
-      <div class="cap" data-r><div class="cn">02</div><h3>Merchant Onboarding</h3><p>Operational support for merchant KYB workflows, document review, account activation, and integration queries. We help new merchants go live faster with fewer friction points.</p></div>
-      <div class="cap" data-r><div class="cn">03</div><h3>AML / Compliance Operations</h3><p>Day-to-day AML monitoring support, suspicious transaction flagging, sanctions screening assistance, and regulatory reporting operations aligned to your compliance framework.</p></div>
-      <div class="cap" data-r><div class="cn">04</div><h3>Chargeback Management</h3><p>Structured handling of dispute notifications, evidence preparation, re-presentation workflows, and merchant communication for chargeback cases across card and crypto payment rails.</p></div>
-      <div class="cap" data-r><div class="cn">05</div><h3>Settlement &amp; Reconciliation Support</h3><p>Operational assistance for settlement queries, reconciliation discrepancies, float management questions, and multi-currency payout issues.</p></div>
-      <div class="cap" data-r><div class="cn">06</div><h3>Risk &amp; Fraud Response</h3><p>Detection and response support for transaction fraud, merchant-level risk events, and coordinated abuse patterns targeting payment infrastructure.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Transaction Support</h3><p>Operational handling for failed payments, delayed settlements, incorrect amounts, and multi-currency transaction queries. We manage high-volume payment cases with structured escalation paths.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Merchant Onboarding</h3><p>Operational support for merchant KYB workflows, document review, account activation, and integration queries. We help new merchants go live faster with fewer friction points.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>AML / Compliance Operations</h3><p>Day-to-day AML monitoring support, suspicious transaction flagging, sanctions screening assistance, and regulatory reporting operations aligned to your compliance framework.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Chargeback Management</h3><p>Structured handling of dispute notifications, evidence preparation, re-presentation workflows, and merchant communication for chargeback cases across card and crypto payment rails.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Settlement &amp; Reconciliation Support</h3><p>Operational assistance for settlement queries, reconciliation discrepancies, float management questions, and multi-currency payout issues.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Risk &amp; Fraud Response</h3><p>Detection and response support for transaction fraud, merchant-level risk events, and coordinated abuse patterns targeting payment infrastructure.</p></div>
     </div>
   </div>
 </section>
@@ -325,7 +323,6 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 <!-- PHASES -->
 <section class="s" id="phases">
   <div class="w">
-    <div class="kick" data-r>How we work</div>
     <h2 class="d dlg" data-r>From day one to long-term operational excellence</h2>
     <p class="lede" data-r style="margin-top:16px">Our three-phase model — onboarding, operations, and reporting — helps teams launch quickly, stay controlled, and continuously improve.</p>
     <div style="margin-top:clamp(24px,3vw,40px)">

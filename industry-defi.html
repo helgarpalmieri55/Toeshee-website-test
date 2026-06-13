@@ -172,7 +172,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 @media(max-width:900px){.caps{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.caps{grid-template-columns:1fr}}
 .cap{background:var(--bg);padding:clamp(24px,3vw,36px)}
-.cap .cn{font-family:var(--fd);font-variation-settings:'wdth' 80,'wght' 800;font-size:1.5rem;line-height:1;color:var(--a);margin-bottom:16px}
+.cap .cn{font-size:0;line-height:0;margin-bottom:18px}.cn::before{content:'';display:block;width:11px;height:11px;background:var(--a)}
 .cap h3{font-family:var(--fd);font-variation-settings:'wdth' 84,'wght' 720;text-transform:uppercase;font-size:1.02rem;letter-spacing:-0.01em;margin-bottom:10px}
 .cap p{font-size:0.9rem;color:var(--ink2);line-height:1.6}
 /* Phases (dark) */
@@ -272,8 +272,8 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
     <h1 class="d dxl">
       <span class="hl"><span class="hli">DeFi support where</span></span>
       <span class="hl"><span class="hli"><em class='acc'>early detection</em> and</span></span>
-      <span class="hl"><span class="hli">fast response are</span></span>
-      <span class="hl"><span class="hli">mission-critical.</span></span>
+      <span class="hl"><span class="hli">fast response keep</span></span>
+      <span class="hl"><span class="hli">protocols solvent.</span></span>
     </h1>
     <p class="lede" id="ph-p">DeFi operations require early detection, fast containment, and clear escalation paths. Support must respond before minor user issues become critical operational events that damage protocol trust.</p>
   </div>
@@ -289,7 +289,6 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
   <div class="w">
     <div class="split">
       <div data-r>
-        <div class="kick">Our approach</div>
         <h2 class="d dlg">Deep expertise in DeFi operations</h2>
       </div>
       <div class="body" data-r>
@@ -309,15 +308,14 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 <!-- CAPABILITIES -->
 <section class="s caps-sec">
   <div class="w">
-    <div class="kick" data-r>Service capabilities</div>
     <h2 class="d dlg" data-r>What we deliver for DeFi</h2>
     <div class="caps">
-      <div class="cap" data-r><div class="cn">01</div><h3>Smart Contract Support</h3><p>Operational support for failed contract interactions, reverted transactions, ABI mismatches, and gas estimation issues across EVM-compatible chains.</p></div>
-      <div class="cap" data-r><div class="cn">02</div><h3>Wallet &amp; Transaction Issues</h3><p>Guided resolution for wallet connection failures, bridging issues, stuck transactions, and token visibility problems across multi-chain DeFi environments.</p></div>
-      <div class="cap" data-r><div class="cn">03</div><h3>Incident Communication</h3><p>Structured user communication protocols for protocol incidents, liquidity events, and emergency governance actions — keeping users informed without amplifying panic.</p></div>
-      <div class="cap" data-r><div class="cn">04</div><h3>Community Operations</h3><p>Moderation and operational support for Discord, Telegram, and forum channels. Structured handling of community escalations, FUD management, and governance queries.</p></div>
-      <div class="cap" data-r><div class="cn">05</div><h3>Fraud &amp; Exploit Response</h3><p>Rapid-response workflows for suspected exploits, phishing attacks targeting users, and social engineering incidents. Coordinated response between community, security, and engineering teams.</p></div>
-      <div class="cap" data-r><div class="cn">06</div><h3>Governance &amp; Proposal Support</h3><p>User support for governance participation, voting mechanics, proposal processes, and delegation workflows. We help users engage correctly with governance systems.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Smart Contract Support</h3><p>Operational support for failed contract interactions, reverted transactions, ABI mismatches, and gas estimation issues across EVM-compatible chains.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Wallet &amp; Transaction Issues</h3><p>Guided resolution for wallet connection failures, bridging issues, stuck transactions, and token visibility problems across multi-chain DeFi environments.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Incident Communication</h3><p>Structured user communication protocols for protocol incidents, liquidity events, and emergency governance actions, keeping users informed without amplifying panic.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Community Operations</h3><p>Moderation and operational support for Discord, Telegram, and forum channels. Structured handling of community escalations, FUD management, and governance queries.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Fraud &amp; Exploit Response</h3><p>Rapid-response workflows for suspected exploits, phishing attacks targeting users, and social engineering incidents. Coordinated response between community, security, and engineering teams.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Governance &amp; Proposal Support</h3><p>User support for governance participation, voting mechanics, proposal processes, and delegation workflows. We help users engage correctly with governance systems.</p></div>
     </div>
   </div>
 </section>
@@ -325,7 +323,6 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 <!-- PHASES -->
 <section class="s" id="phases">
   <div class="w">
-    <div class="kick" data-r>How we work</div>
     <h2 class="d dlg" data-r>From day one to long-term operational excellence</h2>
     <p class="lede" data-r style="margin-top:16px">Our three-phase model — onboarding, operations, and reporting — helps teams launch quickly, stay controlled, and continuously improve.</p>
     <div style="margin-top:clamp(24px,3vw,40px)">
@@ -339,7 +336,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
       </div>
       <div class="phase" data-r>
         <div class="pk"><div class="pn">03</div><div class="pt">Reporting</div></div>
-        <div><h3>Performance Visibility &amp; Continuous Improvement</h3><p class="pd">You get operational reporting that surfaces user pain points, community friction, and protocol-level issues that operations are surfacing — before they become governance problems.</p><ul><li>Community health dashboards with engagement and escalation metrics</li><li>Monthly QA reports with response quality scoring</li><li>Incident trend analysis by chain and interaction type</li><li>Proactive recommendations based on user feedback patterns</li></ul></div>
+        <div><h3>Performance Visibility &amp; Continuous Improvement</h3><p class="pd">You get operational reporting that surfaces user pain points, community friction, and protocol-level issues that operations are surfacing, before they become governance problems.</p><ul><li>Community health dashboards with engagement and escalation metrics</li><li>Monthly QA reports with response quality scoring</li><li>Incident trend analysis by chain and interaction type</li><li>Proactive recommendations based on user feedback patterns</li></ul></div>
       </div>
     </div>
   </div>

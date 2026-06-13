@@ -236,9 +236,9 @@ button{font-family:var(--fb);cursor:pointer}
 
 /* Insights */
 .ins-list{margin-top:clamp(32px,4vw,48px)}
-.ins-item{display:grid;grid-template-columns:88px 1fr auto;gap:clamp(14px,2.5vw,32px);align-items:center;padding:20px 0;border-bottom:1px solid var(--line);transition:background .25s,padding-left .35s var(--ease);cursor:pointer}
+.ins-item{display:grid;grid-template-columns:88px 1fr auto;gap:clamp(14px,2.5vw,32px);align-items:center;padding:20px 0;border-bottom:1px solid var(--line);transition:background .25s,transform .35s var(--ease);cursor:pointer}
 .ins-item:first-child{border-top:1px solid var(--line)}
-.ins-item:hover{background:var(--bg2);padding-left:12px}
+.ins-item:hover{background:var(--bg2);transform:translateX(10px)}
 .ins-thumb{width:88px;height:60px;border-radius:10px;overflow:hidden;flex-shrink:0}
 .ins-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .ins-item:hover .ins-thumb img{transform:scale(1.08)}
@@ -402,7 +402,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
         <span class="hl"><span class="hli">for the <em class="acc">decentralized</em></span></span>
         <span class="hl"><span class="hli">economy.</span></span>
       </h1>
-      <p class="lede hero-sub" id="hero-p">Crypto-native support operations built inside your workflows — resolving incidents faster, managing fraud and KYC exceptions, maintaining compliance at scale across Web3, fintech, and iGaming.</p>
+      <p class="lede hero-sub" id="hero-p">Crypto-native support operations built inside your workflows, resolving incidents faster, managing fraud and KYC exceptions, maintaining compliance at scale across Web3, fintech, and iGaming.</p>
       <div class="hero-ctas" id="hero-cta">
         <a href="#contact" class="btn btn-fill">Request a technical evaluation</a>
         <a href="#about" class="btn btn-hiout">How we operate</a>
@@ -490,11 +490,11 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 
 <!-- INDUSTRY PHOTO STRIP -->
 <div class="istrip" aria-hidden="true">
-  <div class="istrip-item"><img src="assets/images/industry-fintech.jpg" alt="Fintech regulated operations"></div>
-  <div class="istrip-item"><img src="assets/images/industry-igaming.jpg" alt="iGaming platform support"></div>
-  <div class="istrip-item"><img src="assets/images/industry-exchange.jpg" alt="Crypto exchange operations"></div>
-  <div class="istrip-item"><img src="assets/images/industry-defi.jpg" alt="DeFi protocol support"></div>
-  <div class="istrip-item"><img src="assets/images/industry-payments.jpg" alt="Crypto payment processing"></div>
+  <div class="istrip-item"><img src="assets/images/industry-fintech-new.jpg" alt="Fintech regulated operations"></div>
+  <div class="istrip-item"><img src="assets/images/industry-igaming-new.jpg" alt="iGaming platform support"></div>
+  <div class="istrip-item"><img src="assets/images/industry-exchange-new.jpg" alt="Crypto exchange operations"></div>
+  <div class="istrip-item"><img src="assets/images/industry-defi-new.jpg" alt="DeFi protocol support"></div>
+  <div class="istrip-item"><img src="assets/images/industry-payments-new.jpg" alt="Crypto payment processing"></div>
 </div>
 
 <!-- SOLUTIONS -->
@@ -511,7 +511,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
       </div>
       <div class="sol-item">
         <button class="sol-trigger" aria-expanded="false"><h3>Technical Support &amp; Incident Handling</h3><span class="sol-icon" aria-hidden="true">+</span></button>
-        <div class="sol-body"><div class="sol-bi"><div class="sol-content"><p>Structured triage and escalation through L1–L3 support models aligned with internal engineering teams. Platform errors, transaction failures, smart contract issues — handled with the technical fluency that crypto infrastructure demands.</p><a href="solution-technical-support.html" class="btn btn-hiout" style="flex-shrink:0">Learn more <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></div>
+        <div class="sol-body"><div class="sol-bi"><div class="sol-content"><p>Structured triage and escalation through L1–L3 support models aligned with internal engineering teams. Platform errors, transaction failures, smart contract issues, handled with the technical fluency that crypto infrastructure demands.</p><a href="solution-technical-support.html" class="btn btn-hiout" style="flex-shrink:0">Learn more <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></div>
       </div>
       <div class="sol-item">
         <button class="sol-trigger" aria-expanded="false"><h3>Trust &amp; Safety Operations</h3><span class="sol-icon" aria-hidden="true">+</span></button>
@@ -523,7 +523,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
       </div>
       <div class="sol-item">
         <button class="sol-trigger" aria-expanded="false"><h3>Security &amp; Compliance Support</h3><span class="sol-icon" aria-hidden="true">+</span></button>
-        <div class="sol-body"><div class="sol-bi"><div class="sol-content"><p>Operational support aligned with KYC/AML, GDPR, MiCA, and PCI-DSS frameworks. Compliance-aware operations through integrated governance and audit readiness — because your auditors evaluate your support layer too.</p><a href="solution-security-compliance.html" class="btn btn-hiout" style="flex-shrink:0">Learn more <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></div>
+        <div class="sol-body"><div class="sol-bi"><div class="sol-content"><p>Operational support aligned with KYC/AML, GDPR, MiCA, and PCI-DSS frameworks. Compliance-aware operations through integrated governance and audit readiness, because your auditors evaluate your support layer too.</p><a href="solution-security-compliance.html" class="btn btn-hiout" style="flex-shrink:0">Learn more <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></div>
       </div>
     </div>
   </div>
@@ -540,11 +540,11 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
       </div>
     </div>
     <div class="ind-rail" id="ind-rail">
-      <div class="ind-card"><img src="assets/images/industry-fintech.jpg" alt="Regulated fintech operations floor under continuous audit-ready process"><div class="ind-body"><h3>Fintech</h3><p>PCI-DSS, GDPR, KYC/AML, and jurisdictional regimes. Support built for continuous risk and external-auditor evaluation.</p><a href="industry-fintech.html" class="ind-link">Explore →</a></div></div>
-      <div class="ind-card"><img src="assets/images/industry-igaming.jpg" alt="iGaming platform handling peak player volume events"><div class="ind-body"><h3>iGaming</h3><p>Peak volume leaves no room for error. Support directly shapes player retention and trust.</p><a href="industry-igaming.html" class="ind-link">Explore →</a></div></div>
-      <div class="ind-card"><img src="assets/images/industry-exchange.jpg" alt="Crypto exchange trading operations tied to client custody and funds"><div class="ind-body"><h3>Exchanges</h3><p>Customer support tied directly to client funds, custody, and trust — proven, auditable processes required.</p><a href="industry-exchanges.html" class="ind-link">Explore →</a></div></div>
-      <div class="ind-card"><img src="assets/images/industry-defi.jpg" alt="DeFi protocol monitoring dashboard during incident containment"><div class="ind-body"><h3>DeFi</h3><p>Early detection, fast containment, and clear escalation paths before minor issues become critical incidents.</p><a href="industry-defi.html" class="ind-link">Explore →</a></div></div>
-      <div class="ind-card"><img src="assets/images/industry-payments.jpg" alt="Crypto payment processing infrastructure under risk-committee review"><div class="ind-body"><h3>Crypto Payments</h3><p>Constant risk-committee and audit evaluation. Support that protects stability without adding regulatory exposure.</p><a href="industry-crypto-payments.html" class="ind-link">Explore →</a></div></div>
+      <div class="ind-card"><img src="assets/images/industry-fintech-new.jpg" alt="Regulated fintech operations floor under continuous audit-ready process"><div class="ind-body"><h3>Fintech</h3><p>PCI-DSS, GDPR, KYC/AML, and jurisdictional regimes. Support built for continuous risk and external-auditor evaluation.</p><a href="industry-fintech.html" class="ind-link">Explore →</a></div></div>
+      <div class="ind-card"><img src="assets/images/industry-igaming-new.jpg" alt="iGaming platform handling peak player volume events"><div class="ind-body"><h3>iGaming</h3><p>Peak volume leaves no room for error. Support directly shapes player retention and trust.</p><a href="industry-igaming.html" class="ind-link">Explore →</a></div></div>
+      <div class="ind-card"><img src="assets/images/industry-exchange-new.jpg" alt="Crypto exchange trading operations tied to client custody and funds"><div class="ind-body"><h3>Exchanges</h3><p>Customer support tied directly to client funds, custody, and trust. Proven, auditable processes required.</p><a href="industry-exchanges.html" class="ind-link">Explore →</a></div></div>
+      <div class="ind-card"><img src="assets/images/industry-defi-new.jpg" alt="DeFi protocol monitoring dashboard during incident containment"><div class="ind-body"><h3>DeFi</h3><p>Early detection, fast containment, and clear escalation paths before minor issues become critical incidents.</p><a href="industry-defi.html" class="ind-link">Explore →</a></div></div>
+      <div class="ind-card"><img src="assets/images/industry-payments-new.jpg" alt="Crypto payment processing infrastructure under risk-committee review"><div class="ind-body"><h3>Crypto Payments</h3><p>Constant risk-committee and audit evaluation. Support that protects stability without adding regulatory exposure.</p><a href="industry-crypto-payments.html" class="ind-link">Explore →</a></div></div>
     </div>
   </div>
 </section>
@@ -579,7 +579,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
         <div class="case-imgw"><img src="assets/images/case-igaming.jpg" alt="Confidential iGaming client — crypto-payment adoption program"><span class="ctag">Confidential iGaming client</span></div>
         <div class="case-body">
           <div class="cmetrics"><div class="cm"><div class="n">6→<span class="ctr" data-t="60">0</span>%</div><div class="l">Crypto adoption</div></div><div class="cm"><div class="n">#1</div><div class="l">Quality ranking</div></div></div>
-          <ul class="cpts"><li>Crypto-payment adoption grew from 6% to 60% over 24 months</li><li>Ranked #1 for quality and performance across all providers</li><li>Identity withheld by agreement — results independently verified</li></ul>
+          <ul class="cpts"><li>Crypto-payment adoption grew from 6% to 60% over 24 months</li><li>Ranked #1 for quality and performance across all providers</li><li>Identity withheld by agreement; results independently verified</li></ul>
         </div>
       </article>
     </div>
@@ -647,7 +647,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
           <div class="f"><label for="cm">Message</label><textarea id="cm" rows="4" placeholder="Tell us about your operational needs..."></textarea></div>
           <div class="fchk"><input type="checkbox" id="ct" required><label for="ct">I agree to the <a href="terms.html">terms and conditions</a></label></div>
           <button type="submit" class="btn btn-fill" style="width:100%;justify-content:center">Send message</button>
-          <div id="fsuccess">Message sent — we'll be in touch within 24 hours.</div>
+          <div id="fsuccess">Message sent. We'll be in touch within 24 hours.</div>
         </form>
       </div>
     </div>

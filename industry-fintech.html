@@ -172,7 +172,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 @media(max-width:900px){.caps{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.caps{grid-template-columns:1fr}}
 .cap{background:var(--bg);padding:clamp(24px,3vw,36px)}
-.cap .cn{font-family:var(--fd);font-variation-settings:'wdth' 80,'wght' 800;font-size:1.5rem;line-height:1;color:var(--a);margin-bottom:16px}
+.cap .cn{font-size:0;line-height:0;margin-bottom:18px}.cn::before{content:'';display:block;width:11px;height:11px;background:var(--a)}
 .cap h3{font-family:var(--fd);font-variation-settings:'wdth' 84,'wght' 720;text-transform:uppercase;font-size:1.02rem;letter-spacing:-0.01em;margin-bottom:10px}
 .cap p{font-size:0.9rem;color:var(--ink2);line-height:1.6}
 /* Phases (dark) */
@@ -288,7 +288,6 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
   <div class="w">
     <div class="split">
       <div data-r>
-        <div class="kick">Our approach</div>
         <h2 class="d dlg">Deep expertise in fintech operations</h2>
       </div>
       <div class="body" data-r>
@@ -308,15 +307,14 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 <!-- CAPABILITIES -->
 <section class="s caps-sec">
   <div class="w">
-    <div class="kick" data-r>Service capabilities</div>
     <h2 class="d dlg" data-r>What we deliver for fintech</h2>
     <div class="caps">
-      <div class="cap" data-r><div class="cn">01</div><h3>KYC / AML Support</h3><p>High-throughput identity verification and AML support for regulated fintech environments. Our teams manage verification queues, document review, sanctions screening, and EDD workflows at scale.</p></div>
-      <div class="cap" data-r><div class="cn">02</div><h3>Payment Dispute Resolution</h3><p>Structured handling of chargeback requests, failed payments, refund claims, and merchant disputes. We manage sensitive financial cases with speed and documentation discipline.</p></div>
-      <div class="cap" data-r><div class="cn">03</div><h3>Account &amp; Identity Management</h3><p>Support for login issues, account recovery, 2FA problems, and user verification concerns. We resolve access friction while maintaining platform security protocols.</p></div>
-      <div class="cap" data-r><div class="cn">04</div><h3>Regulatory Compliance Operations</h3><p>Day-to-day operational support aligned with PCI-DSS, GDPR, MiCA, and regional AML directives. Audit-ready processes embedded into every workflow.</p></div>
-      <div class="cap" data-r><div class="cn">05</div><h3>Fraud &amp; Risk Escalation</h3><p>Structured handling of fraud signals, suspicious transactions, and high-risk user cases. We route critical issues efficiently without creating compliance gaps.</p></div>
-      <div class="cap" data-r><div class="cn">06</div><h3>Multi-Market Coverage</h3><p>Multilingual and multi-jurisdiction support for fintechs expanding across markets. Our teams adapt to local regulatory expectations and platform-specific support flows.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>KYC / AML Support</h3><p>High-throughput identity verification and AML support for regulated fintech environments. Our teams manage verification queues, document review, sanctions screening, and EDD workflows at scale.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Payment Dispute Resolution</h3><p>Structured handling of chargeback requests, failed payments, refund claims, and merchant disputes. We manage sensitive financial cases with speed and documentation discipline.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Account &amp; Identity Management</h3><p>Support for login issues, account recovery, 2FA problems, and user verification concerns. We resolve access friction while maintaining platform security protocols.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Regulatory Compliance Operations</h3><p>Day-to-day operational support aligned with PCI-DSS, GDPR, MiCA, and regional AML directives. Audit-ready processes embedded into every workflow.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Fraud &amp; Risk Escalation</h3><p>Structured handling of fraud signals, suspicious transactions, and high-risk user cases. We route critical issues efficiently without creating compliance gaps.</p></div>
+      <div class="cap" data-r><div class="cn"></div><h3>Multi-Market Coverage</h3><p>Multilingual and multi-jurisdiction support for fintechs expanding across markets. Our teams adapt to local regulatory expectations and platform-specific support flows.</p></div>
     </div>
   </div>
 </section>
@@ -324,7 +322,6 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
 <!-- PHASES -->
 <section class="s" id="phases">
   <div class="w">
-    <div class="kick" data-r>How we work</div>
     <h2 class="d dlg" data-r>From day one to long-term operational excellence</h2>
     <p class="lede" data-r style="margin-top:16px">Our three-phase model — onboarding, operations, and reporting — helps teams launch quickly, stay controlled, and continuously improve.</p>
     <div style="margin-top:clamp(24px,3vw,40px)">
