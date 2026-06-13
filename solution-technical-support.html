@@ -177,9 +177,31 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
   </a>
   <nav class="nav-links" aria-label="Primary">
     <a href="company.html">About</a>
-    <a href="solutions.html">Solutions</a>
-    <a href="industries.html">Industries</a>
-    <a href="case-studies.html">Results</a>
+    <div class="drop">
+      <button class="drop-trigger" aria-haspopup="true" aria-expanded="false">Solutions<svg viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="drop-panel" role="menu">
+        <a href="solutions.html" role="menuitem">All Solutions</a>
+        <div class="dp-head">Disciplines</div>
+        <a href="solution-crypto-support.html" role="menuitem">Crypto Customer Support</a>
+        <a href="solution-technical-support.html" role="menuitem">Technical Support</a>
+        <a href="solution-trust-safety.html" role="menuitem">Trust &amp; Safety</a>
+        <a href="solution-risk-fraud.html" role="menuitem">Risk &amp; Fraud Response</a>
+        <a href="solution-security-compliance.html" role="menuitem">Security &amp; Compliance</a>
+      </div>
+    </div>
+    <div class="drop">
+      <button class="drop-trigger" aria-haspopup="true" aria-expanded="false">Industries<svg viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="drop-panel" role="menu">
+        <a href="industries.html" role="menuitem">All Industries</a>
+        <div class="dp-head">Verticals</div>
+        <a href="industry-fintech.html" role="menuitem">Fintech</a>
+        <a href="industry-igaming.html" role="menuitem">iGaming</a>
+        <a href="industry-exchanges.html" role="menuitem">Crypto Exchanges</a>
+        <a href="industry-defi.html" role="menuitem">DeFi</a>
+        <a href="industry-crypto-payments.html" role="menuitem">Crypto Payments</a>
+      </div>
+    </div>
+    <a href="case-studies.html">Case Studies</a>
     <a href="insights.html">Insights</a>
     <a href="careers.html">Careers</a>
     <a href="index.html#contact" class="btn btn-fill" style="margin-left:10px;padding:10px 18px;font-size:0.86rem">Talk to us</a>
@@ -197,7 +219,7 @@ footer{background:var(--dark);color:var(--hi);padding:clamp(56px,8vw,96px) 0 0}
   <a href="company.html">About</a>
   <a href="solutions.html">Solutions</a>
   <a href="industries.html">Industries</a>
-  <a href="case-studies.html">Results</a>
+  <a href="case-studies.html">Case Studies</a>
   <a href="insights.html">Insights</a>
   <a href="careers.html">Careers</a>
   <a href="index.html#contact" style="color:var(--a)">Talk to us</a>
@@ -306,6 +328,17 @@ window.addEventListener('scroll',()=>{const y=window.scrollY;nav.classList.toggl
 const burger=document.getElementById('burger'),mmenu=document.getElementById('mmenu');
 burger.addEventListener('click',()=>{const o=mmenu.classList.toggle('open');burger.setAttribute('aria-expanded',o);document.getElementById('bl1').style.transform=o?'rotate(45deg) translate(0,6px)':'';document.getElementById('bl2').style.opacity=o?'0':'1';document.getElementById('bl3').style.transform=o?'rotate(-45deg) translate(0,-6px)':'';document.body.style.overflow=o?'hidden':'';});
 mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>burger.click()));
+
+// Dropdowns
+document.querySelectorAll('.drop-trigger').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const drop=btn.closest('.drop');
+    const open=drop.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+    document.querySelectorAll('.drop').forEach(d=>{if(d!==drop){d.classList.remove('open');d.querySelector('.drop-trigger').setAttribute('aria-expanded','false');}});
+  });
+});
+document.addEventListener('click',e=>{if(!e.target.closest('.drop')){document.querySelectorAll('.drop').forEach(d=>{d.classList.remove('open');d.querySelector('.drop-trigger').setAttribute('aria-expanded','false');});}});
 </script>
 
 <script src="assets/motion.js"></script>
