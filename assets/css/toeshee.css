@@ -31,6 +31,7 @@
   --wrap: 1240px;
   --gutter: clamp(20px, 4vw, 48px);
   --section-y: clamp(72px, 11vw, 152px);
+  --nav-h: 126px;
 
   /* Z scale */
   --z-dropdown: 40;
@@ -263,7 +264,7 @@ p { max-width: 68ch; text-wrap: pretty; }
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  height: 72px;
+  height: var(--nav-h);
 }
 
 .nav__brand {
@@ -274,6 +275,8 @@ p { max-width: 68ch; text-wrap: pretty; }
   flex-shrink: 0;
 }
 .nav__brand img { height: 38px; width: 38px; object-fit: contain; }
+/* Header logo runs 3x the footer mark and carries the brand alone. */
+.nav .nav__brand img { height: 114px; width: 114px; }
 .nav__wordmark {
   font-weight: 700;
   font-stretch: 112%;
@@ -382,7 +385,7 @@ p { max-width: 68ch; text-wrap: pretty; }
 .mobile-menu {
   display: none;
   position: fixed;
-  inset: 72px 0 0 0;
+  inset: var(--nav-h) 0 0 0;
   z-index: var(--z-mobile-menu);
   background: var(--bg);
   overflow-y: auto;
@@ -413,7 +416,7 @@ body.menu-locked { overflow: hidden; }
 
 /* ── Hero (home) ────────────────────────────────────────────── */
 
-.hero { padding-top: calc(72px + clamp(64px, 12vw, 148px)); }
+.hero { padding-top: calc(var(--nav-h) + clamp(48px, 10vw, 128px)); }
 .hero__meta { margin-bottom: clamp(24px, 4vw, 40px); max-width: none; }
 .hero .display { max-width: 13.5em; }
 .hero__foot {
@@ -490,7 +493,7 @@ body.menu-locked { overflow: hidden; }
 
 /* ── Page header (inner pages) ──────────────────────────────── */
 
-.page-head { padding: calc(72px + clamp(48px, 9vw, 110px)) 0 clamp(40px, 6vw, 72px); }
+.page-head { padding: calc(var(--nav-h) + clamp(40px, 8vw, 96px)) 0 clamp(40px, 6vw, 72px); }
 .page-head .crumb {
   display: flex;
   align-items: center;
